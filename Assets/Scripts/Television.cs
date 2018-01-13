@@ -18,7 +18,6 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 
 	[SerializeField]
 	GameObject detailView;
-	
 
 	SpriteRenderer _background;
 	SpriteRenderer _effect;
@@ -36,6 +35,9 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 			_effect.sprite = effect_image;
 		if (_symbol != null)
 			_symbol.sprite = symbol_image;
+
+		// 브라운관 tv처럼 보이게 하려고 hue 주기적으로 업데이트
+		StartCoroutine(UpdateHue());
 	}
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
@@ -47,4 +49,17 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 			view.transform.position += new Vector3(0, 0, -5);
 		}
     }
+
+	IEnumerator UpdateHue()
+	{
+		const float shiftRange = 0.04f;
+		while(true)
+		{
+			yield return new WaitForSeconds(0.4f + UnityEngine.Random.value * 0.1f);
+			float hueshift = (UnityEngine.Random.value - 0.5f) * shiftRange;
+
+			foreach(SpriteRenderer r in new SpriteRenderer[]{_background, _effect, _symbol})
+				r.material.SetFloat("_HueShift", hueshift);
+		}
+	}
 }
