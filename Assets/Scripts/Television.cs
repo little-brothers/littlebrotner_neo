@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
-public class Television : MonoBehaviour {
+public class Television : MonoBehaviour, IPointerClickHandler {
 
 	[SerializeField]
 	Sprite background_image;
@@ -15,13 +16,17 @@ public class Television : MonoBehaviour {
 	[SerializeField]
 	Sprite symbol_image;
 
+	[SerializeField]
+	GameObject detailView;
+	
+
 	SpriteRenderer _background;
 	SpriteRenderer _effect;
 	SpriteRenderer _symbol;
 
 	// Use this for initialization
 	void Start () {
-		_background = transform.Find("Background").GetComponent<SpriteRenderer>();
+		_background = GetComponent<SpriteRenderer>();
 		_effect = transform.Find("Effect").GetComponent<SpriteRenderer>();
 		_symbol = transform.Find("Symbol").GetComponent<SpriteRenderer>();
 
@@ -32,4 +37,14 @@ public class Television : MonoBehaviour {
 		if (_symbol != null)
 			_symbol.sprite = symbol_image;
 	}
+
+    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+    {
+		if (detailView != null)
+		{
+			// show 
+			var view = GameObject.Instantiate(detailView);
+			view.transform.position += new Vector3(0, 0, -5);
+		}
+    }
 }
