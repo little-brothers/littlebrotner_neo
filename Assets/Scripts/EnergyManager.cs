@@ -25,6 +25,12 @@ public class EnergyManager : MonoBehaviour {
 
 		updateEnergyStatus();
 	}
+
+	public void ResetEnergy()
+	{
+		_currentEnergy = Mathf.Min(_currentEnergy+_maxEnergy, energyLimit);
+		updateEnergyStatus();
+	}
 	
 	public bool UseEnergy()
 	{
