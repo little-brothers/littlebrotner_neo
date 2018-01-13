@@ -35,8 +35,12 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 			_effect.sprite = effect_image;
 		if (_symbol != null)
 			_symbol.sprite = symbol_image;
+	}
 
+	void OnEnable()
+	{
 		// 브라운관 tv처럼 보이게 하려고 hue 주기적으로 업데이트
+		// deactivate되면 코루틴이 꺼지게 되므로 OnEnable에서 처리한다
 		StartCoroutine(UpdateHue());
 	}
 
