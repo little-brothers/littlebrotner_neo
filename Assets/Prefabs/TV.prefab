@@ -141,7 +141,7 @@ MonoBehaviour:
   background_image: {fileID: 21300000, guid: 17ddbde6eaaf0439c9d8c853bfe2c43e, type: 3}
   effect_image: {fileID: 21300000, guid: 12090b611a5f34651b4204f832d2fb45, type: 3}
   symbol_image: {fileID: 21300000, guid: 14fa620d4130541fca003b8b3b0bf928, type: 3}
-  vote: 0
+  detailView: {fileID: 0}
 --- !u!212 &212669266533776188
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 74786962d692d4a94b04c4eb2acf8393, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -200,7 +200,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 74786962d692d4a94b04c4eb2acf8393, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -244,7 +244,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 74786962d692d4a94b04c4eb2acf8393, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
