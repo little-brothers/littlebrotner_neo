@@ -22,12 +22,15 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 	SpriteRenderer _background;
 	SpriteRenderer _effect;
 	SpriteRenderer _symbol;
+	EnergyManager _energyManager;
+	public bool watched {get; private set;}
 
 	// Use this for initialization
 	void Start () {
 		_background = GetComponent<SpriteRenderer>();
 		_effect = transform.Find("Effect").GetComponent<SpriteRenderer>();
 		_symbol = transform.Find("Symbol").GetComponent<SpriteRenderer>();
+		_energyManager = GameObject.FindObjectOfType<EnergyManager>();
 
 		if (_background != null)
 			_background.sprite = background_image;
@@ -46,6 +49,12 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
+		// 에너지 사용 체크
+		if (!watched && !_energyManager.UseEnergy())
+			return;
+
+		watched = true;
+
 		if (detailView != null)
 		{
 			// show 
@@ -53,6 +62,11 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 			view.transform.position += new Vector3(0, 0, -5);
 		}
     }
+
+	public void ResetWatched()
+	{
+		watched = false;
+	}
 
 	IEnumerator UpdateHue()
 	{
