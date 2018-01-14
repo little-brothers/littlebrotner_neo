@@ -12,8 +12,6 @@ public class Bed : MonoBehaviour, IPointerDownHandler {
 	void gotoSleep()
 	{
 		var tvs = Utilities.FindObjectsOfType<Television>();
-		Debug.Log(tvs.Length.ToString());
-
 		foreach (var tv in tvs)
 			tv.ResetWatched();
 

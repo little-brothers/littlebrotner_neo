@@ -23,7 +23,14 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 	SpriteRenderer _effect;
 	SpriteRenderer _symbol;
 	EnergyManager _energyManager;
-	public bool watched {get; private set;}
+	bool _watched = false;
+	public bool watched {
+		get { return _watched; }
+		private set {
+			_watched = value;
+			UpdateBrightness();
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -39,7 +46,7 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 		if (_symbol != null)
 			_symbol.sprite = symbol_image;
 
-		UpdateBrightness(0.5f);
+		watched = false;
 	}
 
 	void OnEnable()
@@ -56,7 +63,6 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 			return;
 
 		watched = true;
-		UpdateBrightness(1.0f);
 
 		if (detailView != null)
 		{
@@ -66,8 +72,9 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 		}
     }
 
-	void UpdateBrightness(float brightness)
+	void UpdateBrightness()
 	{
+		float brightness = watched ? 1.0f : 0.5f;
 		foreach(SpriteRenderer r in new SpriteRenderer[]{_background, _effect, _symbol})
 		{
 			var color = r.material.color;
