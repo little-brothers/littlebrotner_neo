@@ -38,6 +38,8 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 			_effect.sprite = effect_image;
 		if (_symbol != null)
 			_symbol.sprite = symbol_image;
+
+		UpdateBrightness(0.5f);
 	}
 
 	void OnEnable()
@@ -54,6 +56,7 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 			return;
 
 		watched = true;
+		UpdateBrightness(1.0f);
 
 		if (detailView != null)
 		{
@@ -62,6 +65,16 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 			view.transform.position += new Vector3(0, 0, -5);
 		}
     }
+
+	void UpdateBrightness(float brightness)
+	{
+		foreach(SpriteRenderer r in new SpriteRenderer[]{_background, _effect, _symbol})
+		{
+			var color = r.material.color;
+			color.r = color.g = color.b = brightness;
+			r.material.color = color;
+		}
+	}
 
 	public void ResetWatched()
 	{
@@ -75,7 +88,6 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 		{
 			yield return new WaitForSeconds(0.4f + UnityEngine.Random.value * 0.1f);
 			float hueshift = (UnityEngine.Random.value - 0.5f) * shiftRange;
-
 			foreach(SpriteRenderer r in new SpriteRenderer[]{_background, _effect, _symbol})
 				r.material.SetFloat("_HueShift", hueshift);
 		}
