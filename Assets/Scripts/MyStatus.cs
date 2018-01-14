@@ -20,8 +20,8 @@ public class MyStatus : MonoBehaviour {
 
 	public class DataUpdateNotifier<T>
 	{
-		delegate void DataUpdatedEvent(T value);
-		DataUpdatedEvent OnUpdate;
+		public delegate void DataUpdatedEvent(T value);
+		public DataUpdatedEvent OnUpdate;
 
 		// 형태 변환 없이 대입을 가능하게 해줌
 		public static implicit operator DataUpdateNotifier<T>(T value)
@@ -29,6 +29,11 @@ public class MyStatus : MonoBehaviour {
 			var ret = new DataUpdateNotifier<T>();
 			ret._value = value;
 			return ret;
+		}
+
+		public static implicit operator T(DataUpdateNotifier<T> value)
+		{
+			return value.value;
 		}
 
 		T _value = default(T);
