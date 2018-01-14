@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class TV02 : MonoBehaviour {
+[RequireComponent(typeof(BoxCollider2D))]
+public class TV02 : MonoBehaviour, IPointerDownHandler {
 
 	[SerializeField]
-	float handOffset = -0.3f;
+	float handOffset = 0.3f;
 
 	Transform _arm;
 	float _angle = 0;
@@ -53,4 +55,9 @@ public class TV02 : MonoBehaviour {
 			yield return new WaitForSeconds(0.5f);
 		}
 	}
+
+    void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
+    {
+		GameObject.Destroy(gameObject);
+    }
 }
