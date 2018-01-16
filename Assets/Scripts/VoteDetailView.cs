@@ -13,7 +13,6 @@ public class VoteDetailView : MonoBehaviour {
 			var uiRoot = GameObject.FindGameObjectWithTag("RootCanvas");
 			transform.SetParent(uiRoot.transform);
 		}
-
 	}
 
 	public void OnAnswer(bool accept)
@@ -22,8 +21,6 @@ public class VoteDetailView : MonoBehaviour {
 		GameObject.Destroy(gameObject);
 	}
 
-	
-	// Update is called once per frame
 	void Update () {
 		
 	}

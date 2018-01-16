@@ -20,7 +20,7 @@ public class EnergyManager : MonoBehaviour {
 		{
 			var child = transform.GetChild(i);
 			child.localPosition = Vector3.down * (spacing + child.GetComponent<SpriteRenderer>().size.y) * i;
-			Debug.Log(child.localPosition.ToString());
+			//Debug.Log(child.localPosition.ToString());
 		}
 
 		updateEnergyStatus();

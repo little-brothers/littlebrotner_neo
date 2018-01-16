@@ -12,6 +12,10 @@ public static class VoteManager {
 		_voteDatas = new List<VoteData>();
 		
 		TextAsset csv = Resources.Load(fileName) as TextAsset;
+
+		if (csv == null)
+			return false;
+
 		using (var streamReader = new StreamReader(new MemoryStream(csv.bytes)))
 		{
 			using (var reader = new Mono.Csv.CsvFileReader(streamReader))
@@ -26,11 +30,11 @@ public static class VoteManager {
                         continue;
 
 					VoteData voteData = new VoteData();
-					voteData.nextVoteIndex = i; // 나중에 추가되면 변경하는 걸로 따로 빼두기
+					voteData.nextVoteIndex = i; // 나중에 추가되면 변경하는 걸로 바꾸기
 					voteData.voteDivision = stringArray[i][0];
 					voteData.voteTopic = stringArray[i][2];
 					voteData.voteResult = stringArray[i][3];
-					Debug.Log("Division: " + voteData.voteDivision + " | Topic: " + voteData.voteTopic + " | Result:" + voteData.voteResult);
+					//Debug.Log("Division: " + voteData.voteDivision + " | Topic: " + voteData.voteTopic + " | Result:" + voteData.voteResult);
 					_voteDatas.Add(voteData);
                 }
 			}
