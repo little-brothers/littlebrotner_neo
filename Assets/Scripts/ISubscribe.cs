@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ISubscribe 
 {
-    void GetMessage(object[] values);
+    void OnNotifty(object[] values);
 }
