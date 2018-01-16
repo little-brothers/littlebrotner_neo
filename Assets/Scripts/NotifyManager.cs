@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public static class EventNames
+{
+	public const string TurnOffTV = "TurnOffTV";
+	//public const string 
+}
+
 public static class NotifyManager {
 
 	private static List<ISubscribe> _subscribers;
@@ -40,9 +46,9 @@ public static class NotifyManager {
 	{
 		object[] parameters = values;
 
-		foreach (ISubscribe subscriber in _subscribers)
+		for (int i = 0; i < _subscribers.Count; ++i)
 		{
-			subscriber.OnNotifty(parameters);
+			_subscribers[i].OnNotifty(parameters);
 		}
 	}
 }
