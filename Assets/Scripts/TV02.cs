@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class TV02 : MonoBehaviour, IPointerDownHandler {
+public class TV02 : MonoBehaviour, IPointerDownHandler, ISubscribe {
 
 	[SerializeField]
 	float handOffset = 0.3f;
@@ -14,6 +14,8 @@ public class TV02 : MonoBehaviour, IPointerDownHandler {
 
 	// Use this for initialization
 	void Start () {
+		NotifyManager.Subscribe(this);
+
 		_arm = transform.Find("arm");
 		UpdateBalance(MyStatus.instance.economy);
 		MyStatus.instance.economy.OnUpdate += UpdateBalance;
@@ -59,5 +61,18 @@ public class TV02 : MonoBehaviour, IPointerDownHandler {
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
 		GameObject.Destroy(gameObject);
+    }
+
+    void ISubscribe.OnNotifty(object[] values)
+    {
+        string eventName = values[0] as string;
+		
+		switch(eventName)
+		{
+			case EventNames.TurnOffTV:
+				NotifyManager.UnSubscribe(this);
+				Destroy(gameObject);
+				break;
+		}
     }
 }
