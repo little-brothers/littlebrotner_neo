@@ -11,27 +11,38 @@ public static class NotifyManager {
 		_subscribers = new List<ISubscribe>();
 	}
 
-	static void Subscribe(ISubscribe subscriber)
+	public static void Subscribe(ISubscribe subscriber)
 	{
+		if (IsSubscribing(subscriber))
+			return;
+		
 		_subscribers.Add(subscriber);
 	}
 
-	static void UnSubscribe(ISubscribe subscriber)
+	public static void UnSubscribe(ISubscribe subscriber)
 	{
+		if (!IsSubscribing(subscriber))
+			return;
+
 		_subscribers.Remove(subscriber);
+	}
+
+	public static bool IsSubscribing(ISubscribe subscriber)
+	{
+		return _subscribers.Contains(subscriber);
 	}
 
 	/// <Summery>
 	/// values의 첫번째 값은 string형식의 event name을 넣을 것
 	/// 나머지 값은 자유롭게 사용
 	/// </Summery>
-	static void Notify(params object[] values)
+	public static void Notify(params object[] values)
 	{
 		object[] parameters = values;
 
 		foreach (ISubscribe subscriber in _subscribers)
 		{
-			subscriber.GetMessage(parameters);
+			subscriber.OnNotifty(parameters);
 		}
 	}
 }
