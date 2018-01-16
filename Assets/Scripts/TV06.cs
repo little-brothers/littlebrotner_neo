@@ -9,6 +9,10 @@ public class TV06 : MonoBehaviour, IPointerDownHandler, ISubscribe {
     private void Start () 
 	{
 		NotifyManager.Subscribe(this);
+
+		var uiRoot = GameObject.FindGameObjectWithTag("RootCanvas");
+		transform.SetParent(uiRoot.transform);
+		transform.localPosition = Vector3.zero;
 	}
 
 	void ISubscribe.OnNotifty(object[] values)
