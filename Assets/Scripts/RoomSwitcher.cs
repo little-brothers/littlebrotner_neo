@@ -17,11 +17,13 @@ public class RoomSwitcher : MonoBehaviour {
 	public void nextRoom()
 	{
 		setRoomIdx(_index + 1);
+		NotifyManager.Notify(EventNames.TurnOffTV);
 	}
 
 	public void prevRoom()
 	{
 		setRoomIdx(_index - 1);
+		NotifyManager.Notify(EventNames.TurnOffTV);
 	}
 
 	protected void setRoomIdx(int idx)
