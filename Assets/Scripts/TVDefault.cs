@@ -18,11 +18,15 @@ public class TVDefault : MonoBehaviour, IPointerDownHandler, ISubscribe {
 		  switch(eventName)
 		  {
 			  case EventNames.TurnOffTV:
-          NotifyManager.UnSubscribe(this);
 				  Destroy(gameObject);
 				  break;
 		  }
     }
+
+    void OnDestroy()
+	  {
+		  NotifyManager.UnSubscribe(this);
+	  }
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {

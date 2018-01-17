@@ -15,6 +15,11 @@ public class TV06 : MonoBehaviour, IPointerDownHandler, ISubscribe {
 		transform.localPosition = Vector3.zero;
 	}
 
+	void OnDestroy()
+	{
+		NotifyManager.UnSubscribe(this);
+	}
+
 	void ISubscribe.OnNotifty(object[] values)
     {
         string eventName = values[0] as string;
@@ -22,7 +27,6 @@ public class TV06 : MonoBehaviour, IPointerDownHandler, ISubscribe {
 		switch(eventName)
 		{
 			case EventNames.TurnOffTV:
-				NotifyManager.UnSubscribe(this);
 				Destroy(this.gameObject);
 				break;
 		}

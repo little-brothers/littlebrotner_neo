@@ -32,6 +32,11 @@ public class TV02 : MonoBehaviour, IPointerDownHandler, ISubscribe {
 		StartCoroutine(Swing());
 	}
 
+	void OnDestroy()
+	{
+		NotifyManager.UnSubscribe(this);
+	}
+
 	IEnumerator Swing() {
 		while(true)
 		{
@@ -70,7 +75,6 @@ public class TV02 : MonoBehaviour, IPointerDownHandler, ISubscribe {
 		switch(eventName)
 		{
 			case EventNames.TurnOffTV:
-				NotifyManager.UnSubscribe(this);
 				Destroy(gameObject);
 				break;
 		}
