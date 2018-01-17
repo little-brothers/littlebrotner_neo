@@ -11,7 +11,7 @@ public class VoteDetailView : MonoBehaviour {
 		{
 			// ui 컴포넌트인 경우 캔버스로 옮겨준다
 			var uiRoot = GameObject.FindGameObjectWithTag("RootCanvas");
-			transform.SetParent(uiRoot.transform);
+			Utilities.SetUIParentFit(uiRoot, gameObject);
 		}
 	}
 

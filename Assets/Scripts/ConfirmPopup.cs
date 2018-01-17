@@ -21,7 +21,7 @@ public class ConfirmPopup : MonoBehaviour {
 		popup._okEvent = ok;
 		popup._cancelEvent = cancel;
 
-		popup.transform.SetParent(GameObject.FindGameObjectWithTag("RootCanvas").transform);
+		Utilities.SetUIParentFit(GameObject.FindGameObjectWithTag("RootCanvas"), popup.gameObject);
 	}
 
 	public void okButton()

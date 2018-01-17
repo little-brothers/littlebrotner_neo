@@ -54,4 +54,22 @@ public static class Utilities {
 
 		return ret.ToArray();
 	}
+
+	public static void SetUIParentFit(GameObject parent, GameObject child)
+	{
+		Debug.Assert(parent.GetComponent<RectTransform>() != null);
+		Debug.Assert(child.GetComponent<RectTransform>() != null);
+
+		var t = child.transform;
+		t.SetParent(parent.transform);
+
+		t.localPosition = Vector3.zero;
+		t.localScale = Vector3.one;
+
+		var rect = child.GetComponent<RectTransform>();
+		rect.anchorMin = Vector2.zero;
+		rect.anchorMax = Vector2.one;
+		rect.offsetMin = Vector2.zero;
+		rect.offsetMax = Vector2.zero;
+	}
 }
