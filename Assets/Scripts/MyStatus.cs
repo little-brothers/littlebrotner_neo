@@ -48,5 +48,6 @@ public class MyStatus : MonoBehaviour {
 	public DataUpdateNotifier<int> political = new DataUpdateNotifier<int>(); // [사회주의 - 민주주의]
 	public DataUpdateNotifier<int> economy = new DataUpdateNotifier<int>();   // [공산주의 - 자본주의]
 	public DataUpdateNotifier<int> mechanic = new DataUpdateNotifier<int>();  // [신토불이 - 산업발전]
-	public DataUpdateNotifier<int> money = new DataUpdateNotifier<int>();
+	public DataUpdateNotifier<int> money = new DataUpdateNotifier<int>(); // 돈!
+	public DataUpdateNotifier<bool> isRobotAppear = new DataUpdateNotifier<bool>(); // 로봇 종족이 나타났는가
 }
