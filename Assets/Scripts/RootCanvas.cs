@@ -14,4 +14,12 @@ public class RootCanvas : MonoBehaviour {
 		foreach (var go in disableOnPopup)
 			go.SetActive(on);
 	}
+
+	public void ClearSinglePopup() {
+		if (transform.childCount == 0)
+			return;
+
+		var child = transform.GetChild(transform.childCount-1);
+		GameObject.Destroy(child.gameObject);
+	}
 }
