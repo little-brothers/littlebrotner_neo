@@ -24,7 +24,7 @@ public class TV03 : MonoBehaviour {
 		foreach (var product in products)
 		{
 			var elem = GameObject.Instantiate(listElemTmpl, list.transform).GetComponent<ShopListElement>();
-			elem.Setup(product);
+			elem.product = product;
 		}
 	}
 
