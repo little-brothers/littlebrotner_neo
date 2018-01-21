@@ -18,7 +18,6 @@ public static class VoteManager {
 		_voteDatas = new List<VoteData>();
 		
 		TextAsset csv = Resources.Load(fileName) as TextAsset;
-
 		if (csv == null)
 			return false;
 
