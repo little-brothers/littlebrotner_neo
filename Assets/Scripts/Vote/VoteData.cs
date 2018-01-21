@@ -4,10 +4,21 @@ using UnityEngine;
 
 public struct VoteData {
 
-	public string voteDivision { get; set; }
 	public string voteTopic { get; set; }
-	public string voteResult { get; set; }
+	public int isAgree { get; set; }
+	public int day { get; set; }
+	
+	public VoteDetailData agree;
+	public VoteDetailData disagree;
+	public VoteDetailData abstention;
+}
+
+public struct VoteDetailData {
+	
 	public int nextVoteIndex { get; set; }
-	// TODO : 
-	// 몇 개 더 항목이 있는거 같은데 물어보고 추가하기
+	public int economy { get; set; }
+	public int political { get; set; }
+	public int mechanic { get; set; }
+	public Queue<int> endingIndexes;
+	public int robotIndex { get; set; }
 }
