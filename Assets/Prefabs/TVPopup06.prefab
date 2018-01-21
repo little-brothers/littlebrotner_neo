@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338ce9636fde64278acf09f63bff4958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _closeSectionSize: 1.2
 --- !u!114 &114265926548847026
 MonoBehaviour:
   m_ObjectHideFlags: 1
