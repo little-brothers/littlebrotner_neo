@@ -31,14 +31,19 @@ public class MyStatus : MonoBehaviour {
 	public class DataUpdateNotifier<T>
 	{
 		public delegate void DataUpdatedEvent(T value);
-		public DataUpdatedEvent OnUpdate;
-
-		public static implicit operator T(DataUpdateNotifier<T> value)
+		public event DataUpdatedEvent OnUpdate = delegate{};
+public static implicit operator T(DataUpdateNotifier<T> value)
 		{
 			return value.value;
 		}
 
-		T _value = default(T);
+		public DataUpdateNotifier(T initial = default(T))
+		{
+			_value = initial;
+		}
+
+		T _value;
+
 		public T value {
 			get { return _value; }
 			set { _value = value; OnUpdate(value); }
@@ -50,6 +55,7 @@ public class MyStatus : MonoBehaviour {
 	public DataUpdateNotifier<int> political = new DataUpdateNotifier<int>(); // [사회주의 - 민주주의]
 	public DataUpdateNotifier<int> economy = new DataUpdateNotifier<int>();   // [공산주의 - 자본주의]
 	public DataUpdateNotifier<int> mechanic = new DataUpdateNotifier<int>();  // [신토불이 - 산업발전]
+	public DataUpdateNotifier<int> health = new DataUpdateNotifier<int>(10);
 	public DataUpdateNotifier<int> money = new DataUpdateNotifier<int>(); // 돈!
 	public DataUpdateNotifier<int> endingIndex = new DataUpdateNotifier<int>(); // 엔딩!
 	public DataUpdateNotifier<bool> isRobotAppear = new DataUpdateNotifier<bool>(); // 로봇 종족이 나타났는가
