@@ -15,7 +15,13 @@ public class EndingControl : MonoBehaviour {
 
 	private List<EndingData> _endingDatas;
 
-	void Start () {
+	private void Start () 
+	{
+		LoadEndingData();
+	}
+	
+	private void LoadEndingData()
+	{
 		_endingDatas = new List<EndingData>();
 		TextAsset csv = Resources.Load("ending") as TextAsset;
 		using (var streamReader = new StreamReader(new MemoryStream(csv.bytes)))
@@ -26,29 +32,22 @@ public class EndingControl : MonoBehaviour {
 				reader.ReadAll(stringArray);
 				stringArray.RemoveAt(0);
 
-				//Index 2: 현재 투표 인덱스
+				//Index 0: 현재 투표 인덱스
 				//Index 1: 날짜
 				//Index 2: 질문
-				//Index 7: 동의시 다음 투표 인덱스
-				//Index 8: 비동의시 다음 투표 인덱스
-				//Index 9 : 기권시 다음 투표 값 (에 || 아니오)
-				//Index 10: 동의 economy
-				//Index 11: 동의 political
-				//Index 12: 동의 mechanic
-				//Index 13: 비동의 economy
-				//Index 14: 비동의 political
-				//Index 15: 비동의 mechanic
+				//Index 4: 제목
+				//Index 9: 설명
+				//Index 10: 힌트
 				foreach(List<string> column in stringArray)
 				{
-
-					//_voteDatas.Add(GenerateVoteData(column));
+					EndingData data = new EndingData();
+					data.endingQuestion = column[2];
+					data.endingHint = column[10];
+					data.endingDescription = column[9];
+					data.endingTitle = column[4];
+					_endingDatas.Add(data);
 				}
 			}
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }
