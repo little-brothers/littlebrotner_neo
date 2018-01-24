@@ -32,7 +32,7 @@ public class MyStatus : MonoBehaviour {
 	{
 		public delegate void DataUpdatedEvent(T value);
 		public event DataUpdatedEvent OnUpdate = delegate{};
-public static implicit operator T(DataUpdateNotifier<T> value)
+		public static implicit operator T(DataUpdateNotifier<T> value)
 		{
 			return value.value;
 		}
@@ -58,5 +58,5 @@ public static implicit operator T(DataUpdateNotifier<T> value)
 	public DataUpdateNotifier<int> health = new DataUpdateNotifier<int>(10);
 	public DataUpdateNotifier<int> money = new DataUpdateNotifier<int>(); // 돈!
 	public DataUpdateNotifier<int> endingIndex = new DataUpdateNotifier<int>(); // 엔딩!
-	public DataUpdateNotifier<bool> isRobotAppear = new DataUpdateNotifier<bool>(); // 로봇 종족이 나타났는가
+	//public DataUpdateNotifier<bool> isRobotAppear = new DataUpdateNotifier<bool>(); // 로봇 종족이 나타났는가
 }
