@@ -96,14 +96,14 @@ public static class VoteManager {
 		agree.economy = column[10].Equals("") ? 0 : Int32.Parse(column[10]);
 		agree.political = column[11].Equals("") ? 0 : Int32.Parse(column[11]);
 		agree.mechanic = column[12].Equals("") ? 0 : Int32.Parse(column[12]);
-		agree.action = column[16].StartsWith("E") ? Int32.Parse(column[16].Substring(0, column[16].IndexOf(":"))) : 0;
+		agree.action = column[16].StartsWith("E") ? Int32.Parse(column[16].Substring(1, column[16].IndexOf(":")-1)) : 0;
 
 		VoteDetailData disagree = new VoteDetailData();
 		SetNextVoteIndex(column[8], ref disagree);
 		disagree.economy = column[13].Equals("") ? 0 : Int32.Parse(column[13]);
 		disagree.political = column[14].Equals("") ? 0 : Int32.Parse(column[14]);
 		disagree.mechanic = column[15].Equals("") ? 0 : Int32.Parse(column[15]);
-		disagree.action = column[17].StartsWith("E") ? Int32.Parse(column[17].Substring(0, column[17].IndexOf(":"))) : 0;
+		disagree.action = column[17].StartsWith("E") ? Int32.Parse(column[17].Substring(1, column[17].IndexOf(":")-1)) : 0;
 
 		VoteDetailData abstention = disagree;
 		bool peoplesChoice = column[9].CompareTo("예").Equals(0) ? true : false;
