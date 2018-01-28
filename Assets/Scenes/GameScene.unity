@@ -914,7 +914,7 @@ Prefab:
     - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
         type: 2}
       propertyPath: hint
-      value: RACES
+      value: HISTORY
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b29de443114924ac2ba2f4a29476044d, type: 2}
@@ -2569,7 +2569,7 @@ Prefab:
     - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
         type: 2}
       propertyPath: hint
-      value: PEOPLE
+      value: PLAZA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b29de443114924ac2ba2f4a29476044d, type: 2}
