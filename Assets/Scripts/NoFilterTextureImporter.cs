@@ -21,7 +21,7 @@ public class NoFilterTextureImporter : AssetPostprocessor {
 		else
 		{
 			texture.anisoLevel = 0;
-			texture.filterMode = FilterMode.Trilinear;          
+			texture.filterMode = FilterMode.Point;
 		} 
 	}
 }

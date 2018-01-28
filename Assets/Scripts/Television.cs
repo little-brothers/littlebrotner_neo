@@ -68,6 +68,7 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 		{
 			// show 
 			var view = GameObject.Instantiate(detailView);
+			Utilities.SetUIParentFit(GameObject.FindWithTag("RootCanvas"), view);
 			view.transform.position += new Vector3(0, 0, -5);
 		}
     }
