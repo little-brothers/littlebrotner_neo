@@ -11,11 +11,34 @@ public class Bed : MonoBehaviour, IPointerDownHandler {
 
 	void gotoSleep()
 	{
-		var tvs = Utilities.FindObjectsOfType<Television>();
-		foreach (var tv in tvs)
-			tv.ResetWatched();
+		MyStatus.instance.Sleep();
+	}
 
-		Utilities.FindObjectOfType<EnergyManager>().ResetEnergy();
-		VoteManager.NextDay();
+	void Start() {
+		MyStatus.instance.AddSleepHook(vote => {
+			VoteDetailData result = vote.disagree;
+			if (vote.isAgree == 1)
+				result = vote.agree;
+			else if (vote.isAgree == -1)
+				result = vote.abstention;
+
+			switch (result.action) {
+			case 1:
+				break;
+
+			case 2:
+				MyStatus.instance.money.value += 3;
+				break;
+
+			case 3:
+				MyStatus.instance.money.value -= 3;
+				break;
+
+			case 4:
+				var item = 2;
+				MyStatus.instance.inventory.Put(item, MyStatus.instance.inventory.GetItem(item) * 2);
+				break;
+			}
+		});
 	}
 }
