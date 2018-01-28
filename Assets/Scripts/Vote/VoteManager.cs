@@ -86,6 +86,7 @@ public static class VoteManager {
 	private static VoteData GenerateVoteData(List<string> column)
 	{
 		VoteData data = new VoteData();
+		data.id = Int32.Parse(column[0].Substring(1));
 		data.day = Int32.Parse(column[1]);
 		data.voteTopic = column[2];
 		data.isAgree = -1;

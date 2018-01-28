@@ -4,6 +4,7 @@ using UnityEngine;
 
 public struct VoteData {
 
+	public int id { get; set; }
 	public string voteTopic { get; set; }
 	public int isAgree { get; set; }
 	public int day { get; set; }
