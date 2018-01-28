@@ -119,7 +119,7 @@ _events.Add(eventType);
 
 
 	/* [-100, 100] 범위를 갖는 성향 */
-	public DataUpdateNotifier<int> political = new DataUpdateNotifier<int>(); // [사회주의 - 민주주의]
+	public DataUpdateNotifier<int> political = new DataUpdateNotifier<int>(); // [전체주의 - 민주주의]
 	public DataUpdateNotifier<int> economy = new DataUpdateNotifier<int>();   // [공산주의 - 자본주의]
 	public DataUpdateNotifier<int> mechanic = new DataUpdateNotifier<int>();  // [신토불이 - 산업발전]
 	public DataUpdateNotifier<int> health = new DataUpdateNotifier<int>(MaxHealth);
