@@ -58,6 +58,17 @@ public abstract class AnimatorBehaviour : MonoBehaviour
         Debug.Log("Can't found State!, StateName: " + stateName);
         return false;
     }
+
+    public bool setState(int index)
+    {
+        if (index < 0 || index >= _states.Count)
+        {
+            return false;
+        }
+        _nowAnimation = _states[index];
+        return true;
+    }
+
     public IEnumerator runAnimation()
     {
         if (_nowAnimation == null)
