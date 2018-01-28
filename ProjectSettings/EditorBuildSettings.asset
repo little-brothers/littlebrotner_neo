@@ -23,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AlbumScene.unity
     guid: dc653bd8eec184a379ca785600cb46e7
+  - enabled: 1
+    path: Assets/Scenes/VoteTestScene.unity
+    guid: 1b87a9ee4e8704cf4a49885ca837d9d0

@@ -27,7 +27,7 @@ public class MainControl : MonoBehaviour {
 
 	public void PressStart()
 	{
-		SceneManager.LoadScene("VoteTestScene");
+		SceneManager.LoadScene("GameScene");
 	}
 
 	public void PressAlbum()
