@@ -19,6 +19,7 @@ public class VoteTest : MonoBehaviour {
 		ShowVote();
 	}
 	
+	// 투표 내용을 띄워줌
 	public void ShowVote()
 	{
 		VoteData data = VoteManager.currentVote;
@@ -26,17 +27,20 @@ public class VoteTest : MonoBehaviour {
 		_topic.text = data.voteTopic;
 	}
 
+	// 다음날
 	public void NextDay()
 	{
 		VoteManager.NextDay();
 		ShowVote();
 	}
 
+	// 투표 동의
 	public void Yes()
 	{
 		VoteManager.Vote(1);
 	}
 
+	// 투표 반대
 	public void No()
 	{
 		VoteManager.Vote(0);

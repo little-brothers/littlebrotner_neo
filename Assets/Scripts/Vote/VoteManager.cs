@@ -78,7 +78,7 @@ public static class VoteManager {
 			else
 			{
 				data.nextVoteIndex = Int32.Parse(nextIndex.Substring(1)) - 1;
-				Debug.Log(data.nextVoteIndex);
+				//Debug.Log(data.nextVoteIndex);
 			}
 		}
 	}
