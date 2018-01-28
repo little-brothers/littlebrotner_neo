@@ -22,4 +22,5 @@ public struct VoteDetailData {
 	public int mechanic { get; set; }
 	public Queue<int> endingIndexes;
 	public int robotIndex { get; set; }
+	public int action; // 다음날이 되기 전에 일어나는 이벤트
 }

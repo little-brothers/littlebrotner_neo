@@ -51,6 +51,9 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		if (_symbol != null)
 			_symbol.sprite = symbol_image;
 
+		// 다음날 되면 본것들 저리
+		MyStatus.instance.AddSleepHook(vote => ResetWatched());
+
 		_overlay.transform.Find("Hint").GetComponent<TextMesh>().text = hint;
 		_overlay.SetActive(false);
 		watched = false;

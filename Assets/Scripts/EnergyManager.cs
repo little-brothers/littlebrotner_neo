@@ -23,6 +23,8 @@ public class EnergyManager : MonoBehaviour {
 			//Debug.Log(child.localPosition.ToString());
 		}
 
+		// 다음날에 에너지 정리
+		MyStatus.instance.AddSleepHook(vote => ResetEnergy());
 		updateEnergyStatus();
 	}
 
