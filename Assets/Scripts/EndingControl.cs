@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public struct EndingData
@@ -38,6 +39,7 @@ public class EndingControl : MonoBehaviour {
 		_stringBuilder = new StringBuilder();
 		_currentIndex = MyStatus.instance.endingIndex;
 		_questionText.text = _endingDatas[_currentIndex].endingQuestion;
+		EncryptedPlayerPrefs.SetInt("Ending" + (_currentIndex + 1), 1);
 	}
 	
 	private void Start()
@@ -120,9 +122,13 @@ public class EndingControl : MonoBehaviour {
 		StopCoroutine("Print");
 		StopCoroutine("PrintEncryptText");
 		StopCoroutine("ReplaceDecriptText");
+		StopCoroutine("EndingTitleAnimation");
 
 		if (_isClick)
+		{
+			SceneManager.LoadScene("CreditScene_Game");
 			return;
+		}
 
 		_isClick = true;
 		StartCoroutine("EndingTitleAnimation");
@@ -140,7 +146,6 @@ public class EndingControl : MonoBehaviour {
 		_endingText.text = "";
 		_endingText.color = Color.red;
 		_endingText.alignment = TextAnchor.UpperLeft;
-		//_endingText.fontSize = 50;
 		StartCoroutine("Print", _endingDatas[_currentIndex].endingTitle);
 	}
 }
