@@ -8,11 +8,17 @@ public class RootCanvas : MonoBehaviour {
 	[SerializeField]
 	GameObject[] disableOnPopup;
 
+	[SerializeField]
+	GameObject[] enableOnPopup;
+
 	void Update() {
 		bool on = transform.childCount == 0;
 
 		foreach (var go in disableOnPopup)
 			go.SetActive(on);
+
+		foreach (var go in enableOnPopup)
+			go.SetActive(!on);
 	}
 
 	public void ClearSinglePopup() {

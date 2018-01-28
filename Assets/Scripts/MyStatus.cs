@@ -61,5 +61,6 @@ public class MyStatus : MonoBehaviour {
 	public DataUpdateNotifier<int> health = new DataUpdateNotifier<int>(MaxHealth);
 	public DataUpdateNotifier<int> money = new DataUpdateNotifier<int>(); // 돈!
 	public DataUpdateNotifier<int> endingIndex = new DataUpdateNotifier<int>(); // 엔딩!
+	public DataUpdateNotifier<int> lastWork = new DataUpdateNotifier<int>(-1); // 마지막으로 일한 날짜
 	//public DataUpdateNotifier<bool> isRobotAppear = new DataUpdateNotifier<bool>(); // 로봇 종족이 나타났는가
 }
