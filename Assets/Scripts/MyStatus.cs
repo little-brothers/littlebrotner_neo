@@ -53,7 +53,6 @@ public class MyStatus : MonoBehaviour {
 		}
 	}
 
-
 	/* [-100, 100] 범위를 갖는 성향 */
 	public DataUpdateNotifier<int> political = new DataUpdateNotifier<int>(); // [사회주의 - 민주주의]
 	public DataUpdateNotifier<int> economy = new DataUpdateNotifier<int>();   // [공산주의 - 자본주의]

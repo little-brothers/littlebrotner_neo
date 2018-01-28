@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222684601171457596}
   - component: {fileID: 114807934400910358}
   m_Layer: 5
-  m_Name: Race5
+  m_Name: People26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 222216866275103120}
   - component: {fileID: 114552424747319168}
   m_Layer: 5
-  m_Name: Race4
+  m_Name: People24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 222674527940601986}
   - component: {fileID: 114118476028528784}
   m_Layer: 5
-  m_Name: Race3
+  m_Name: People13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 222500983971834130}
   - component: {fileID: 114293049437217164}
   m_Layer: 5
-  m_Name: Race4
+  m_Name: People4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 222660954471554880}
   - component: {fileID: 114934488392827420}
   m_Layer: 5
-  m_Name: Race4-2
+  m_Name: People15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 222007676777282438}
   - component: {fileID: 114215134989924690}
   m_Layer: 5
-  m_Name: Race7
+  m_Name: People19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 222229328282030802}
   - component: {fileID: 114552714054923794}
   m_Layer: 5
-  m_Name: Race2
+  m_Name: People2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 222235064520270532}
   - component: {fileID: 114049033388158444}
   m_Layer: 5
-  m_Name: Race2
+  m_Name: People12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 222698969510369180}
   - component: {fileID: 114586538528470822}
   m_Layer: 5
-  m_Name: Race1
+  m_Name: People1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 222959235524384346}
   - component: {fileID: 114205903347854456}
   m_Layer: 5
-  m_Name: Race5-2
+  m_Name: People17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 222636134503785102}
   - component: {fileID: 114481692208584382}
   m_Layer: 5
-  m_Name: Race7
+  m_Name: People9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 222434711261444242}
   - component: {fileID: 114853928366952450}
   m_Layer: 5
-  m_Name: Race3
+  m_Name: People23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 222456814976324660}
   - component: {fileID: 114065425783344972}
   m_Layer: 5
-  m_Name: Race2
+  m_Name: People22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 222692448916402346}
   - component: {fileID: 114752321138120970}
   m_Layer: 5
-  m_Name: Race5
+  m_Name: People16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 222961529657538816}
   - component: {fileID: 114393003967681446}
   m_Layer: 5
-  m_Name: Race4-2
+  m_Name: People25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 222632566616453462}
   - component: {fileID: 114230982069835752}
   m_Layer: 5
-  m_Name: Race5-2
+  m_Name: People27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 222464191834530470}
   - component: {fileID: 114515336064264338}
   m_Layer: 5
-  m_Name: Race1
+  m_Name: People21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 222481637512070390}
   - component: {fileID: 114830442994874286}
   m_Layer: 5
-  m_Name: Race7
+  m_Name: People29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 222329173703747252}
   - component: {fileID: 114823990496177066}
   m_Layer: 5
-  m_Name: Race6
+  m_Name: People8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 222266577018953046}
   - component: {fileID: 114986081552139626}
   m_Layer: 5
-  m_Name: Race4
+  m_Name: People14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 222037933882195292}
   - component: {fileID: 114743535643451810}
   m_Layer: 5
-  m_Name: Race8
+  m_Name: People20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 222441692404170228}
   - component: {fileID: 114548250677568520}
   m_Layer: 5
-  m_Name: Race5-2
+  m_Name: People7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 222546734044225550}
   - component: {fileID: 114887821762436420}
   m_Layer: 5
-  m_Name: Race8
+  m_Name: People30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 222045837907781448}
   - component: {fileID: 114211276147878092}
   m_Layer: 5
-  m_Name: Race5
+  m_Name: People6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 222846504492579866}
   - component: {fileID: 114369264767323850}
   m_Layer: 5
-  m_Name: Race1
+  m_Name: People11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 222239584093593914}
   - component: {fileID: 114162576040541988}
   m_Layer: 5
-  m_Name: Race6
+  m_Name: People28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 222939442553527284}
   - component: {fileID: 114604700403872156}
   m_Layer: 5
-  m_Name: Race8
+  m_Name: People10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 222030235903121730}
   - component: {fileID: 114816509456452002}
   m_Layer: 5
-  m_Name: Race3
+  m_Name: People3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 222326693574066828}
   - component: {fileID: 114768778407832986}
   m_Layer: 5
-  m_Name: Race6
+  m_Name: People18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 224403063078912822}
   - component: {fileID: 222940961819407500}
   - component: {fileID: 114112131703633828}
+  - component: {fileID: 114940840458552540}
   m_Layer: 5
   m_Name: TVPopup08
   m_TagString: Untagged
@@ -564,7 +565,7 @@ GameObject:
   - component: {fileID: 222654083987584812}
   - component: {fileID: 114006617030612780}
   m_Layer: 5
-  m_Name: Race4-2
+  m_Name: People5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1396,6 +1397,57 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114940840458552540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1939281663062120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56dcab10d74d5496990f05380ba6b155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _peoples:
+  - {fileID: 114586538528470822}
+  - {fileID: 114552714054923794}
+  - {fileID: 114816509456452002}
+  - {fileID: 114293049437217164}
+  - {fileID: 114006617030612780}
+  - {fileID: 114211276147878092}
+  - {fileID: 114548250677568520}
+  - {fileID: 114823990496177066}
+  - {fileID: 114481692208584382}
+  - {fileID: 114604700403872156}
+  - {fileID: 114369264767323850}
+  - {fileID: 114049033388158444}
+  - {fileID: 114118476028528784}
+  - {fileID: 114986081552139626}
+  - {fileID: 114934488392827420}
+  - {fileID: 114752321138120970}
+  - {fileID: 114205903347854456}
+  - {fileID: 114768778407832986}
+  - {fileID: 114215134989924690}
+  - {fileID: 114743535643451810}
+  - {fileID: 114515336064264338}
+  - {fileID: 114065425783344972}
+  - {fileID: 114853928366952450}
+  - {fileID: 114552424747319168}
+  - {fileID: 114393003967681446}
+  - {fileID: 114807934400910358}
+  - {fileID: 114230982069835752}
+  - {fileID: 114162576040541988}
+  - {fileID: 114830442994874286}
+  - {fileID: 114887821762436420}
+  _sprites:
+  - {fileID: 21300000, guid: a8d500fec31e74e4786bfcfd3906a3d3, type: 3}
+  - {fileID: 21300000, guid: 3d292be25c3bd4824b890f6de4d5bb58, type: 3}
+  - {fileID: 21300000, guid: 6b85e9aca65a84803b279170ec9009a2, type: 3}
+  - {fileID: 21300000, guid: 63d56a42dee6e41ababa6e4bd7c07b54, type: 3}
+  - {fileID: 21300000, guid: e84be014e08294c97a018cbed2cce8c7, type: 3}
+  - {fileID: 21300000, guid: e8c0c1163c2854db4aaf590917bee2b1, type: 3}
+  - {fileID: 21300000, guid: 05ad1580e45d942d095bae9aebc0e5d0, type: 3}
+  - {fileID: 21300000, guid: 268885cdc042a4db1a2f211f63872dd2, type: 3}
 --- !u!114 &114986081552139626
 MonoBehaviour:
   m_ObjectHideFlags: 1
