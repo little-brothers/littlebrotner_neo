@@ -16,5 +16,6 @@ public class Bed : MonoBehaviour, IPointerDownHandler {
 			tv.ResetWatched();
 
 		Utilities.FindObjectOfType<EnergyManager>().ResetEnergy();
+		VoteManager.NextDay();
 	}
 }

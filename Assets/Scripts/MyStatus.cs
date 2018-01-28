@@ -16,6 +16,7 @@ public class MyStatus : MonoBehaviour {
 			return;
 		}
 
+		VoteManager.Initialize("vote");
 		DontDestroyOnLoad(gameObject);
 	}
 
