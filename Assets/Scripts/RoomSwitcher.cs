@@ -12,6 +12,13 @@ public class RoomSwitcher : MonoBehaviour {
 		GetComponent<SpriteRenderer>().sortingOrder = 1; // 항상 최상위에 표시됨
 		Debug.Assert(transform.childCount != 0);
 		setRoomIdx(0);
+
+		// turn off all rooms
+		for (int i=0; i<transform.childCount; ++i)
+		{
+			var room = transform.GetChild(i);
+			room.gameObject.SetActive(false);
+		}
 	}
 	
 	public void nextRoom()
@@ -51,17 +58,11 @@ public class RoomSwitcher : MonoBehaviour {
 	{
 		_inTransition = true;
 
-		// lock the screen
-		GetComponent<SpriteRenderer>().enabled = true;
-
 		var anim = GetComponent<Animation>();
 		anim.Play();
 
 		while(anim.isPlaying)
 			yield return null;
-
-		// unlock screen
-		GetComponent<SpriteRenderer>().enabled = false;
 
 		_inTransition = false;
 		yield break;
