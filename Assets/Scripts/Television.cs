@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
-public class Television : MonoBehaviour, IPointerClickHandler {
+public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
 	[SerializeField]
 	Sprite background_image;
@@ -19,10 +19,14 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 	[SerializeField]
 	GameObject detailView;
 
+	[SerializeField]
+	string hint;
+
 	SpriteRenderer _background;
 	SpriteRenderer _effect;
 	SpriteRenderer _symbol;
 	EnergyManager _energyManager;
+	GameObject _overlay;
 	bool _watched = false;
 	public bool watched {
 		get { return _watched; }
@@ -38,6 +42,7 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 		_effect = transform.Find("Effect").GetComponent<SpriteRenderer>();
 		_symbol = transform.Find("Symbol").GetComponent<SpriteRenderer>();
 		_energyManager = GameObject.FindObjectOfType<EnergyManager>();
+		_overlay = transform.Find("Overlay").gameObject;
 
 		if (_background != null)
 			_background.sprite = background_image;
@@ -46,6 +51,8 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 		if (_symbol != null)
 			_symbol.sprite = symbol_image;
 
+		_overlay.transform.Find("Hint").GetComponent<TextMesh>().text = hint;
+		_overlay.SetActive(false);
 		watched = false;
 	}
 
@@ -99,5 +106,15 @@ public class Television : MonoBehaviour, IPointerClickHandler {
 			foreach(SpriteRenderer r in new SpriteRenderer[]{_background, _effect, _symbol})
 				r.material.SetFloat("_HueShift", hueshift);
 		}
+	}
+
+	void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+	{
+		_overlay.SetActive(false);
+	}
+
+	void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
+	{
+		_overlay.SetActive(true);
 	}
 }
