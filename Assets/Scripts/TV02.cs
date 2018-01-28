@@ -6,8 +6,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(BoxCollider2D))]
 public class TV02 : MonoBehaviour, IPointerDownHandler, ISubscribe {
 
-	[SerializeField]
-	float handOffset = 0.3f;
+	float handOffset = 30f;
 
 	Transform _arm;
 	float _angle = 0;
@@ -19,6 +18,7 @@ public class TV02 : MonoBehaviour, IPointerDownHandler, ISubscribe {
 		_arm = transform.Find("arm");
 		UpdateBalance(MyStatus.instance.economy);
 		MyStatus.instance.economy.OnUpdate += UpdateBalance;
+		Utilities.SetUIParentFit(GameObject.FindGameObjectWithTag("RootCanvas"), gameObject);
 	}
 
 	void UpdateBalance(int value)
