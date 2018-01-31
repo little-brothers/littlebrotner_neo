@@ -85,7 +85,7 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
 	void UpdateBrightness()
 	{
-		float brightness = watched ? 1.0f : 0.5f;
+		float brightness = watched ? 1.0f : 0.1f;
 		foreach(SpriteRenderer r in new SpriteRenderer[]{_background, _effect, _symbol})
 		{
 			var color = r.material.color;
