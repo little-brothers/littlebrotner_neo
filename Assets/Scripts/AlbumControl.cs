@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AlbumControl : MonoBehaviour {
 
@@ -18,5 +19,10 @@ public class AlbumControl : MonoBehaviour {
 			if (EncryptedPlayerPrefs.GetInt(key).Equals(1))
 				_screens[i - 1].sprite = _endingThumbnails[i - 1];
 		}
+	}
+
+	public void PressMain()
+	{
+		SceneManager.LoadScene("MainScene");
 	}
 }

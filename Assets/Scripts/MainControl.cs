@@ -39,9 +39,10 @@ public class MainControl : MonoBehaviour {
 	{
 		SceneManager.LoadScene("CreditScene_Main");
 	}
-
+		
 	public void PressEnd()
 	{
 		Application.Quit();
 	}
+		
 }
