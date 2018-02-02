@@ -13,6 +13,7 @@ public class WorkListElement : MonoBehaviour, IPointerClickHandler {
 
 	[Serializable]
 	public struct Work {
+		public Sprite icon;
 		public string name;
 		public int payment;
 		public int health;
@@ -25,16 +26,19 @@ public class WorkListElement : MonoBehaviour, IPointerClickHandler {
 			_work = value;
 			_name.text = _work.name;
 			_health.text = _work.health.ToString();
+			_icon.sprite = _work.icon;
 		}
 	}
 
 	Text _health;
 	Text _name;
+	private Image _icon;
 
 	// Use this for initialization
 	void Awake () {
 		_health = transform.Find("Health").GetComponent<Text>();
 		_name = transform.Find("Name").GetComponent<Text>();
+		_icon = transform.Find("Frame").Find("Icon").GetComponent<Image>();
 	}
 
     public void OnPointerClick(PointerEventData eventData)

@@ -292,21 +292,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jobs:
-  - name: test1
-    payment: 5
+  - icon: {fileID: 21300000, guid: 2c816bfa160ae4f768e111f9537add64, type: 3}
+    name: "\uAD11\uBB3C \uCC44\uAD74"
+    payment: 1
     health: 2
     enabled: 1
-  - name: 2
-    payment: 4
-    health: 2
-    enabled: 1
-  - name: job
+  - icon: {fileID: 21300000, guid: a0615018510c148bdbc428bafad49d67, type: 3}
+    name: "\uB370\uC774\uD130 \uC815\uB9AC"
     payment: 2
     health: 1
     enabled: 1
-  - name: job22
-    payment: 5
+  - icon: {fileID: 21300000, guid: 6dc8e8214112146e5a3c91f456db926a, type: 3}
+    name: "\uC0AC\uB0E5"
+    payment: 3
+    health: 8
+    enabled: 1
+  - icon: {fileID: 21300000, guid: e22cfbb183482451087b28fe1a2f2959, type: 3}
+    name: "\uC740\uD558\uD0D0\uC0AC"
+    payment: 2
+    health: 5
+    enabled: 1
+  - icon: {fileID: 21300000, guid: 59bb2e7c6711c4ebd961d3a85665056b, type: 3}
+    name: "\uB85C\uBD07 \uAC1C\uBC1C"
+    payment: 3
+    health: 4
+    enabled: 1
+  - icon: {fileID: 21300000, guid: 5c06807f2a35146a3a89dc5722478517, type: 3}
+    name: "\uC5ED\uC0AC \uAE30\uB85D"
+    payment: 4
     health: 2
+    enabled: 1
+  - icon: {fileID: 21300000, guid: e7dd593aa06104003bdb42774069f168, type: 3}
+    name: "\uC0DD\uCCB4\uC2E4\uD5D8"
+    payment: 5
+    health: 3
     enabled: 1
   list: {fileID: 114342111103402380}
 --- !u!114 &114046469003396638
@@ -694,8 +713,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114295726674469602}
   m_HandleRect: {fileID: 224543132186867752}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 1
+  m_Value: 0
+  m_Size: 0.9582262
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -843,7 +862,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.00015920548}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224069516095852526
