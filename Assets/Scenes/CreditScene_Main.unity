@@ -180,7 +180,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uBA54\uC778 \uD06C\uB808\uB527\n- \uACF5 \uC0AC \uC911 -"
+  m_Text: "\uBA54\uC778 \uD06C\uB808\uB527\n- \uACF5 \uC0AC \uC911 -\n\nPRESS ANY
+    KEY TO\nMAIN MENU"
 --- !u!222 &135230345
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -338,6 +339,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1847870603}
+  - component: {fileID: 1847870604}
   m_Layer: 0
   m_Name: GameObjects
   m_TagString: Untagged
@@ -361,6 +363,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1847870604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1847870602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4159a66af34e44a36873bc2c86abd22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2098945617
 GameObject:
   m_ObjectHideFlags: 0
