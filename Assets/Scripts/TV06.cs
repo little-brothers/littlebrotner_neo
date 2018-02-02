@@ -36,16 +36,16 @@ public class TV06 : MonoBehaviour, ISubscribe, IPointerDownHandler, IPointerUpHa
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
-		_touchOffset = Vector3.zero;
-		_touchOffset = Input.mousePosition;
+		// _touchOffset = Vector3.zero;
+		// _touchOffset = Input.mousePosition;
     }
 
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
-        _touchOffset -= Input.mousePosition;
+        // _touchOffset -= Input.mousePosition;
 
-		if (Mathf.Abs(_touchOffset.x) <= _closeSectionSize &&
-			Mathf.Abs(_touchOffset.y) <= _closeSectionSize)
-			GameObject.Destroy(gameObject);
+		// if (Mathf.Abs(_touchOffset.x) <= _closeSectionSize &&
+		// 	Mathf.Abs(_touchOffset.y) <= _closeSectionSize)
+		// 	GameObject.Destroy(gameObject);
     }
 }

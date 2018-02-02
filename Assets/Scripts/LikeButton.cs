@@ -30,51 +30,13 @@ public class LikeButton : MonoBehaviour {
 		StopAllCoroutines();
 		if (_image.sprite.Equals(_dislike))
 		{
-			StartCoroutine("Like");
+			_image.sprite = _like;
+			_likeCallback.Invoke();
 		}
 		else
 		{
-			StartCoroutine("Dislike");
+			_image.sprite = _dislike;
+			_dislikeCallback.Invoke();
 		}
-	}
-
-	private IEnumerator Like()
-	{
-		float timer = 0f;
-		while (timer <= 1f)
-		{
-			timer += Time.deltaTime * 1.5f;
-			transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(0f, 1f, 1f), timer);
-			yield return null;
-		}
-		_image.sprite = _like;
-		timer = 0f;
-		while (timer <= 1f)
-		{
-			timer += Time.deltaTime * 1.5f;
-			transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(-1f, 1f, 1f), timer);
-			yield return null;
-		}
-		_likeCallback.Invoke();
-	}
-
-	private IEnumerator Dislike()
-	{
-		float timer = 0f;
-		while (timer <= 1f)
-		{
-			timer += Time.deltaTime * 1.5f;
-			transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(0f, 1f, 1f), timer);
-			yield return null;
-		}
-		_image.sprite = _dislike;
-		timer = 0f;
-		while (timer <= 1f)
-		{
-			timer += Time.deltaTime * 1.5f;
-			transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1f, 1f, 1f), timer);
-			yield return null;
-		}
-		_dislikeCallback.Invoke();
 	}
 }
