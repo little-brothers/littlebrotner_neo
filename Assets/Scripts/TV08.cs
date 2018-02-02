@@ -35,10 +35,12 @@ public class TV08 : MonoBehaviour {
 				_peoples[index].color = Color.red;
 				if (_movePeoples > 0)
 				{
-					float x = Random.Range(-86, 86);
-					float y = Random.Range(-36, 36);
+					Vector3 pos = _peoples[index].transform.localPosition;
+					float x = Random.Range(-3, 4);
+					float y = Random.Range(-5, 6);
+					pos.x += x; pos.y += y;
 					_peoples[index].color = Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f, 1f, 1f);
-					_peoples[index].transform.localPosition = new Vector3(x, y, _peoples[index].transform.position.z);
+					_peoples[index].transform.localPosition = pos;
 					--_movePeoples;
 				}
 			}
@@ -87,7 +89,7 @@ public class TV08 : MonoBehaviour {
 	private void SetThoughtValue()
 	{
 		int value = MyStatus.instance.political.value;
-		value = -70;
+		// value = -70;
 		
 		int multiplyValue = 0;
 		if (multiplyValue >= 100)
