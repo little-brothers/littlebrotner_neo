@@ -29,7 +29,7 @@ public class MyStatus {
 		}
 	}
 
-	public const int MaxHealth = 10;
+	public const int MaxHealth = 100;
 	const int MaxEnergyHard = 12;
 	const int MaxEnergyInit = 4;
 	int _energyCharge = MaxEnergyInit; // 하룻밤마다 충전되는 에너지량
@@ -44,11 +44,26 @@ public class MyStatus {
 
 		VoteManager.Initialize("vote");
 
-		// 투표 다음날 처리
-		AddSleepHook((vote, status) => VoteManager.NextDay());
-
-		// 매일 밤마다 에너지 충전
+		// 매일 밤마다 전기 충전
 		AddSleepHook((vote, status) => MyStatus.instance.energy.value = Mathf.Min(MyStatus.instance.energy + _energyCharge, MaxEnergyHard));
+
+		// 체력 회복
+		AddSleepHook((vote, status) => {
+			int recovery = 0;
+			if (sick) {
+				recovery -= 30;
+			}
+
+			if (inventory.HasItem(5)) {
+				recovery += 2;
+			}
+
+			if (inventory.HasItem(6)) {
+				recovery += 5;
+			}
+
+			health.value = Mathf.Clamp(health + recovery, 0, MaxHealth);
+		});
 	}
 
 	public static MyStatus instance
@@ -94,6 +109,20 @@ public class MyStatus {
 		List<int> _slot = new List<int>(); // 소비형이 들어가는곳
 
 		public List<int> slot {get{ return _slot; }}
+
+		// 아이템 사용
+		public bool Use(Item item)
+		{
+			if (item.installable)
+				return false;
+
+			if (!_slot.Contains(item.id))
+				return false;
+
+			_slot.Remove(item.id);
+			OnUpdate(item);
+			return true;
+		}
 
 		public bool Put(Item item)
 		{
@@ -152,8 +181,16 @@ public class MyStatus {
 
 	public void Sleep()
 	{
+		// execute all sleep hooks
 		OnSleep(VoteManager.currentVote, new Snapshot(this));
+
+		// next day!
 		day.value++;
+
+		// 투표는 hook하지 않고 별도로 처리
+		// 엔딩 체크를 위해
+		VoteManager.NextDay();
+
 	}
 
 	public static bool Check(string condition)
@@ -183,6 +220,7 @@ public class MyStatus {
 
 	// 그 이외
 	public DataUpdateNotifier<int> health = new DataUpdateNotifier<int>(MaxHealth); // 건강, 잠잘 때 0이 되면 게임오버
+	public DataUpdateNotifier<bool> sick = new DataUpdateNotifier<bool>(false); // 아픈가?
 	public DataUpdateNotifier<int> day = new DataUpdateNotifier<int>(1); // 현재 날짜
 	public DataUpdateNotifier<int> energy = new DataUpdateNotifier<int>(MaxEnergyInit); // TV를 보려면 필요한 자원
 	public DataUpdateNotifier<int> money = new DataUpdateNotifier<int>(); // 돈!

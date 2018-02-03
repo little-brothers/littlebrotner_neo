@@ -10,7 +10,9 @@ public class Showcase : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		for (int i =0 ; i<transform.childCount; ++i) {
-			_slots.Add(transform.GetChild(i).GetComponent<ShowcaseSlot>());
+			var slot = transform.GetChild(i).GetComponent<ShowcaseSlot>();
+			slot.OnSlotSelected += OnItemSelected;
+			_slots.Add(slot);
 		}
 
 		// count should match the max inventory size
@@ -31,5 +33,47 @@ public class Showcase : MonoBehaviour {
 				_slots[i].item = null;
 			}
 		}
+	}
+
+	// 소모형 아이템 사용시 불리는 함수
+	void OnItemSelected(Item item)
+	{
+		ConfirmPopup.Setup("Are you sure to use item " + item.name + "?", () => {
+			if (!MyStatus.instance.inventory.Use(item)) {
+				Debug.Log("failed to use item " + item.name);
+				return;
+			}
+
+			switch (item.id) {
+			case 2:
+				MyStatus.instance.health.value += 5;
+				if (MyStatus.instance.health > MyStatus.MaxHealth) {
+					MyStatus.instance.health.value = MyStatus.MaxHealth;
+				}
+				break;
+
+			case 3:
+				MyStatus.instance.health.value += 10;
+				if (MyStatus.instance.health > MyStatus.MaxHealth) {
+					MyStatus.instance.health.value = MyStatus.MaxHealth;
+				}
+				break;
+
+			case 4:
+				MyStatus.instance.health.value += 2;
+				if (MyStatus.instance.health > MyStatus.MaxHealth) {
+					MyStatus.instance.health.value = MyStatus.MaxHealth;
+				}
+
+				if (Random.value < 0.25) {
+					MyStatus.instance.sick.value = true;
+				}
+				break;
+
+			case 7:
+				MyStatus.instance.sick.value = false;
+				break;
+			}
+		});
 	}
 }

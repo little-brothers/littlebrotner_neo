@@ -23,10 +23,8 @@ public class HealthGauge : MonoBehaviour {
 		updateGauge(MyStatus.instance.health);
 
 		// initial color
-		var renderers = GetComponentsInChildren<SpriteRenderer>();
-		foreach (var renderer in renderers) {
-			renderer.color = HealthyColor;
-		}
+		MyStatus.instance.sick.OnUpdate += updateDisease;
+		updateDisease(MyStatus.instance.sick);
 	}
 
 	void OnDestroy() {
@@ -35,5 +33,13 @@ public class HealthGauge : MonoBehaviour {
 
 	void updateGauge(int value) {
 		_mask.transform.localScale = new Vector3(1, MAX_SCALE * value / MyStatus.MaxHealth, 1);
+	}
+
+	void updateDisease(bool sick) {
+		Color healthColor = sick ? SickColor : HealthyColor;
+		var renderers = GetComponentsInChildren<SpriteRenderer>();
+		foreach (var renderer in renderers) {
+			renderer.color = healthColor;
+		}
 	}
 }

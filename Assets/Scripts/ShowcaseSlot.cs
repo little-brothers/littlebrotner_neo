@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ShowcaseSlot : MonoBehaviour {
+public class ShowcaseSlot : MonoBehaviour, IPointerClickHandler {
+	public delegate void SlotSelectedEvent(Item item);
+	public event SlotSelectedEvent OnSlotSelected;
 
 	Item _item;
 
@@ -36,7 +39,11 @@ public class ShowcaseSlot : MonoBehaviour {
 		}
 	}
 
-	void Start() {
+    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+    {
+		if (item == null)
+			return;
 
-	}
+		OnSlotSelected(item);
+    }
 }
