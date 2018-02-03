@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Room3 : MonoBehaviour {
+public class Room0 : MonoBehaviour {
 
 	[SerializeField]
 	Color normalColor;

@@ -188,18 +188,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 25257512}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1328252574}
-        m_MethodName: prevRoom
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &25257512
@@ -763,18 +752,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 455710712}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1328252574}
-        m_MethodName: nextRoom
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &455710712
@@ -2039,6 +2017,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5b029e6011c484ea0a2900247deeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startIndex: 1
+  loop: 0
+  leftButton: {fileID: 25257511}
+  rightButton: {fileID: 455710711}
 --- !u!4 &1328252575
 Transform:
   m_ObjectHideFlags: 0
@@ -2049,9 +2031,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 216742852}
   - {fileID: 1830960507}
   - {fileID: 567473025}
-  - {fileID: 216742852}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2254,10 +2236,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4784107092826204, guid: 17b49e0c1285e49c5aded7b29979765e, type: 2}
       propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1266154273282544, guid: 17b49e0c1285e49c5aded7b29979765e, type: 2}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2675,7 +2653,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4979579103403714, guid: f4d6bcfd829d34fc5a5daf53d8de55ab, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114117668734852840, guid: f4d6bcfd829d34fc5a5daf53d8de55ab,
         type: 2}
@@ -3064,7 +3042,7 @@ Transform:
   - {fileID: 1879269702}
   - {fileID: 1522645592}
   m_Father: {fileID: 1328252575}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1844128539
 GameObject:
