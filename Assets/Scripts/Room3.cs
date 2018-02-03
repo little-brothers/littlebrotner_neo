@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Room3 : MonoBehaviour {
 
@@ -25,5 +26,10 @@ public class Room3 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void ConfirmExit()
+	{
+		ConfirmPopup.Setup("Are you sure to exit the room?", () => SceneManager.LoadScene("MainScene"));
 	}
 }
