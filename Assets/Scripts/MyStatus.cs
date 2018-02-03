@@ -14,6 +14,7 @@ public class MyStatus {
 		public int money;
 		public int energy;
 		public int lastWork;
+		public int day;
 
 		public Snapshot(MyStatus status)
 		{
@@ -24,6 +25,7 @@ public class MyStatus {
 			this.money = status.money;
 			this.energy = status.energy;
 			this.lastWork = status.lastWork;
+			this.day = status.day;
 		}
 	}
 
@@ -144,6 +146,7 @@ public class MyStatus {
 	public void Sleep()
 	{
 		OnSleep(VoteManager.currentVote, new Snapshot(this));
+		day.value++;
 	}
 
 	public static bool Check(string condition)
@@ -173,6 +176,7 @@ public class MyStatus {
 
 	// 그 이외
 	public DataUpdateNotifier<int> health = new DataUpdateNotifier<int>(MaxHealth); // 건강, 잠잘 때 0이 되면 게임오버
+	public DataUpdateNotifier<int> day = new DataUpdateNotifier<int>(1); // 현재 날짜
 	public DataUpdateNotifier<int> energy = new DataUpdateNotifier<int>(MaxEnergyInit); // TV를 보려면 필요한 자원
 	public DataUpdateNotifier<int> money = new DataUpdateNotifier<int>(); // 돈!
 	public DataUpdateNotifier<int> tax = new DataUpdateNotifier<int>(); // 세금 ㅠㅠ
