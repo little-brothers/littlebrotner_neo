@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 전반적인 현재 게임 상태(돈, 에너지, 발견 기술 등등...)를 저장하는 곳이다
-public class MyStatus : MonoBehaviour {
+public class MyStatus {
 
 	// 하루가 지나갈 때 현재 상황을 스냅샷으로 저장해 둔다
 	public struct Snapshot {
@@ -35,12 +35,10 @@ public class MyStatus : MonoBehaviour {
 	// singleton
 	static MyStatus _instance = null;
 
-	private void Awake()
+	private MyStatus()
 	{
 		if (_instance != null)
-		{
 			return;
-		}
 
 		VoteManager.Initialize("vote");
 
@@ -49,15 +47,13 @@ public class MyStatus : MonoBehaviour {
 
 		// 매일 밤마다 에너지 충전
 		AddSleepHook((vote, status) => MyStatus.instance.energy.value = Mathf.Min(MyStatus.instance.energy + _energyCharge, MaxEnergyHard));
-
-		DontDestroyOnLoad(gameObject);
 	}
 
 	public static MyStatus instance
 	{
 		get {
 			if (_instance == null)
-				_instance = GameObject.FindObjectOfType<MyStatus>();
+				_instance = new MyStatus();
 
 			Debug.Assert(_instance != null);
 			return _instance;
