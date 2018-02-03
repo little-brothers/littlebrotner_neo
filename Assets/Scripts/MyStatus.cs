@@ -179,6 +179,11 @@ public class MyStatus {
 		OnSleep += evt;
 	}
 
+	public void ResetAllHooks()
+	{
+		OnSleep = null;
+	}
+
 	public void Sleep()
 	{
 		// execute all sleep hooks

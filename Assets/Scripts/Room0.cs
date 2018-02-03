@@ -31,7 +31,10 @@ public class Room0 : MonoBehaviour {
 	public void ConfirmExit()
 	{
 		ConfirmPopup.Setup("Are you sure to exit the room?", () => {
-			GameObject.FindObjectOfType<RoomSwitcher>().setRoomIdx(0, () => SceneManager.LoadScene("MainScene"));
+			GameObject.FindObjectOfType<RoomSwitcher>().setRoomIdx(0, () => {
+				MyStatus.instance.ResetAllHooks();
+				SceneManager.LoadScene("MainScene");
+			});
 		});
 	}
 }
