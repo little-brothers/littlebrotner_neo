@@ -24,6 +24,7 @@ public class TV03 : MonoBehaviour, ISubscribe {
 		{
 			var elem = GameObject.Instantiate(listElemTmpl, list.transform).GetComponent<ShopListElement>();
 			elem.product = item;
+			elem.OnItemSelected += OnItemSelected;
 		}
 	}
 
@@ -40,6 +41,47 @@ public class TV03 : MonoBehaviour, ISubscribe {
 		}
 
 		return true;
+	}
+
+	void OnItemSelected(Item item)
+	{
+		bool buyable = false;
+		if (item.currency == Currency.Gold) {
+			buyable = MyStatus.instance.money >= item.price;
+		} else if (item.currency == Currency.Electrocity) {
+			buyable = MyStatus.instance.energy >= item.price;
+		}
+
+		if (buyable) {
+			ConfirmPopup.Setup(string.Format("Are you sure to buy '{0}'?", item.name), () => {
+				if (item.currency == Currency.Gold) {
+					MyStatus.instance.money.value -= item.price;
+				} else if (item.currency == Currency.Electrocity) {
+					MyStatus.instance.energy.value -= item.price;
+				}
+
+				switch (item.id) {
+				case 1:
+					MyStatus.instance.energy.value += 1;
+					break;
+
+				case 8:
+					MyStatus.instance.money.value += 2;
+					break;
+
+				// 일반 아이템
+				default:
+					// 설치형 아이템은 하나만 넣어줌
+					if (!item.installable || MyStatus.instance.inventory.GetItem(item.id) == 0) {
+						MyStatus.instance.inventory.Put(item.id, 1);
+					}
+
+					break;
+				}
+			});
+		} else {
+			// 살 수 없는 효과?
+		}
 	}
 
 	void updateMoney(int value)

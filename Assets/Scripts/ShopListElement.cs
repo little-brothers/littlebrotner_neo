@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShopListElement : ListElementBase, IPointerClickHandler {
+	public delegate void OnItemSelectedEvent(Item item);
+	public event OnItemSelectedEvent OnItemSelected;
+
 	Item _product;
 	public Item product {
 		set {
@@ -35,12 +38,7 @@ public class ShopListElement : ListElementBase, IPointerClickHandler {
 
 	public void OnBuyButton()
 	{
-		if (MyStatus.instance.money >= _product.price) {
-			ConfirmPopup.Setup(string.Format("Are you sure to buy '{0}'?", _product.name), () => {
-				MyStatus.instance.money.value -= _product.price;
-				// TODO 아이템 효과
-			});
-		}
+		OnItemSelected(_product);
 	}
 
 	void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
