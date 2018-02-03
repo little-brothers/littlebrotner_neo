@@ -12,6 +12,8 @@ public class Room2 : MonoBehaviour {
 
 	void OnDisable() {
 		// turn post processing off
-		Camera.main.GetComponent<PostProcessingBehaviour>().enabled = false;
+		if (Camera.main != null) {
+			Camera.main.GetComponent<PostProcessingBehaviour>().enabled = false;
+		}
 	}
 }
