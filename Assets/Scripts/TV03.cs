@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TV03 : MonoBehaviour, ISubscribe {
 	Text _money;
-
-	[SerializeField]
-	ShopListElement.Product[] products;
 
 	[SerializeField]
 	VerticalLayoutGroup list;
@@ -21,11 +19,22 @@ public class TV03 : MonoBehaviour, ISubscribe {
 		updateMoney(MyStatus.instance.money);
 
 		var listElemTmpl = Resources.Load<GameObject>("ShopListElement");
-		foreach (var product in products)
+		var availableItems = Database<Item>.instance.ToList().Where(byVisibility);
+		foreach (var item in availableItems)
 		{
 			var elem = GameObject.Instantiate(listElemTmpl, list.transform).GetComponent<ShopListElement>();
-			elem.product = product;
+			elem.product = item;
 		}
+	}
+
+	bool byVisibility(Item item)
+	{
+		foreach(var condition in item.showConditions) {
+			if (!MyStatus.Check(condition))
+				return false;
+		}
+
+		return true;
 	}
 
 	void updateMoney(int value)

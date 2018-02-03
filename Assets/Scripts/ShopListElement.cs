@@ -6,15 +6,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShopListElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
-	[Serializable]
-	public struct Product {
-		public Texture2D icon;
-		public string name;
-		public int price;
-	}
-
-	Product _product;
-	public Product product {
+	Item _product;
+	public Item product {
 		set {
 			_product = value;
 			_price.text = _product.price.ToString();

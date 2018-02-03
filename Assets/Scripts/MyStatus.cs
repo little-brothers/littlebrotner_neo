@@ -150,6 +150,25 @@ public class MyStatus : MonoBehaviour {
 		OnSleep(VoteManager.currentVote, new Snapshot(this));
 	}
 
+	public static bool Check(string condition)
+	{
+		// 빈 조건은 통과로 간주
+		if (condition == "")
+			return true;
+
+		switch (condition[0])
+		{
+		case 'V':
+			return true;
+
+		case 'T':
+			return true;
+		}
+
+		Debug.Assert(false, "unknown condition " + condition);
+		return false;
+	}
+
 
 	/* [-100, 100] 범위를 갖는 성향 */
 	public DataUpdateNotifier<int> political = new DataUpdateNotifier<int>(); // [전체주의 - 민주주의]
