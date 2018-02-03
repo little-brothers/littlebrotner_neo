@@ -175,6 +175,7 @@ public class MyStatus {
 	public DataUpdateNotifier<int> health = new DataUpdateNotifier<int>(MaxHealth); // 건강, 잠잘 때 0이 되면 게임오버
 	public DataUpdateNotifier<int> energy = new DataUpdateNotifier<int>(MaxEnergyInit); // TV를 보려면 필요한 자원
 	public DataUpdateNotifier<int> money = new DataUpdateNotifier<int>(); // 돈!
+	public DataUpdateNotifier<int> tax = new DataUpdateNotifier<int>(); // 세금 ㅠㅠ
 	public DataUpdateNotifier<int> endingIndex = new DataUpdateNotifier<int>(); // 엔딩!
 	public DataUpdateNotifier<int> lastWork = new DataUpdateNotifier<int>(-1); // 마지막으로 일한 날짜
 	public EventSet technologies = new EventSet(); // 발견한 기술들을 저장
