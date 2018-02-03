@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ShopListElement : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
+public class ShopListElement : ListElementBase, IPointerClickHandler {
 	Item _product;
 	public Item product {
 		set {
@@ -22,7 +22,6 @@ public class ShopListElement : MonoBehaviour, IPointerClickHandler, IPointerEnte
 	{
 		_price = transform.Find("Price").GetComponent<Text>();
 		_name = transform.Find("Name").GetComponent<Text>();
-		GetComponent<CanvasRenderer>().SetAlpha(0);
 	}
 
 	public void OnBuyButton()
@@ -35,25 +34,8 @@ public class ShopListElement : MonoBehaviour, IPointerClickHandler, IPointerEnte
 		}
 	}
 
-	void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
-	{
-		var renderer = GetComponent<CanvasRenderer>();
-		var color = renderer.GetColor();
-		color.a = 0;
-		renderer.SetColor(color);
-	}
-
-	void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
-	{
-		var renderer = GetComponent<CanvasRenderer>();
-		var color = renderer.GetColor();
-		color.a = 0.1f;
-		renderer.SetColor(color);
-	}
-
 	void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
 	{
 		OnBuyButton();
 	}
-
 }

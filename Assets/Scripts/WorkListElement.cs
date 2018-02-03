@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class WorkListElement : MonoBehaviour, IPointerClickHandler {
+public class WorkListElement : ListElementBase, IPointerClickHandler {
 
 	public delegate void OnJobSelectedEvent(WorkListElement.Work work);
 
