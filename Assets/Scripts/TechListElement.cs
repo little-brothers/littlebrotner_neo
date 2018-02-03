@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TechListElement : MonoBehaviour {
+public class TechListElement : ListElementBase {
 
 	[Serializable]
 	public struct Technology
