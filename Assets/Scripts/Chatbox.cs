@@ -17,6 +17,8 @@ public class Chatbox : MonoBehaviour, IPointerClickHandler {
 		instance.textbox.text = content;
 		Utilities.SetUIParentFit(GameObject.FindWithTag("RootCanvas"), instance.gameObject);
 	}
+		
+
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {

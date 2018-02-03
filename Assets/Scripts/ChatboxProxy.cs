@@ -7,4 +7,6 @@ public class ChatboxProxy : MonoBehaviour {
 	{
 		Chatbox.Show(content);
 	}
+
+
 }
