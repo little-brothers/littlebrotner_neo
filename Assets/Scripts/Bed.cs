@@ -12,7 +12,8 @@ public class Bed : MonoBehaviour, IPointerDownHandler {
 
 	void gotoSleep()
 	{
-		MyStatus.instance.Sleep();
+		var switcher = GameObject.FindObjectOfType<RoomSwitcher>();
+		switcher.setRoomIdx(2, () => MyStatus.instance.Sleep());
 	}
 
 	void applyEvent9(VoteData vote, MyStatus.Snapshot status) {

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class RoomSwitcher : MonoBehaviour {
 
+	public delegate void OnSceneNeedsChange();
+
+	protected event OnSceneNeedsChange _reservedChangeEvent;
 	protected int _index = 0;
 	protected bool _inTransition = false;
 
@@ -50,7 +53,7 @@ public class RoomSwitcher : MonoBehaviour {
 		rightButton.interactable = _index < transform.childCount-1;
 	}
 	
-	public void setRoomIdx(int idx)
+	public void setRoomIdx(int idx, OnSceneNeedsChange OnSceneChange = null)
 	{
 		if (_inTransition)
 			return;
@@ -59,6 +62,7 @@ public class RoomSwitcher : MonoBehaviour {
 		if (!loop && (idx < 0 || idx >= transform.childCount))
 			return;
 
+		_reservedChangeEvent = OnSceneChange;
 		_index = idx % transform.childCount;
 		if (_index < 0)
 			_index += transform.childCount;
@@ -72,6 +76,10 @@ public class RoomSwitcher : MonoBehaviour {
 		{
 			var room = transform.GetChild(i);
 			room.gameObject.SetActive(_index == i);
+		}
+
+		if (_reservedChangeEvent != null) {
+			_reservedChangeEvent();
 		}
 	}
 
