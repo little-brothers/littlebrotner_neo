@@ -8,11 +8,25 @@ public class HealthGauge : MonoBehaviour {
 
 	GameObject _mask;
 
+	[SerializeField]
+	Color HealthyColor = Color.green;
+
+	[SerializeField]
+	Color SickColor = Color.red;
+
 	// Use this for initialization
 	void Start () {
-		_mask = transform.Find("Mask").gameObject;
+		_mask = transform.Find("GaugeMask").gameObject;
+
+		// auto update gauge
 		MyStatus.instance.health.OnUpdate += updateGauge;
 		updateGauge(MyStatus.instance.health);
+
+		// initial color
+		var renderers = GetComponentsInChildren<SpriteRenderer>();
+		foreach (var renderer in renderers) {
+			renderer.color = HealthyColor;
+		}
 	}
 
 	void OnDestroy() {
@@ -20,6 +34,6 @@ public class HealthGauge : MonoBehaviour {
 	}
 
 	void updateGauge(int value) {
-		_mask.transform.localScale = new Vector3(MAX_SCALE * value / MyStatus.MaxHealth, 1, 1);
+		_mask.transform.localScale = new Vector3(1, MAX_SCALE * value / MyStatus.MaxHealth, 1);
 	}
 }
