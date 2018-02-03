@@ -86,28 +86,35 @@ public class MyStatus {
 
 	public class Inventory
 	{
-		public delegate void DataUpdatedEvent(int item, int count);
+		public delegate void DataUpdatedEvent(Item item);
 		public event DataUpdatedEvent OnUpdate = delegate{};
+		public const int MaxSize = 8;
 
-		Dictionary<int, int> _map;
+		HashSet<int> _installed = new HashSet<int>(); // 설치형이 들어가논곳
+		List<int> _slot = new List<int>(); // 소비형이 들어가는곳
 
-		public void Put(int item, int count)
+		public List<int> slot {get{ return _slot; }}
+
+		public bool Put(Item item)
 		{
-			if (_map.ContainsKey(item)) {
-				_map[item] += count;
+			if (item.installable) {
+				if (!_installed.Contains(item.id))
+					_installed.Add(item.id);
+
+			} else if (_slot.Count >= MaxSize) {
+				return false;
+
 			} else {
-				_map.Add(item, count);
+				_slot.Add(item.id);
 			}
 
-			OnUpdate(item, _map[item]);
+			OnUpdate(item);
+			return true;
 		}
 
-		public int GetItem(int item)
+		public bool HasItem(int id)
 		{
-			if (_map.ContainsKey(item))
-				return _map[item];
-
-			return 0;
+			return _installed.Contains(id) || _slot.Contains(id);
 		}
 	}
 

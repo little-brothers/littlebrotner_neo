@@ -33,7 +33,7 @@ public class Bed : MonoBehaviour, IPointerDownHandler {
 			// E1:W4의 돈 두배	
 			// E2:돈 +3
 			// E3:돈 -3
-			// E4:I2 X 2개
+			// E4:I2 + 2개
 			// E5:쓰지않은 전기는 모두 금화가 되는 규칙	
 			// E6:아이템 : 세금 1개 늘어나고 식량 1개받음	
 			// E7:아이템 : 즉시)돈7개 이상인 사람 3개씩 거둠	
@@ -55,8 +55,9 @@ public class Bed : MonoBehaviour, IPointerDownHandler {
 				break;
 
 			case 4:
-				var item = 2;
-				MyStatus.instance.inventory.Put(item, MyStatus.instance.inventory.GetItem(item) * 2);
+				var item = Database<Item>.instance.Find(2);
+				MyStatus.instance.inventory.Put(item);
+				MyStatus.instance.inventory.Put(item);
 				break;
 
 			case 5:
