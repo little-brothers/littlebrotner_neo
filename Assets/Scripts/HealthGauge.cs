@@ -15,6 +15,10 @@ public class HealthGauge : MonoBehaviour {
 		updateGauge(MyStatus.instance.health);
 	}
 
+	void OnDestroy() {
+		MyStatus.instance.health.OnUpdate -= updateGauge;
+	}
+
 	void updateGauge(int value) {
 		_mask.transform.localScale = new Vector3(MAX_SCALE * value / MyStatus.MaxHealth, 1, 1);
 	}

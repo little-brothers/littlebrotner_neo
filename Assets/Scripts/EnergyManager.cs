@@ -31,6 +31,11 @@ public class EnergyManager : MonoBehaviour {
 		updateEnergyStatus(MyStatus.instance.energy);
 	}
 
+	void OnDestroy()
+	{
+		MyStatus.instance.energy.OnUpdate -= updateEnergyStatus;
+	}
+
 	public bool UseEnergy()
 	{
 		if (MyStatus.instance.energy == 0) {

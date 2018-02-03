@@ -27,6 +27,11 @@ public class TV03 : MonoBehaviour, ISubscribe {
 		}
 	}
 
+	void OnDestroy()
+	{
+		MyStatus.instance.money.OnUpdate -= updateMoney;
+	}
+
 	bool byVisibility(Item item)
 	{
 		foreach(var condition in item.showConditions) {

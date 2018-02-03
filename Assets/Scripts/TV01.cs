@@ -53,6 +53,7 @@ public class TV01 : MonoBehaviour {
 	void OnDestroy()
 	{
 		MyStatus.instance.health.OnUpdate -= updateHealth;
+		MyStatus.instance.lastWork.OnUpdate -= updateJobAvailable;
 	}
 
 	void OnJobSelected(WorkListElement.Work job)

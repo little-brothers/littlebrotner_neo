@@ -35,6 +35,7 @@ public class TV02 : MonoBehaviour, IPointerDownHandler, ISubscribe {
 	void OnDestroy()
 	{
 		NotifyManager.UnSubscribe(this);
+		MyStatus.instance.economy.OnUpdate -= UpdateBalance;
 	}
 
 	IEnumerator Swing() {
