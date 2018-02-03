@@ -1,0 +1,19 @@
+,,,기능,,가격,형식,,조건,조건,(개발자용 정보)
+I1,배터리,Battery,모니터를 ON하기 위해 사용,Used to powers a TV screen,G:2,판매,전기+1,,,
+I2,식량 ,Food,생명을 유지하는 필수요소,Essential to life,G:2,판매,음식아이템+1,,,체력 회복 5
+I3,건강식량,Health Food,건강식,Healthy and delicious food,G:4,판매,영양식+1,V9:NO,T3,체력 회복 10
+I4,사마귀 사체 ,Dead Mantis,허기를 모면한다,Helps barely avoid hunger.,G:1,판매,사체+1,V26:YES,,"체력 회복 2, 병걸릴 확률 25%"
+I5,생체 데이터 칩 ,Biochip,정신까지도 디지털화 되는가?,Is even the mind able to be digitized?,G:5,설치형,,V23:YES,T8,매일 잘때 체력회복 +2
+I6,침대 업그레이드,Upgrade bedding,매일 체력 회복 5,Comfortable bedding will improve your health 5 steps more. ,G:8,설치형,,V21:YES,T6,매일 잘때 체력회복 +5
+I7,치료제 키트 ,Medicine Kit,병 치료,Treatment a disease,G:5,판매,치료제 키트+1,V32:YES,T11,병치료
+I8,돈 ,Money,전기 당 돈 2로 교환,You can exchange 1 block of electricity for 2 blocks of money,E:1,판매,돈+2,V30:YES,T10,
+I9,로봇 ,Robot,로봇은 매일 일하고 돈을 벌 수 있습니다. ,Robot can work and earn money for you daily.,G:8,설치형,,V24:YES,T9,매일 돈+1
+I10,레이저 건 ,Laser gun,이것으로 사냥을 할 수 있다,You can hunt with this.,G:5,설치형,,V11:YES,,사냥 업무 가능
+I11,집 수리,Repairing a house,모래 폭풍에 의해 파괴된 집을 수리한다.,Repairing a house destroyed by sandstorms.,G:7,설치형,,D10(V18),,집 상태를 회복
+I12,자가 발전기 ,Self running generator,전기를 매일 1증가 시킨다.,It increases power by 1 block per day.,G:10,설치형,,V37:YES,,매일 전기+1
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,현재 파는 품목만 존재,,,,,,,,,
+,고갈 되었을 때 deactivated,,,,,,,,,
