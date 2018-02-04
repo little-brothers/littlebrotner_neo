@@ -207,10 +207,31 @@ public class MyStatus {
 		switch (condition[0])
 		{
 		case 'V':
-			return true;
+			string[] idAndSelect = condition.Split(':');
+			int idx = int.Parse(idAndSelect[0].Substring(1));
+			VoteData vote = VoteManager.voteDatas[idx];
+
+			if (vote.choice == VoteSelection.NotYet)
+				return false;
+
+			if (idAndSelect.Length == 1)
+				return true; // 투표를 했는지만 체크
+
+			switch (vote.choice)
+			{
+			case VoteSelection.Accept:
+				return idAndSelect[1].ToUpper() == "YES";
+
+			case VoteSelection.Decline:
+				return idAndSelect[1].ToUpper() == "NO";
+			}
+
+			Debug.Assert(false, "unknown vote condition " + condition);
+			return false;
 
 		case 'T':
-			return true;
+			int type = int.Parse(condition.Substring(1));
+			return instance.technologies.Contains(type);
 		}
 
 		Debug.Assert(false, "unknown condition " + condition);
