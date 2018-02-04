@@ -17,17 +17,18 @@ public class VoteDetailView : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		questionText.text = VoteManager.currentVote.voteTopic;
-		switch (VoteManager.currentVote.isAgree) {
-		case -1:
+		switch (VoteManager.currentVote.choice) {
+		case VoteSelection.Abstention:
+		case VoteSelection.NotYet:
 			acceptButton.transform.Find("Selected").gameObject.SetActive(false);
 			declineButton.transform.Find("Selected").gameObject.SetActive(false);
 			break;
 
-		case 0: // decline
+		case VoteSelection.Decline:
 			acceptButton.transform.Find("Selected").gameObject.SetActive(false);
 			break;
 
-		case 1:
+		case VoteSelection.Accept:
 			declineButton.transform.Find("Selected").gameObject.SetActive(false);
 			break;
 		}
@@ -36,7 +37,7 @@ public class VoteDetailView : MonoBehaviour {
 	public void OnAnswer(bool accept)
 	{
 		Debug.Log(accept.ToString());
-		VoteManager.Vote(accept ? 1 : 0);
+		VoteManager.Vote(accept ? VoteSelection.Accept : VoteSelection.Decline);
 		GameObject.Destroy(gameObject);
 	}
 }

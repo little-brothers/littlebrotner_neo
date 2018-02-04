@@ -89,7 +89,7 @@ public static class VoteManager {
 		data.id = Int32.Parse(column[0].Substring(1));
 		data.day = Int32.Parse(column[1]);
 		data.voteTopic = column[2];
-		data.isAgree = -1;
+		data.choice = VoteSelection.NotYet;
 
 		VoteDetailData agree = new VoteDetailData();
 		SetNextVoteIndex(column[7], ref agree);
@@ -122,8 +122,10 @@ public static class VoteManager {
 		_beforIndex = _currentIndex;				
 
 		string state = "?";
-		if (_voteDatas[_currentIndex].isAgree.Equals(-1))
+		if (_voteDatas[_currentIndex].choice == VoteSelection.NotYet)
 		{
+			Vote(VoteSelection.Abstention); // 자동 기권
+
 			state = "기권";
 			_currentIndex = _voteDatas[_currentIndex].abstention.nextVoteIndex;
 			MyStatus.instance.economy.value += _voteDatas[_currentIndex].abstention.economy;
@@ -132,7 +134,7 @@ public static class VoteManager {
 			++_abstentionCount;
 			CheckEnding(_voteDatas[_beforIndex].abstention);
 		}
-		else if (_voteDatas[_currentIndex].isAgree.Equals(1))
+		else if (_voteDatas[_currentIndex].choice == VoteSelection.Accept)
 		{
 			state = "예";
 			_currentIndex = _voteDatas[_currentIndex].agree.nextVoteIndex;
@@ -141,7 +143,7 @@ public static class VoteManager {
 			MyStatus.instance.mechanic.value += _voteDatas[_currentIndex].agree.mechanic;
 			CheckEnding(_voteDatas[_beforIndex].agree);
 		}
-		else if (_voteDatas[_currentIndex].isAgree.Equals(0))
+		else if (_voteDatas[_currentIndex].choice == VoteSelection.Decline)
 		{
 			state = "아니오";
 			_currentIndex = _voteDatas[_currentIndex].disagree.nextVoteIndex;
@@ -155,10 +157,10 @@ public static class VoteManager {
 		Debug.Log("이전 투표 결과: " + state + " | BI: " + _beforIndex + " | CI: " + _currentIndex);
 	}
 
-	public static void Vote(int agree)
+	public static void Vote(VoteSelection choice)
 	{
 		VoteData temp = _voteDatas[_currentIndex];
-		temp.isAgree = agree;
+		temp.choice = choice;
 		_voteDatas[_currentIndex] = temp;
 	}
 

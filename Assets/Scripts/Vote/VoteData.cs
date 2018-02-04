@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum VoteSelection
+{
+	NotYet,
+	Accept,
+	Decline,
+	Abstention,
+}
+
 public struct VoteData {
 
 	public int id { get; set; }
 	public string voteTopic { get; set; }
-	public int isAgree { get; set; }
+	public VoteSelection choice { get; set; }
 	public int day { get; set; }
 	
 	public VoteDetailData agree;

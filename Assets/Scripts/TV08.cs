@@ -51,8 +51,8 @@ public class TV08 : MonoBehaviour {
 	private void AddRandomRaceValue()
 	{
 		int availbleCount = 6;
-		_isRobotAppear = VoteManager.voteDatas[23].isAgree.Equals(1) ? true : false;
-		_isSnakeAppear = VoteManager.voteDatas[42].isAgree.Equals(1) ? true : false;
+		_isRobotAppear = MyStatus.Check("V24:YES");
+		_isSnakeAppear = MyStatus.Check("V43:YES");
 		_raceAppearCount = new int[] {3, 3, 3, 3, 3, 3, 0, 0};
 
 		if (_isRobotAppear)

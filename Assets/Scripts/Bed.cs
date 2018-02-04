@@ -24,9 +24,9 @@ public class Bed : MonoBehaviour, IPointerDownHandler {
 	void Start() {
 		MyStatus.instance.AddSleepHook((vote, status) => {
 			VoteDetailData result = vote.disagree;
-			if (vote.isAgree == 1)
+			if (vote.choice == VoteSelection.Accept)
 				result = vote.agree;
-			else if (vote.isAgree == -1)
+			else if (vote.choice == VoteSelection.Abstention)
 				result = vote.abstention;
 
 			// switch의 각 숫자 설정

@@ -37,12 +37,12 @@ public class VoteTest : MonoBehaviour {
 	// 투표 동의
 	public void Yes()
 	{
-		VoteManager.Vote(1);
+		VoteManager.Vote(VoteSelection.Accept);
 	}
 
 	// 투표 반대
 	public void No()
 	{
-		VoteManager.Vote(0);
+		VoteManager.Vote(VoteSelection.Decline);
 	}
 }
