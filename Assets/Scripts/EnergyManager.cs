@@ -10,6 +10,9 @@ public class EnergyManager : MonoBehaviour {
 	[SerializeField]
 	SpriteRenderer notEnoughEnergy;
 
+	public AudioClip sound;
+	public AudioSource soundFx;
+
 	List<SpriteRenderer> _energys = new List<SpriteRenderer>();
 
 	// Use this for initialization
@@ -40,6 +43,7 @@ public class EnergyManager : MonoBehaviour {
 	{
 		if (MyStatus.instance.energy == 0) {
 			GetComponent<Animation>().Play(PlayMode.StopAll);
+			soundFx.PlayOneShot (sound);
 			return false;
 		}
 

@@ -22,6 +22,18 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 	[SerializeField]
 	string hint;
 
+	[SerializeField]
+	AudioSource soundFx;
+
+	[SerializeField]
+	AudioClip click;
+
+	[SerializeField]
+	AudioClip hover;
+
+
+
+
 	SpriteRenderer _background;
 	SpriteRenderer _effect;
 	SpriteRenderer _symbol;
@@ -66,8 +78,28 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		StartCoroutine(UpdateHue());
 	}
 
+
+	public void HoverSound(){
+
+	//	Debug.Log ("SOUND!");
+		soundFx.PlayOneShot (hover);
+
+	}
+
+	public void ClickSound(){
+
+	//	Debug.Log ("SOUND!");
+		soundFx.PlayOneShot (click);
+
+	}
+
+
+
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
+
+		ClickSound ();
+
 		// 에너지 사용 체크
 		if (!watched && !_energyManager.UseEnergy())
 			return;
@@ -119,5 +151,6 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 	void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
 	{
 		_overlay.SetActive(true);
+		HoverSound ();
 	}
 }
