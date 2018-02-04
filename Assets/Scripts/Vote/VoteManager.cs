@@ -169,16 +169,19 @@ public static class VoteManager {
 			if (MyStatus.instance.health.value.Equals(0)) 
 			{
 				MyStatus.instance.endingIndex.value = 0;
+				MyStatus.instance.ResetAllHooks();
 				SceneManager.LoadScene("EndingScene");
 			}
 			else if (_abstentionCount.Equals(3))
 			{
 				MyStatus.instance.endingIndex.value = 1;
+				MyStatus.instance.ResetAllHooks();
 				SceneManager.LoadScene("EndingScene");
 			}
 			else if (MyStatus.instance.money.value >= 30)
 			{
 				MyStatus.instance.endingIndex.value = 19;
+				MyStatus.instance.ResetAllHooks();
 				SceneManager.LoadScene("EndingScene");
 			}
 			return;
@@ -190,6 +193,7 @@ public static class VoteManager {
 			if (IsEnding(codition))
 			{
 				MyStatus.instance.endingIndex.value = index;
+				MyStatus.instance.ResetAllHooks();
 				SceneManager.LoadScene("EndingScene");
 			}
 		}
