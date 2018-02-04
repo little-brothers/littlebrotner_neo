@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // 전반적인 현재 게임 상태(돈, 에너지, 발견 기술 등등...)를 저장하는 곳이다
 public class MyStatus {
@@ -46,6 +48,9 @@ public class MyStatus {
 
 		// 매일 밤마다 전기 충전
 		AddSleepHook((vote, status) => MyStatus.instance.energy.value = Mathf.Min(MyStatus.instance.energy + _energyCharge, MaxEnergyHard));
+
+		// 투표 갱신
+		AddSleepHook((vote, status) => VoteManager.NextDay());
 
 		// 체력 회복
 		AddSleepHook((vote, status) => {
@@ -192,10 +197,12 @@ public class MyStatus {
 		// next day!
 		day.value++;
 
-		// 투표는 hook하지 않고 별도로 처리
-		// 엔딩 체크를 위해
-		VoteManager.NextDay();
-
+		// game should be ended?
+		int ending = CheckEnding();
+		if (ending != 0) {
+			endingIndex.value = ending-1;
+			SceneManager.LoadScene("EndingScene");
+		}
 	}
 
 	public static bool Check(string condition)
@@ -204,12 +211,12 @@ public class MyStatus {
 		if (condition == "")
 			return true;
 
-		switch (condition[0])
+		// vote
+		if (condition[0] == 'V')
 		{
-		case 'V':
 			string[] idAndSelect = condition.Split(':');
 			int idx = int.Parse(idAndSelect[0].Substring(1));
-			VoteData vote = VoteManager.voteDatas[idx];
+			VoteData vote = VoteManager.voteDatas[idx-1];
 
 			if (vote.choice == VoteSelection.NotYet)
 				return false;
@@ -228,16 +235,66 @@ public class MyStatus {
 
 			Debug.Assert(false, "unknown vote condition " + condition);
 			return false;
+		}
 
-		case 'T':
+		// technology
+		if (condition[0] == 'T')
+		{
 			int type = int.Parse(condition.Substring(1));
 			return instance.technologies.Contains(type);
 		}
+
+		// variable evaluation
+		if (condition.StartsWith("Health"))
+			return evalExpression(instance.health, condition.Substring("Helath".Length));
+
+		if (condition.StartsWith("Political"))
+			return evalExpression(instance.political, condition.Substring("Political".Length));
+
+		if (condition.StartsWith("Money"))
+			return evalExpression(instance.money, condition.Substring("Money".Length));
+
+		if (condition.StartsWith("Abstence"))
+			return evalExpression(VoteManager.abstentionCount, condition.Substring("Abstence".Length));
 
 		Debug.Assert(false, "unknown condition " + condition);
 		return false;
 	}
 
+	static bool evalExpression(int leftArg, string exp)
+	{
+		Debug.Log(leftArg.ToString() + exp);
+		exp = exp.Trim();
+		if (exp.StartsWith("==")) 
+			return leftArg == int.Parse(exp.Substring(2));
+
+		if (exp.StartsWith("<="))
+			return leftArg <= int.Parse(exp.Substring(2));
+
+		if (exp.StartsWith(">="))
+			return leftArg >= int.Parse(exp.Substring(2));
+
+		if (exp[0] == '<')
+			return leftArg < int.Parse(exp.Substring(1));
+
+		if (exp[0] == '>')
+			return leftArg > int.Parse(exp.Substring(1));
+
+		Debug.Assert(false, "unknown expression " + exp);
+		return false;
+	}
+
+	int CheckEnding()
+	{
+		foreach (var ending in Database<EndingData>.instance.ToList())
+		{
+			bool endNow = ending.conditions.All(cond => Check(cond));
+			if (endNow)
+				return ending.id;
+		}
+
+		return 0;
+	}
 
 	/* [-100, 100] 범위를 갖는 성향 */
 	public DataUpdateNotifier<int> political = new DataUpdateNotifier<int>(); // [전체주의 - 민주주의]

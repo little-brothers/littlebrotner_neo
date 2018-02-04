@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,8 +11,7 @@ public static class VoteManager {
 	private static List<VoteData> _voteDatas;
 	public static List<VoteData> voteDatas { get { return _voteDatas; } }
 	public static VoteData currentVote {get { return _voteDatas[_currentIndex]; } }
-
-	private static List<string> _endingCodition;
+	public static int abstentionCount { get { return _abstentionCount; } }
 
 	private static int _currentIndex = 0;
 	private static int _beforIndex = 0;
@@ -20,7 +20,6 @@ public static class VoteManager {
 	public static bool Initialize(string fileName)
 	{
 		_voteDatas = new List<VoteData>();
-		_endingCodition = new List<string>();
 		
 		TextAsset csv = Resources.Load(fileName) as TextAsset;
 		if (csv == null)
@@ -49,9 +48,6 @@ public static class VoteManager {
 				//Index 19: 엔딩조건
 				foreach(List<string> column in stringArray)
 				{
-					if (!column[19].Equals(""))
-						_endingCodition.Add(column[19]);
-
 					_voteDatas.Add(GenerateVoteData(column));
 				}
 			}
@@ -132,7 +128,6 @@ public static class VoteManager {
 			MyStatus.instance.political.value += _voteDatas[_currentIndex].abstention.political;
 			MyStatus.instance.mechanic.value += _voteDatas[_currentIndex].abstention.mechanic;
 			++_abstentionCount;
-			CheckEnding(_voteDatas[_beforIndex].abstention);
 		}
 		else if (_voteDatas[_currentIndex].choice == VoteSelection.Accept)
 		{
@@ -141,7 +136,6 @@ public static class VoteManager {
 			MyStatus.instance.economy.value += _voteDatas[_currentIndex].agree.economy;
 			MyStatus.instance.political.value += _voteDatas[_currentIndex].agree.political;
 			MyStatus.instance.mechanic.value += _voteDatas[_currentIndex].agree.mechanic;
-			CheckEnding(_voteDatas[_beforIndex].agree);
 		}
 		else if (_voteDatas[_currentIndex].choice == VoteSelection.Decline)
 		{
@@ -150,7 +144,6 @@ public static class VoteManager {
 			MyStatus.instance.economy.value += _voteDatas[_currentIndex].disagree.economy;
 			MyStatus.instance.political.value += _voteDatas[_currentIndex].disagree.political;
 			MyStatus.instance.mechanic.value += _voteDatas[_currentIndex].disagree.mechanic;
-			CheckEnding(_voteDatas[_beforIndex].disagree);
 		}
 
 
@@ -162,110 +155,5 @@ public static class VoteManager {
 		VoteData temp = _voteDatas[_currentIndex];
 		temp.choice = choice;
 		_voteDatas[_currentIndex] = temp;
-	}
-
-	private static void CheckEnding(VoteDetailData data)
-	{
-		if (data.endingIndexes == null)
-		{
-			if (MyStatus.instance.health.value.Equals(0)) 
-			{
-				MyStatus.instance.endingIndex.value = 0;
-				MyStatus.instance.ResetAllHooks();
-				SceneManager.LoadScene("EndingScene");
-			}
-			else if (_abstentionCount.Equals(3))
-			{
-				MyStatus.instance.endingIndex.value = 1;
-				MyStatus.instance.ResetAllHooks();
-				SceneManager.LoadScene("EndingScene");
-			}
-			else if (MyStatus.instance.money.value >= 30)
-			{
-				MyStatus.instance.endingIndex.value = 19;
-				MyStatus.instance.ResetAllHooks();
-				SceneManager.LoadScene("EndingScene");
-			}
-			return;
-		}
-
-		foreach (int index in data.endingIndexes)
-		{
-			string codition = _endingCodition[index];
-			if (IsEnding(codition))
-			{
-				MyStatus.instance.endingIndex.value = index;
-				MyStatus.instance.ResetAllHooks();
-				SceneManager.LoadScene("EndingScene");
-			}
-		}
-	}
-
-	private static bool IsEnding(string codition)
-	{
-		string[] coditions = codition.Split('&');
-		bool returnValue = CheckCodition(coditions[0]);
-
-		if (coditions.Length.Equals(1))
-			return returnValue;
-
-		for (int i = 1; i < coditions.Length; ++i)
-		{
-			if (!returnValue)
-				break;
-			returnValue = returnValue && CheckCodition(coditions[i]);
-		}
-		return returnValue;
-	}
-
-	private static bool CheckCodition(string codition)
-	{
-		bool returnValue = false;
-		string[] value = codition.Split('-');
-		switch(value[0])
-		{
-			// case "Health": // 투표 결과에 영향을 받지 않는 엔딩은 바로 수행
-			// 	if (MyStatus.instance.health.value.Equals(Int32.Parse(value[1]))) 
-			// 	{
-			// 		MyStatus.instance.endingIndex.value = 0;
-			// 		SceneManager.LoadScene("EndingScene");
-			// 	}
-			// 	break;
-
-			// case "Abstention": // 투표 결과에 영향을 받지 않는 엔딩은 바로 수행
-			// 	if (_abstentionCount.Equals(Int32.Parse(value[1])))
-			// 	{
-			// 		MyStatus.instance.endingIndex.value = 1;
-			// 		SceneManager.LoadScene("EndingScene");
-			// 	}
-			// 	break;
-
-			// case "Money": // 투표 결과에 영향을 받지 않는 엔딩은 바로 수행
-			// 	if (MyStatus.instance.money.value.Equals(Int32.Parse(value[1])))
-			// 	{
-			// 		MyStatus.instance.endingIndex.value = 19;
-			// 		SceneManager.LoadScene("EndingScene");
-			// 	}
-			// 	break;
-
-			case "자유주의": // 나중에 자유주의, 사회주의등 가장 높은 수치 반환하는 함수 만들기
-				break;
-
-			case "사회주의":
-				break;
-
-			default:
-				int index = Int32.Parse(value[0].Substring(1)) - 1;
-				if (value[1].Equals("YES"))
-				{
-					returnValue = _voteDatas[index].agree.Equals(1) ? true : false;
-				}
-				else if (value[1].Equals("NO"))
-				{
-					returnValue = _voteDatas[index].agree.Equals(0) ? true : false;
-				}
-				break;
-		}
-		return returnValue;
 	}
 }

@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-[AttributeUsage(AttributeTargets.Class)]
+[AttributeUsage(AttributeTargets.Class|AttributeTargets.Struct)]
 public class AssetPathAttribute : Attribute {
 	public AssetPathAttribute(string path) {
 		this.Path = path;
