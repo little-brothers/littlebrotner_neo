@@ -504,6 +504,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5b029e6011c484ea0a2900247deeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startIndex: 0
+  loop: 1
+  leftButton: {fileID: 557790295}
+  rightButton: {fileID: 392816737}
 --- !u!4 &291604166
 Transform:
   m_ObjectHideFlags: 0
@@ -928,18 +932,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 392816735}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 291604165}
-        m_MethodName: nextRoom
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &530116165
@@ -1207,18 +1200,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 557790293}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 291604165}
-        m_MethodName: prevRoom
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &558584914
