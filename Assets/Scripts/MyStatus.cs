@@ -69,6 +69,16 @@ public class MyStatus {
 
 			health.value = Mathf.Clamp(health + recovery, 0, MaxHealth);
 		});
+
+		// 기술 확인
+		AddSleepHook((vote, status) => {
+			var newlyDeveloped = Database<Technology>.instance.ToList()
+				.Where(tech => !technologies.Contains(tech.id))
+				.Where(tech => Check(tech.condition));
+
+			foreach (var newTech in newlyDeveloped)
+				technologies.Put(newTech.id);
+		});
 	}
 
 	public static MyStatus instance
