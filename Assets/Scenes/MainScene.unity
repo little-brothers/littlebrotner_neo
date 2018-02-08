@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.53103447, g: 0, b: 1, a: 1}
-    m_PressedColor: {r: 0.591054, g: 0.18652679, b: 0.8455882, a: 1}
+    m_PressedColor: {r: 0.5294118, g: 0, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1859,7 +1859,7 @@ MonoBehaviour:
   _threshold: 0.72
   _softKnee: 0.471
   _radius: 1.41
-  _intensity: 0.4
+  _intensity: 0.18
   _highQuality: 1
   _antiFlicker: 1
   _shader: {fileID: 4800000, guid: 5a711a01011934ebcb58ef5ad52159d6, type: 3}
@@ -2088,7 +2088,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0, g: 1, b: 0.8758622, a: 1}
-    m_PressedColor: {r: 0.591054, g: 0.18652679, b: 0.8455882, a: 1}
+    m_PressedColor: {r: 0, g: 1, b: 0.8745099, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2349,7 +2349,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.29411757, g: 1, b: 0.11764705, a: 1}
-    m_PressedColor: {r: 0.591054, g: 0.18652679, b: 0.8455882, a: 1}
+    m_PressedColor: {r: 0.29411766, g: 1, b: 0.11764707, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

@@ -28,6 +28,7 @@ public class RoomSwitcher : MonoBehaviour {
 		GetComponent<SpriteRenderer>().sortingOrder = 1; // 항상 최상위에 표시됨
 		Debug.Assert(transform.childCount != 0);
 		setRoomIdx(startIndex);
+		updateButtonInteractable();
 
 		// turn off all rooms
 		for (int i=0; i<transform.childCount; ++i)

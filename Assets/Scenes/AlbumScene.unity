@@ -916,7 +916,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0.47794116, b: 0.47794116, a: 0.39215687}
     m_HighlightedColor: {r: 0.7058823, g: 0.20761243, b: 0.20761243, a: 0.78431374}
     m_PressedColor: {r: 0.3897059, g: 0.09456099, b: 0.09456099, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1184,7 +1184,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0.47794116, b: 0.47794116, a: 0.39215687}
     m_HighlightedColor: {r: 0.7058823, g: 0.20761243, b: 0.20761243, a: 0.78431374}
     m_PressedColor: {r: 0.3897059, g: 0.09456099, b: 0.09456099, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
