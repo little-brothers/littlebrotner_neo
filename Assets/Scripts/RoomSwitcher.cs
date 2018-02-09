@@ -23,12 +23,18 @@ public class RoomSwitcher : MonoBehaviour {
 	[SerializeField]
 	Button rightButton;
 
+
+
+
 	// Use this for initialization
 	void Start () {
+
+		//updateButtonInteractable();
+		//updateButtonInteractable();
 		GetComponent<SpriteRenderer>().sortingOrder = 1; // 항상 최상위에 표시됨
 		Debug.Assert(transform.childCount != 0);
 		setRoomIdx(startIndex);
-		updateButtonInteractable();
+
 
 		// turn off all rooms
 		for (int i=0; i<transform.childCount; ++i)
@@ -36,6 +42,7 @@ public class RoomSwitcher : MonoBehaviour {
 			var room = transform.GetChild(i);
 			room.gameObject.SetActive(false);
 		}
+
 
 		leftButton.onClick.AddListener(() => {
 			setRoomIdx(_index-1);

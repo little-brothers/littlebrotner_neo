@@ -103,8 +103,8 @@ public class EndingControl : MonoBehaviour {
 			yield return null;
 		}
 		_endingText.text = "";
-		_endingText.color = Color.red;
+		_endingText.color = new Color(231/225f, 52/225f, 57/225f);
 		_endingText.alignment = TextAnchor.UpperLeft;
-		StartCoroutine(Print(currentEnding.endingTitle));
+		StartCoroutine(Print(currentEnding.id +"_ "+ currentEnding.endingTitle));
 	}
 }

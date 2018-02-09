@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ani.cs" />
      <Compile Include="Assets\Scripts\AlbumControl.cs" />
      <Compile Include="Assets\Scripts\AnimatorBehaviour.cs" />
      <Compile Include="Assets\Scripts\AudFx.cs" />
@@ -78,6 +79,7 @@
      <Compile Include="Assets\Scripts\MyStatus.cs" />
      <Compile Include="Assets\Scripts\NoFilterTextureImporter.cs" />
      <Compile Include="Assets\Scripts\NotifyManager.cs" />
+     <Compile Include="Assets\Scripts\panel.cs" />
      <Compile Include="Assets\Scripts\Room0.cs" />
      <Compile Include="Assets\Scripts\Room2.cs" />
      <Compile Include="Assets\Scripts\RoomSwitcher.cs" />

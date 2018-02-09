@@ -504,8 +504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5b029e6011c484ea0a2900247deeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startIndex: 0
-  loop: 1
+  startIndex: 1
+  loop: 0
   leftButton: {fileID: 557790295}
   rightButton: {fileID: 392816737}
 --- !u!4 &291604166
