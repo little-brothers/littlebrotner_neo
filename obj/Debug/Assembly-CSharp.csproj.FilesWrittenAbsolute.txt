@@ -47,3 +47,5 @@
 /Users/yongjooyoo/Desktop/littlebrotner_neo/Temp/bin/Debug/Unity.Cecil.Mdb.dll
 /Users/yongjooyoo/Desktop/littlebrotner_neo/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.dll
 /Users/yongjooyoo/Desktop/littlebrotner_neo/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
+/Users/yongjooyoo/Desktop/littlebrotner_neo/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/yongjooyoo/Desktop/littlebrotner_neo/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
