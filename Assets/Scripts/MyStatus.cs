@@ -252,6 +252,9 @@ public class MyStatus {
 				if (vote.choice == VoteSelection.NotYet)
 					return false;
 
+				if (vote.id == VoteManager.currentVote.id)
+					return false; // 당일 투표는 넣지 않음
+
 				if (idAndSelect.Length == 1)
 					return true; // 투표를 했는지만 체크
 
