@@ -101,6 +101,11 @@ public class MyStatus {
 		});
 	}
 
+	public static void Reset()
+	{
+		_instance = null;
+	}
+
 	public static MyStatus instance
 	{
 		get {
