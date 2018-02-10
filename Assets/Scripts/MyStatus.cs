@@ -50,7 +50,26 @@ public class MyStatus {
 		AddSleepHook((vote, status) => MyStatus.instance.energy.value = Mathf.Min(MyStatus.instance.energy + _energyCharge, MaxEnergyHard));
 
 		// 투표 갱신
-		AddSleepHook((vote, status) => VoteManager.NextDay());
+		AddSleepHook((vote, status) => {
+			VoteManager.NextDay();
+
+			string eventName = VoteManager.currentVote.eventName.Trim();
+			if (eventName == "")
+				return;
+
+			// 침략 수준 초기화
+			invasion.value = 0;
+
+			switch (eventName) {
+			case "sandstorm": homeDestroyed.value = true; break;
+			case "plague": plague.value = true; break;
+			case "invasion_warn": invasion.value = 1; break; 
+			case "invasion_alert": invasion.value = 2; break; 
+			default:
+				Debug.AssertFormat(false, "unhandled event {0}", eventName);
+				break;
+			}
+		});
 
 		// 체력 회복
 		AddSleepHook((vote, status) => {
@@ -314,6 +333,9 @@ public class MyStatus {
 	// 그 이외
 	public DataUpdateNotifier<int> health = new DataUpdateNotifier<int>(MaxHealth); // 건강, 잠잘 때 0이 되면 게임오버
 	public DataUpdateNotifier<bool> sick = new DataUpdateNotifier<bool>(false); // 아픈가?
+	public DataUpdateNotifier<bool> homeDestroyed = new DataUpdateNotifier<bool>(false); // 집에 문제가 생겼는가?
+	public DataUpdateNotifier<bool> plague = new DataUpdateNotifier<bool>(false); // 전염병
+	public DataUpdateNotifier<int> invasion = new DataUpdateNotifier<int>(0); // 침략 레벨
 	public DataUpdateNotifier<int> day = new DataUpdateNotifier<int>(1); // 현재 날짜
 	public DataUpdateNotifier<int> energy = new DataUpdateNotifier<int>(MaxEnergyInit); // TV를 보려면 필요한 자원
 	public DataUpdateNotifier<int> money = new DataUpdateNotifier<int>(); // 돈!
