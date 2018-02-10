@@ -11,21 +11,14 @@ public class TV01 : MonoBehaviour {
 	[SerializeField]
 	VerticalLayoutGroup list;
 
-	GameObject _notAvailable;
+	Text _notAvailable;
 	GameObject _joblist;
-
-	bool jobAvailable
-	{
-		get {
-			return MyStatus.instance.day != MyStatus.instance.lastWork;
-		}
-	}
 
 	void Start () {
 		Utilities.SetUIParentFit(GameObject.FindGameObjectWithTag("RootCanvas"), gameObject);
 
 		_joblist = transform.Find("ScrollView").gameObject;
-		_notAvailable = transform.Find("NotAvailable").gameObject;
+		_notAvailable = transform.Find("NotAvailable").GetComponent<Text>();
 		_energyText = transform.Find("Energy").GetComponent<Text>();
 		MyStatus.instance.health.OnUpdate += updateHealth;
 		updateHealth(MyStatus.instance.health);
@@ -33,7 +26,8 @@ public class TV01 : MonoBehaviour {
 		MyStatus.instance.lastWork.OnUpdate += updateJobAvailable;
 		updateJobAvailable(MyStatus.instance.lastWork);
 
-		if (jobAvailable)
+		_notAvailable.text = checkJobAvailable();
+		if (_notAvailable.text == "")
 		{
 			var listElemTmpl = Resources.Load<GameObject>("WorkListElement");
 			var jobs = Database<Work>.instance.ToList().Where(job => MyStatus.Check(job.condition));
@@ -44,6 +38,11 @@ public class TV01 : MonoBehaviour {
 				elem.transform.localScale = Vector3.one;
 				elem.work = job;
 				elem.OnJobSelected += OnJobSelected;
+			}
+
+			if (jobs.Count() == 0)
+			{
+				_notAvailable.text = "No jobs are required in Utopia";
 			}
 		}
 	}
@@ -67,6 +66,17 @@ public class TV01 : MonoBehaviour {
 		}
 	}
 
+	string checkJobAvailable()
+	{
+		if (MyStatus.instance.day == MyStatus.instance.lastWork)
+			return "You have already worked today";
+
+		if (MyStatus.instance.homeDestroyed)
+			return "Home facilities are destoryed so I can't do any job";
+
+		return "";
+	}
+
 	void updateHealth(int value)
 	{
 		_energyText.text = value.ToString();
@@ -74,7 +84,8 @@ public class TV01 : MonoBehaviour {
 	
 	void updateJobAvailable(int day)
 	{
-		_joblist.SetActive(jobAvailable);
-		_notAvailable.SetActive(!jobAvailable);
+		var jobErr = checkJobAvailable();
+		_joblist.SetActive(jobErr == "");
+		_notAvailable.text = jobErr;
 	}
 }
