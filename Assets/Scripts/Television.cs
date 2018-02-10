@@ -78,6 +78,11 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		StartCoroutine(UpdateHue());
 	}
 
+	void OnDisable()
+	{
+		_overlay.SetActive(false);
+	}
+
 
 	public void HoverSound(){
 
