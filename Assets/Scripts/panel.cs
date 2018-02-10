@@ -27,6 +27,7 @@ public class panel : MonoBehaviour {
 		for (int i = 0; i < 8; i++) {
 			//Debug.Log (i + "----:" + array1 [i] + ":" + array2 [i]);
 			if (array1 [i] == 1) {
+				
 				array2 [i].SetActive (right);
 			} else {
 				array2 [i].SetActive (!right);

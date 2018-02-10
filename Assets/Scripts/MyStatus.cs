@@ -19,6 +19,7 @@ public class MyStatus {
 		public int lastWork;
 		public int day;
 
+
 		public Snapshot(MyStatus status)
 		{
 			this.political = status.political;
@@ -29,13 +30,15 @@ public class MyStatus {
 			this.energy = status.energy;
 			this.lastWork = status.lastWork;
 			this.day = status.day;
+
+
 		}
 	}
 
 	public const int MaxHealth = 100;
 	const int MaxEnergyHard = 12;
 	const int MaxEnergyInit = 4;
-	int _energyCharge = MaxEnergyInit; // 하룻밤마다 충전되는 에너지량
+	public int _energyCharge = MaxEnergyInit; // 하룻밤마다 충전되는 에너지량
 
 	// singleton
 	static MyStatus _instance = null;
