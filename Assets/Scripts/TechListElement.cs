@@ -19,7 +19,7 @@ public struct Technology : IDatabaseRow
     {
 		id = int.Parse(row[0].Substring(1));
 		name = row[2];
-		condition = row[9];
+		condition = row[8];
 
 		return true;
     }
