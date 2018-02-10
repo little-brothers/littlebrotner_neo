@@ -16,6 +16,7 @@ public struct VoteData {
 	public string voteTopic { get; set; }
 	public VoteSelection choice { get; set; }
 	public int day { get; set; }
+	public string eventName { get; set; } // 투표가 활성화되면 발생하는 이벤트 이름
 	
 	public VoteDetailData agree;
 	public VoteDetailData disagree;

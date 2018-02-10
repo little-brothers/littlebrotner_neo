@@ -9,6 +9,9 @@ public class Room0 : MonoBehaviour {
 	Color normalColor;
 
 	[SerializeField]
+	Color warnColor;
+
+	[SerializeField]
 	Color alertColor;
 
 	SpriteRenderer _background;
@@ -19,15 +22,13 @@ public class Room0 : MonoBehaviour {
 		_background = transform.Find("Background").GetComponent<SpriteRenderer>();
 		_backgroundLight = _background.transform.Find("Light").GetComponent<SpriteRenderer>();
 
-		_background.color = normalColor;
-		_backgroundLight.color = normalColor;
+		MyStatus.instance.homeDestroyed.OnUpdate += value => UpdateAlertStatus();
+		MyStatus.instance.plague.OnUpdate += value => UpdateAlertStatus();
+		MyStatus.instance.invasion.OnUpdate += value => UpdateAlertStatus();
+
+		UpdateAlertStatus();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	public void ConfirmExit()
 	{
 		ConfirmPopup.Setup("Are you sure to exit the room?", () => {
@@ -36,5 +37,24 @@ public class Room0 : MonoBehaviour {
 				SceneManager.LoadScene("MainScene");
 			});
 		});
+	}
+
+	void UpdateAlertStatus()
+	{
+		int level = MyStatus.instance.invasion;
+		if (MyStatus.instance.homeDestroyed)
+			level = 2;
+
+		if (MyStatus.instance.plague)
+			level = 2;
+
+		Color color = normalColor;
+		if (level == 1)
+			color = warnColor;
+		else if (level == 2)
+			color = alertColor;
+
+		_background.color = color;
+		_backgroundLight.color = color;
 	}
 }

@@ -45,7 +45,9 @@ public static class VoteManager {
 				//Index 13: 비동의 economy
 				//Index 14: 비동의 political
 				//Index 15: 비동의 mechanic
-				//Index 19: 엔딩조건
+				//Index 16: 동의 이벤트
+				//Index 17: 거부 이벤트
+				//Index 19: 활성화 이벤트
 				foreach(List<string> column in stringArray)
 				{
 					_voteDatas.Add(GenerateVoteData(column));
@@ -86,6 +88,7 @@ public static class VoteManager {
 		data.day = Int32.Parse(column[1]);
 		data.voteTopic = column[2];
 		data.choice = VoteSelection.NotYet;
+		data.eventName = column[19];
 
 		VoteDetailData agree = new VoteDetailData();
 		SetNextVoteIndex(column[7], ref agree);

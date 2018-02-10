@@ -5283,6 +5283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalColor: {r: 0.39705884, g: 1, b: 0.8503043, a: 1}
+  warnColor: {r: 1, g: 0.6827586, b: 0, a: 1}
   alertColor: {r: 1, g: 0.1102941, b: 0.1102941, a: 1}
 --- !u!1 &1363818204
 GameObject:
