@@ -30,11 +30,17 @@ public class TechListElement : ListElementBase {
 	public Technology tech
 	{
 		set {
-			_icon.sprite = value.icon;
 			_name.text = value.name;
 			_progress.text = string.Format("{0}%", value.progress);
+
+			if (icons.Count >= value.id) {
+				_icon.sprite = icons[value.id-1];
+			}
 		}
 	}
+
+	[SerializeField]
+	List<Sprite> icons = new List<Sprite>();
 
 	Image _icon;
 	Text _name;
