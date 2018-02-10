@@ -63,6 +63,24 @@ public class RoomSwitcher : MonoBehaviour {
 		leftButton.interactable = _index > 0;
 		rightButton.interactable = _index < transform.childCount-1;
 	}
+
+	void ShowPendingNotis()
+	{
+		var notis = MyStatus.instance.GetAndClearNotifications();
+		StartCoroutine(ShowPendingNotisInternal(notis));
+	}
+
+	IEnumerator ShowPendingNotisInternal(List<Notification> notis)
+	{
+		if (notis == null)
+			yield break;
+
+		foreach (var noti in notis)
+		{
+			var box = Chatbox.Show(noti.text);
+			while (box) yield return null;
+		}
+	}
 	
 	public void setRoomIdx(int idx, OnSceneNeedsChange OnSceneChange = null)
 	{

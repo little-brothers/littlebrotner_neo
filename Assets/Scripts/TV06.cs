@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using UnityEngine.UI;
 
 public class TV06 : MonoBehaviour, ISubscribe, IPointerDownHandler, IPointerUpHandler {
     
@@ -11,15 +11,43 @@ public class TV06 : MonoBehaviour, ISubscribe, IPointerDownHandler, IPointerUpHa
 
 	private Vector3 _touchOffset = Vector3.zero;
 
+	[SerializeField]
+	private VerticalLayoutGroup list;
+
 	private void Start () 
 	{
-		NotifyManager.Subscribe(this);
-		Utilities.SetUIParentFit(GameObject.FindGameObjectWithTag("RootCanvas"), gameObject);
-	}
+		int twitID = VoteManager.currentVote.id;
+		TwitPost todayTwit = Database<TwitPost>.instance.Find(twitID);
+		List<TwitListElement.Data> twits = new List<TwitListElement.Data>();
 
-	void OnDestroy()
-	{
-		NotifyManager.UnSubscribe(this);
+		if (todayTwit.LB.Length != 0)       twits.Add(new TwitListElement.Data(twitID, "lb"));
+		if (todayTwit.pigeon.Length != 0)   twits.Add(new TwitListElement.Data(twitID, "pigeon"));
+		if (todayTwit.mantis.Length != 0)   twits.Add(new TwitListElement.Data(twitID, "mantis"));
+		if (todayTwit.cat.Length != 0)      twits.Add(new TwitListElement.Data(twitID, "cat"));
+		if (todayTwit.elephant.Length != 0) twits.Add(new TwitListElement.Data(twitID, "elephant"));
+		if (todayTwit.frog.Length != 0)     twits.Add(new TwitListElement.Data(twitID, "frog"));
+		if (todayTwit.robot.Length != 0)    twits.Add(new TwitListElement.Data(twitID, "robot"));
+		if (todayTwit.snake.Length != 0)    twits.Add(new TwitListElement.Data(twitID, "snake"));
+
+		// shuffle array
+		var rand = new System.Random(VoteManager.currentVote.id);
+		for (int i = 2; i < twits.Count; ++i)
+		{
+			int r = rand.Next(i);
+			if (r == i)
+				continue;
+
+			var temp = twits[r];
+			twits[r] = twits[i];
+			twits[i] = temp;
+		}
+
+		var elemTemplate = Resources.Load<GameObject>("TwitBox");
+		foreach (var twit in twits)
+		{
+			var elem = GameObject.Instantiate(elemTemplate, list.transform).GetComponent<TwitListElement>();
+			elem.singleTwit = twit;
+		}
 	}
 
 	void ISubscribe.OnNotifty(object[] values)

@@ -16,8 +16,8 @@ public class VoteDetailView : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		questionText.text = VoteManager.currentVote.voteTopic;
-		switch (VoteManager.currentVote.choice) {
+		questionText.text = Database<VoteData>.instance.Find(VoteManager.currentVote.id).voteTopic;
+		switch (VoteManager.currentVote.selection) {
 		case VoteSelection.Abstention:
 		case VoteSelection.NotYet:
 			acceptButton.transform.Find("Selected").gameObject.SetActive(false);

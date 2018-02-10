@@ -64,7 +64,7 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 			_symbol.sprite = symbol_image;
 
 		// 다음날 되면 본것들 저리
-		MyStatus.instance.AddSleepHook((vote, status) => ResetWatched());
+		MyStatus.instance.AddSleepHook((vote, status, noti) => ResetWatched());
 
 		_overlay.transform.Find("Hint").GetComponent<TextMesh>().text = hint;
 		_overlay.SetActive(false);
@@ -76,6 +76,11 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		// 브라운관 tv처럼 보이게 하려고 hue 주기적으로 업데이트
 		// deactivate되면 코루틴이 꺼지게 되므로 OnEnable에서 처리한다
 		StartCoroutine(UpdateHue());
+	}
+
+	void OnDisable()
+	{
+		_overlay.SetActive(false);
 	}
 
 

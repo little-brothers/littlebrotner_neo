@@ -5,6 +5,16 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public struct Notification
+{
+	public static Notification Create(string txt)
+	{
+		return new Notification { text = txt };
+	}
+
+	public string text;
+}
+
 // 전반적인 현재 게임 상태(돈, 에너지, 발견 기술 등등...)를 저장하는 곳이다
 public class MyStatus {
 
@@ -35,6 +45,7 @@ public class MyStatus {
 		}
 	}
 
+	public List<Notification> pendingNotis { get; private set; }
 	public const int MaxHealth = 100;
 	const int MaxEnergyHard = 12;
 	const int MaxEnergyInit = 4;
@@ -48,16 +59,30 @@ public class MyStatus {
 		if (_instance != null)
 			return;
 
-		VoteManager.Initialize("vote");
+		VoteManager.Initialize();
 
-		// 매일 밤마다 전기 충전
-		AddSleepHook((vote, status) => MyStatus.instance.energy.value = Mathf.Min(MyStatus.instance.energy + _energyCharge, MaxEnergyHard));
+		// 재화 처리
+		AddSleepHook((vote, status, noti) => {
+			// 매일 밤마다 전기 충전
+			MyStatus.instance.energy.value = Mathf.Min(MyStatus.instance.energy + _energyCharge, MaxEnergyHard);
+
+			// 세금
+			money.value -= tax;
+
+			// 세금을 못냄!
+			if (money < 0)
+			{
+				energy.value = 0;
+				money.value = 0;
+				noti.Add(Notification.Create("I did not manage to pay tax"));
+			}
+		});
 
 		// 투표 갱신
-		AddSleepHook((vote, status) => {
+		AddSleepHook((vote, status, noti) => {
 			VoteManager.NextDay();
 
-			string eventName = VoteManager.currentVote.eventName.Trim();
+			string eventName = Database<VoteData>.instance.Find(VoteManager.currentVote.id).eventName.Trim();
 			if (eventName == "")
 				return;
 
@@ -76,7 +101,7 @@ public class MyStatus {
 		});
 
 		// 체력 회복
-		AddSleepHook((vote, status) => {
+		AddSleepHook((vote, status, noti) => {
 			int recovery = 0;
 			if (sick) {
 				recovery -= 30;
@@ -94,14 +119,22 @@ public class MyStatus {
 		});
 
 		// 기술 확인
-		AddSleepHook((vote, status) => {
+		AddSleepHook((vote, status, noti) => {
 			var newlyDeveloped = Database<Technology>.instance.ToList()
 				.Where(tech => !technologies.Contains(tech.id))
 				.Where(tech => Check(tech.condition));
 
 			foreach (var newTech in newlyDeveloped)
+			{
 				technologies.Put(newTech.id);
+				noti.Add(Notification.Create(string.Format("New technology {0} developed", newTech.name)));
+			}
 		});
+	}
+
+	public static void Reset()
+	{
+		_instance = null;
 	}
 
 	public static MyStatus instance
@@ -208,7 +241,7 @@ public class MyStatus {
 	}
 
 	// hooks for sleep
-	public delegate void SleepEvent(VoteData voteResult, Snapshot status);
+	public delegate void SleepEvent(Vote voteResult, Snapshot status, List<Notification> notifications);
 	event SleepEvent OnSleep = delegate{};
 
 	public void AddSleepHook(SleepEvent evt)
@@ -224,8 +257,13 @@ public class MyStatus {
 
 	public void Sleep()
 	{
+		var notifications = new List<Notification>();
+
 		// execute all sleep hooks
-		OnSleep(VoteManager.currentVote, new Snapshot(this));
+		OnSleep(VoteManager.currentVote, new Snapshot(this), notifications);
+
+		// set notifications
+		pendingNotis = notifications;
 
 		// next day!
 		day.value++;
@@ -236,6 +274,13 @@ public class MyStatus {
 			endingIndex.value = ending-1;
 			SceneManager.LoadScene("EndingScene");
 		}
+	}
+
+	public List<Notification> GetAndClearNotifications()
+	{
+		var notis = pendingNotis;
+		pendingNotis = null;
+		return notis;
 	}
 
 	public static bool Check(string condition)
@@ -250,18 +295,16 @@ public class MyStatus {
 			try {
 				string[] idAndSelect = condition.Split(':');
 				int idx = int.Parse(idAndSelect[0].Substring(1));
-				VoteData vote = VoteManager.voteDatas[idx-1];
+				int historyIdx = VoteManager.history.FindIndex(v => v.id == idx);
 
-				if (vote.choice == VoteSelection.NotYet)
+				if (historyIdx < 0)
 					return false;
-
-				if (vote.id == VoteManager.currentVote.id)
-					return false; // 당일 투표는 넣지 않음
 
 				if (idAndSelect.Length == 1)
 					return true; // 투표를 했는지만 체크
 
-				switch (vote.choice)
+				Vote vote = VoteManager.history[historyIdx];
+				switch (vote.selection)
 				{
 				case VoteSelection.Accept:
 					return idAndSelect[1].ToUpper() == "YES";
