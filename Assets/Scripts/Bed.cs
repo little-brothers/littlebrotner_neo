@@ -16,13 +16,13 @@ public class Bed : MonoBehaviour, IPointerDownHandler {
 		switcher.setRoomIdx(2, () => MyStatus.instance.Sleep());
 	}
 
-	void applyEvent9(Vote vote, MyStatus.Snapshot status) {
+	void applyEvent9(Vote vote, MyStatus.Snapshot status, List<Notification> noti) {
 		MyStatus.instance.money.value -= 1;
 		MyStatus.instance.energy.value += 1;
 	}
 
 	void Start() {
-		MyStatus.instance.AddSleepHook((vote, status) => {
+		MyStatus.instance.AddSleepHook((vote, status, noti) => {
 			VoteData data = Database<VoteData>.instance.Find(vote.id);
 			VoteDetailData result = data.disagree;
 			if (vote.selection == VoteSelection.Accept)
@@ -89,10 +89,11 @@ public class Bed : MonoBehaviour, IPointerDownHandler {
 
 			case 11:
 				int day = 0;
-				MyStatus.instance.AddSleepHook((_vote, _status) => {
+				MyStatus.instance.AddSleepHook((_vote, _status, _noti) => {
 					day++;
 					if (day == 3) {
 						MyStatus.instance.money.value += 9;
+						_noti.Add(Notification.Create("Got 9 gold from goverment"));
 					}
 				});
 				break;
