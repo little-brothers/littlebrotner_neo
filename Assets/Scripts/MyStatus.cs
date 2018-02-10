@@ -273,6 +273,9 @@ public class MyStatus {
 			return instance.technologies.Contains(type);
 		}
 
+		if (condition == "sandstorm")
+			return instance.homeDestroyed;
+
 		// variable evaluation
 		if (condition.StartsWith("Health"))
 			return evalExpression(instance.health, condition.Substring("Helath".Length));
