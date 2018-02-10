@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -243,34 +244,52 @@ public class MyStatus {
 		// vote
 		if (condition[0] == 'V')
 		{
-			string[] idAndSelect = condition.Split(':');
-			int idx = int.Parse(idAndSelect[0].Substring(1));
-			VoteData vote = VoteManager.voteDatas[idx-1];
+			try {
+				string[] idAndSelect = condition.Split(':');
+				int idx = int.Parse(idAndSelect[0].Substring(1));
+				VoteData vote = VoteManager.voteDatas[idx-1];
 
-			if (vote.choice == VoteSelection.NotYet)
+				if (vote.choice == VoteSelection.NotYet)
+					return false;
+
+				if (idAndSelect.Length == 1)
+					return true; // 투표를 했는지만 체크
+
+				switch (vote.choice)
+				{
+				case VoteSelection.Accept:
+					return idAndSelect[1].ToUpper() == "YES";
+
+				case VoteSelection.Decline:
+					return idAndSelect[1].ToUpper() == "NO";
+				}
+
+				Debug.Assert(false, "unknown vote condition " + condition);
 				return false;
-
-			if (idAndSelect.Length == 1)
-				return true; // 투표를 했는지만 체크
-
-			switch (vote.choice)
-			{
-			case VoteSelection.Accept:
-				return idAndSelect[1].ToUpper() == "YES";
-
-			case VoteSelection.Decline:
-				return idAndSelect[1].ToUpper() == "NO";
+			} catch (FormatException e) {
+				// continue
 			}
-
-			Debug.Assert(false, "unknown vote condition " + condition);
-			return false;
 		}
 
 		// technology
 		if (condition[0] == 'T')
 		{
-			int type = int.Parse(condition.Substring(1));
-			return instance.technologies.Contains(type);
+			try {
+				int type = int.Parse(condition.Substring(1));
+				return instance.technologies.Contains(type);
+			} catch (FormatException e) {
+				// continue
+			}
+		}
+
+		if (condition[0] == 'I')
+		{
+			try {
+				int id = int.Parse(condition.Substring(1));
+				return instance.inventory.HasItem(id);
+			} catch (FormatException e) {
+				// continue
+			}
 		}
 
 		if (condition == "sandstorm")

@@ -5,28 +5,50 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+[AssetPath("work")]
+public struct Work : IDatabaseRow {
+	public int id;
+	public string name;
+	public string condition;
+	public string description;
+	public int payment;
+	public int health;
+
+    int IDatabaseRow.ID { get { return id; } }
+
+    bool IDatabaseRow.Parse(List<string> row)
+    {
+		id = int.Parse(row[0].Substring(1));
+		name = row[2];
+		payment = int.Parse(row[3]);
+		health = int.Parse(row[4]);
+		condition = row[5];
+		description = row[7];
+
+		return true;
+    }
+}
+
 public class WorkListElement : ListElementBase, IPointerClickHandler {
 
-	public delegate void OnJobSelectedEvent(WorkListElement.Work work);
+	public delegate void OnJobSelectedEvent(Work work);
 
 	public OnJobSelectedEvent OnJobSelected;
 
-	[Serializable]
-	public struct Work {
-		public Sprite icon;
-		public string name;
-		public int payment;
-		public int health;
-		public bool enabled;
-	}
-
 	Work _work;
+
+	[SerializeField]
+	List<Sprite> workIcons = new List<Sprite>();
+
 	public Work work {
 		set {
 			_work = value;
+
 			_name.text = _work.name;
 			_health.text = _work.health.ToString();
-			_icon.sprite = _work.icon;
+
+			if (workIcons.Count >= _work.id)
+				_icon.sprite = workIcons[_work.id-1];
 		}
 	}
 

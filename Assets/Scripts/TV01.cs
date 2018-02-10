@@ -9,9 +9,6 @@ public class TV01 : MonoBehaviour {
 	Text _energyText;
 
 	[SerializeField]
-	WorkListElement.Work[] jobs;
-
-	[SerializeField]
 	VerticalLayoutGroup list;
 
 	GameObject _notAvailable;
@@ -39,7 +36,8 @@ public class TV01 : MonoBehaviour {
 		if (jobAvailable)
 		{
 			var listElemTmpl = Resources.Load<GameObject>("WorkListElement");
-			foreach (var job in jobs.Where(j => j.enabled))
+			var jobs = Database<Work>.instance.ToList().Where(job => MyStatus.Check(job.condition));
+			foreach (var job in jobs)
 			{
 				// var elem = GameObject.Instantiate(listElemTmpl, list.transform).GetComponent<WorkListElement>();
 				var elem = GameObject.Instantiate(listElemTmpl, list.transform).GetComponent<WorkListElement>();
@@ -56,7 +54,7 @@ public class TV01 : MonoBehaviour {
 		MyStatus.instance.lastWork.OnUpdate -= updateJobAvailable;
 	}
 
-	void OnJobSelected(WorkListElement.Work job)
+	void OnJobSelected(Work job)
 	{
 		if (job.health <= MyStatus.instance.health)
 		{
