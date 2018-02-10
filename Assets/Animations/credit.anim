@@ -24,7 +24,7 @@ AnimationClip:
         value: 0
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 69
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -39,14 +39,14 @@ AnimationClip:
         time: 0
         value: -132
         inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        outSlope: 20.909843
+        tangentMode: 69
       - serializedVersion: 2
         time: 30.225
         value: 500
-        inSlope: 0
+        inSlope: 20.909843
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 69
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -68,7 +68,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 31.391
+    m_StopTime: 30.308
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -92,7 +92,7 @@ AnimationClip:
         value: 0
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 69
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -107,14 +107,14 @@ AnimationClip:
         time: 0
         value: -132
         inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        outSlope: 20.909843
+        tangentMode: 69
       - serializedVersion: 2
         time: 30.225
         value: 500
-        inSlope: 0
+        inSlope: 20.909843
         outSlope: 0
-        tangentMode: 136
+        tangentMode: 69
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -127,7 +127,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 31.391
+  - time: 30.308
     functionName: ToMainMenu
     data: 
     objectReferenceParameter: {fileID: 0}
