@@ -22,9 +22,13 @@ public class Room0 : MonoBehaviour {
 		_background = transform.Find("Background").GetComponent<SpriteRenderer>();
 		_backgroundLight = _background.transform.Find("Light").GetComponent<SpriteRenderer>();
 
+		// 
 		MyStatus.instance.homeDestroyed.OnUpdate += value => UpdateAlertStatus();
 		MyStatus.instance.plague.OnUpdate += value => UpdateAlertStatus();
 		MyStatus.instance.invasion.OnUpdate += value => UpdateAlertStatus();
+
+		// 자가 수리 키트 확인
+		MyStatus.instance.inventory.OnUpdate += checkRepairItem;
 
 		UpdateAlertStatus();
 	}
@@ -56,5 +60,17 @@ public class Room0 : MonoBehaviour {
 
 		_background.color = color;
 		_backgroundLight.color = color;
+	}
+
+	void checkRepairItem(Item item)
+	{
+		if (item.id == 11)
+		{
+			bool repaired = MyStatus.instance.homeDestroyed;
+			MyStatus.instance.homeDestroyed.value = false;
+
+			if (repaired)
+				Chatbox.Show("My house has repaired");
+		}
 	}
 }
