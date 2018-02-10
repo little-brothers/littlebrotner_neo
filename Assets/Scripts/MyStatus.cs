@@ -45,7 +45,7 @@ public class MyStatus {
 		if (_instance != null)
 			return;
 
-		VoteManager.Initialize("vote");
+		VoteManager.Initialize();
 
 		// 매일 밤마다 전기 충전
 		AddSleepHook((vote, status) => MyStatus.instance.energy.value = Mathf.Min(MyStatus.instance.energy + _energyCharge, MaxEnergyHard));
@@ -54,7 +54,7 @@ public class MyStatus {
 		AddSleepHook((vote, status) => {
 			VoteManager.NextDay();
 
-			string eventName = VoteManager.currentVote.eventName.Trim();
+			string eventName = Database<VoteData>.instance.Find(VoteManager.currentVote.id).eventName.Trim();
 			if (eventName == "")
 				return;
 
@@ -205,7 +205,7 @@ public class MyStatus {
 	}
 
 	// hooks for sleep
-	public delegate void SleepEvent(VoteData voteResult, Snapshot status);
+	public delegate void SleepEvent(Vote voteResult, Snapshot status);
 	event SleepEvent OnSleep = delegate{};
 
 	public void AddSleepHook(SleepEvent evt)
@@ -247,18 +247,16 @@ public class MyStatus {
 			try {
 				string[] idAndSelect = condition.Split(':');
 				int idx = int.Parse(idAndSelect[0].Substring(1));
-				VoteData vote = VoteManager.voteDatas[idx-1];
+				int historyIdx = VoteManager.history.FindIndex(v => v.id == idx);
 
-				if (vote.choice == VoteSelection.NotYet)
+				if (historyIdx < 0)
 					return false;
-
-				if (vote.id == VoteManager.currentVote.id)
-					return false; // 당일 투표는 넣지 않음
 
 				if (idAndSelect.Length == 1)
 					return true; // 투표를 했는지만 체크
 
-				switch (vote.choice)
+				Vote vote = VoteManager.history[historyIdx];
+				switch (vote.selection)
 				{
 				case VoteSelection.Accept:
 					return idAndSelect[1].ToUpper() == "YES";

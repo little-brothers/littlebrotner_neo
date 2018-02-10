@@ -15,14 +15,14 @@ public class VoteTest : MonoBehaviour {
 	private Text _index;
 
 	void Start () {
-		VoteManager.Initialize("vote");
+		VoteManager.Initialize();
 		ShowVote();
 	}
 	
 	// 투표 내용을 띄워줌
 	public void ShowVote()
 	{
-		VoteData data = VoteManager.currentVote;
+		VoteData data = Database<VoteData>.instance.Find(VoteManager.currentVote.id);
 		_day.text = data.day.ToString();
 		_topic.text = data.voteTopic;
 	}

@@ -17,7 +17,7 @@ public class TV01 : MonoBehaviour {
 	bool jobAvailable
 	{
 		get {
-			return VoteManager.currentVote.day != MyStatus.instance.lastWork;
+			return MyStatus.instance.day != MyStatus.instance.lastWork;
 		}
 	}
 
@@ -61,7 +61,7 @@ public class TV01 : MonoBehaviour {
 			ConfirmPopup.Setup(string.Format("Are you sure do work '{0}'?", job.name), () => {
 				MyStatus.instance.health.value -= job.health;
 				MyStatus.instance.money.value += job.payment;
-				MyStatus.instance.lastWork.value = VoteManager.currentVote.day;
+				MyStatus.instance.lastWork.value = MyStatus.instance.day;
 				GameObject.Destroy(gameObject);
 			});
 		}

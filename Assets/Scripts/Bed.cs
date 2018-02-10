@@ -16,18 +16,19 @@ public class Bed : MonoBehaviour, IPointerDownHandler {
 		switcher.setRoomIdx(2, () => MyStatus.instance.Sleep());
 	}
 
-	void applyEvent9(VoteData vote, MyStatus.Snapshot status) {
+	void applyEvent9(Vote vote, MyStatus.Snapshot status) {
 		MyStatus.instance.money.value -= 1;
 		MyStatus.instance.energy.value += 1;
 	}
 
 	void Start() {
 		MyStatus.instance.AddSleepHook((vote, status) => {
-			VoteDetailData result = vote.disagree;
-			if (vote.choice == VoteSelection.Accept)
-				result = vote.agree;
-			else if (vote.choice == VoteSelection.Abstention)
-				result = vote.abstention;
+			VoteData data = Database<VoteData>.instance.Find(vote.id);
+			VoteDetailData result = data.disagree;
+			if (vote.selection == VoteSelection.Accept)
+				result = data.agree;
+			else if (vote.selection == VoteSelection.Abstention)
+				result = data.abstention;
 
 			// switch의 각 숫자 설정
 			// E1:W4의 돈 두배	
