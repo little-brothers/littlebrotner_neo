@@ -5058,6 +5058,7 @@ MonoBehaviour:
   loop: 0
   leftButton: {fileID: 25257511}
   rightButton: {fileID: 455710711}
+  tooltip: {fileID: 1597618726}
 --- !u!4 &1328252575
 Transform:
   m_ObjectHideFlags: 0

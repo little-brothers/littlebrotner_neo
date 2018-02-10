@@ -23,6 +23,9 @@ public class RoomSwitcher : MonoBehaviour {
 	[SerializeField]
 	Button rightButton;
 
+	[SerializeField]
+	Tooltip tooltip;
+
 
 
 
@@ -89,6 +92,9 @@ public class RoomSwitcher : MonoBehaviour {
 		if (_reservedChangeEvent != null) {
 			_reservedChangeEvent();
 		}
+
+		if (tooltip != null)
+			tooltip.Hide();
 	}
 
 	IEnumerator fadeInOut(float duration, int scene)
