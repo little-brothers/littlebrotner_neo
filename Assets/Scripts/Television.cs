@@ -17,6 +17,9 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 	Sprite symbol_image;
 
 	[SerializeField]
+	GameObject noti_image;
+
+	[SerializeField]
 	GameObject detailView;
 
 	[SerializeField]
@@ -39,6 +42,8 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 	SpriteRenderer _symbol;
 	EnergyManager _energyManager;
 	GameObject _overlay;
+	//GameObject _noti;
+
 	bool _watched = false;
 	public bool watched {
 		get { return _watched; }
@@ -55,6 +60,7 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		_symbol = transform.Find("Symbol").GetComponent<SpriteRenderer>();
 		_energyManager = GameObject.FindObjectOfType<EnergyManager>();
 		_overlay = transform.Find("Overlay").gameObject;
+
 
 		if (_background != null)
 			_background.sprite = background_image;
