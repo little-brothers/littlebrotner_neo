@@ -37,15 +37,27 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -132
+        value: -70.08
         inSlope: 0
-        outSlope: 20.909843
+        outSlope: 1.9634819
         tangentMode: 69
       - serializedVersion: 2
-        time: 30.225
-        value: 500
-        inSlope: 20.909843
-        outSlope: 0
+        time: 1.8895
+        value: -66.37
+        inSlope: 1.9634819
+        outSlope: 10.658976
+        tangentMode: 69
+      - serializedVersion: 2
+        time: 47.934
+        value: 424.41718
+        inSlope: 10.658976
+        outSlope: 1.8266957
+        tangentMode: 69
+      - serializedVersion: 2
+        time: 49.4745
+        value: 427.2312
+        inSlope: 1.8266957
+        outSlope: 10.658972
         tangentMode: 69
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -55,7 +67,7 @@ AnimationClip:
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
-  m_SampleRate: 1000
+  m_SampleRate: 2000
   m_WrapMode: 1
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -68,7 +80,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 30.308
+    m_StopTime: 51.235
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -105,15 +117,27 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -132
+        value: -70.08
         inSlope: 0
-        outSlope: 20.909843
+        outSlope: 1.9634819
         tangentMode: 69
       - serializedVersion: 2
-        time: 30.225
-        value: 500
-        inSlope: 20.909843
-        outSlope: 0
+        time: 1.8895
+        value: -66.37
+        inSlope: 1.9634819
+        outSlope: 10.658976
+        tangentMode: 69
+      - serializedVersion: 2
+        time: 47.934
+        value: 424.41718
+        inSlope: 10.658976
+        outSlope: 1.8266957
+        tangentMode: 69
+      - serializedVersion: 2
+        time: 49.4745
+        value: 427.2312
+        inSlope: 1.8266957
+        outSlope: 10.658972
         tangentMode: 69
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -127,7 +151,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 30.308
+  - time: 51.235
     functionName: ToMainMenu
     data: 
     objectReferenceParameter: {fileID: 0}
