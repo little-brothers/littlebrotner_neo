@@ -265,6 +265,9 @@ public class MyStatus {
 
 				case VoteSelection.Decline:
 					return idAndSelect[1].ToUpper() == "NO";
+
+				case VoteSelection.Abstention:
+					return false;
 				}
 
 				Debug.Assert(false, "unknown vote condition " + condition);
