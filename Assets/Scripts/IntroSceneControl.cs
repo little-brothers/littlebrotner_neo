@@ -3,98 +3,89 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animation))]
 public class IntroSceneControl : MonoBehaviour {
+
+	[Serializable]
+	struct Step
+	{
+		public Sprite image;
+		public string script;
+	}
 
 	private Animation anim;
 	private AnimationClip[] clips;
+	int _current = -1;
 
-
+	[SerializeField]
+	List<Step> sequence = new List<Step>();
 
 	[SerializeField]
 	public GameObject linkClick;
+
+	IEnumerator _waitScriptHandle = null;
+	Chatbox _scriptBox = null;
 
 
 	//private Button qBtn;
 
 	// Use this for initialization
 	void Start () {
-
-		//qBtn = GetComponent<Button>();
-		//Debug.Log ("1");
-		//StartCoroutine(Wait());
-
-		//animation.Play("FadeIn");
-		//ArrayList ani = GetComponent<Animations> ();
-
-		//gameObject.animation.Play(ani[0]);
+		GameMusic();
+		TriggerFadeout();
 	}
 
+	public void nextStepNow()
+	{
+		if (_current >= sequence.Count)
+		{
+			SceneManager.LoadScene("TutorialScene");
+			return;
+		}
 
+		Debug.Log(_current);
+		GetComponent<SpriteRenderer>().sprite = sequence[_current].image;
+	}
 
+	public void ShowScript()
+	{
+		if (_waitScriptHandle != null)
+			StopCoroutine(_waitScriptHandle);
 
+		if (_scriptBox != null)
+			GameObject.Destroy(_scriptBox.gameObject);
 
+		_waitScriptHandle = ShowScriptInternal();
+		StartCoroutine(_waitScriptHandle);
+	}
 
+	IEnumerator ShowScriptInternal()
+	{
+		_scriptBox = Chatbox.Show(sequence[_current].script);
+		while (_scriptBox != null) yield return null;
+
+		TriggerFadeout();
+	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	public void PressSkip()
 	{
-		SceneManager.LoadScene("TutorialScene");
-	}
-
-
-
-	public void NextClick(){
-
-		Debug.Log ("CLICK!!");
-		//GameObject nextLink2;
-		StartCoroutine(Wait());
-		Debug.Log ("wait!!");
-
-
-		//GameObject.Destroy(gameObject);
-
-	}
-
-
-
-	public void LastClick(string scene){
-
-
-	
-		gameObject.SetActive (false);
-		SceneManager.LoadScene(scene);
-
+		_current = sequence.Count-1;
+		TriggerFadeout();
 	}
 
 	public void GameMusic(){
 
-		GameObject.Find("Soundmanager").GetComponent<Soundmanager> ().MainPlay ();
+		// GameObject.Find("Soundmanager").GetComponent<Soundmanager> ().MainPlay ();
 
 	}
 
-	IEnumerator Wait()
+	void TriggerFadeout()
 	{
-		Debug.Log ("www!!");
-		yield return new WaitForSeconds (0.1f);
-		linkClick.SetActive(true);
-		gameObject.SetActive (false);
-		//Debug.Log ("3");
-		//qBtn.interactable = true;
-	}
-
-
-	IEnumerator Next()
-	{
-		Debug.Log ("3");
-		yield return new WaitForSeconds (2);
-		linkClick.SetActive(true);
-		gameObject.SetActive (false);
-
+		_current++;
+		GetComponent<Animation>().Play(PlayMode.StopAll);
 	}
 }
 
