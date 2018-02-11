@@ -6,6 +6,15 @@ using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
 public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
+	[Serializable]
+	struct Alarm
+	{
+		public Sprite texture;
+		public Color color;
+	}
+
+	[SerializeField]
+	int id;
 
 	[SerializeField]
 	Sprite background_image;
@@ -34,14 +43,24 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 	[SerializeField]
 	AudioClip hover;
 
+	[SerializeField]
+	Alarm AlarmNoti;
+	[SerializeField]
+	Alarm AlarmWarn;
+	[SerializeField]
+	Alarm AlarmAlert;
 
 
 
 	SpriteRenderer _background;
 	SpriteRenderer _effect;
 	SpriteRenderer _symbol;
+	SpriteRenderer _alarm;
 	EnergyManager _energyManager;
 	GameObject _overlay;
+	int _eventDay = 0; // 마지막으로 이벤트가 있었던 날짜
+	Alarm _defaultAlarm;
+
 	//GameObject _noti;
 
 	bool _watched = false;
@@ -60,7 +79,7 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		_symbol = transform.Find("Symbol").GetComponent<SpriteRenderer>();
 		_energyManager = GameObject.FindObjectOfType<EnergyManager>();
 		_overlay = transform.Find("Overlay").gameObject;
-
+		_alarm = transform.Find("Alarm").GetComponent<SpriteRenderer>();
 
 		if (_background != null)
 			_background.sprite = background_image;
@@ -70,11 +89,75 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 			_symbol.sprite = symbol_image;
 
 		// 다음날 되면 본것들 저리
-		MyStatus.instance.AddSleepHook((vote, status, noti) => ResetWatched());
+		MyStatus.instance.AddSleepHook(ResetStatus);
 
 		_overlay.transform.Find("Hint").GetComponent<TextMesh>().text = hint;
 		_overlay.SetActive(false);
 		watched = false;
+
+		SetupListenersForEachTV();
+	}
+
+	void SetAlarmType(Alarm alarm, bool setDefault=true)
+	{
+		_alarm.sprite = alarm.texture;
+		_alarm.color = alarm.color;
+
+		if (setDefault)
+			_defaultAlarm = alarm;
+	}
+
+	void SetupListenersForEachTV()
+	{
+		// 
+		switch (id)
+		{
+		case 1:
+			SetAlarmType(AlarmNoti);
+			MyStatus.instance.AddSleepHook((vote, status, noti) => {
+
+			});
+			break;
+
+		case 2:
+			SetAlarmType(AlarmWarn);
+			MyStatus.instance.economy.OnUpdate += eco => {
+				if (Mathf.Abs(eco) >= 70f)
+				{
+					_eventDay = MyStatus.instance.day+1;
+					UpdateAlarm(MyStatus.instance.day+1);
+				}
+			};
+			break;
+
+		case 3:
+			break;
+
+		case 8:
+			SetAlarmType(AlarmWarn);
+			MyStatus.instance.political.OnUpdate += pol => {
+				if (Mathf.Abs(pol) >= 70f)
+				{
+					_eventDay = MyStatus.instance.day+1;
+					UpdateAlarm(MyStatus.instance.day+1);
+				}
+			};
+			break;
+
+		case 9:
+			SetAlarmType(AlarmNoti);
+			MyStatus.instance.technologies.OnUpdate += tech => {
+				// 기술은 잠잘때만 업데이트됨
+				_eventDay = MyStatus.instance.day+1;
+				UpdateAlarm(MyStatus.instance.day+1);
+			};
+			break;
+
+		default:
+			break;
+		}
+
+		UpdateAlarm(MyStatus.instance.day);
 	}
 
 	void OnEnable()
@@ -117,6 +200,10 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
 		watched = true;
 
+		// reset alarm
+		_eventDay = -1;
+		UpdateAlarm(MyStatus.instance.day);
+
 		if (detailView != null)
 		{
 			// show 
@@ -137,9 +224,15 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		}
 	}
 
-	public void ResetWatched()
+	public void ResetStatus(Vote vote, MyStatus.Snapshot status, List<Notification> noti)
 	{
 		watched = false;
+		UpdateAlarm(status.day+1);
+	}
+
+	void UpdateAlarm(int day)
+	{
+		_alarm.gameObject.SetActive(_eventDay == day);
 	}
 
 	IEnumerator UpdateHue()
