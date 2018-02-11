@@ -2050,8 +2050,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1419750352}
+  m_Children: []
   m_Father: {fileID: 1649365619}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3494,7 +3493,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: view energy
+            m_StringArgument: One battery cell is used to power one telescreen.
             m_BoolArgument: 0
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
@@ -5068,11 +5067,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4c12291f2889b347b21fcb0eec116b5, type: 2}
   m_IsPrefabParent: 0
---- !u!224 &1419750352 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1692876690}
 --- !u!1 &1427193518
 GameObject:
   m_ObjectHideFlags: 0
@@ -5860,7 +5854,8 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: ssss
+            m_StringArgument: Taxes that go out every day. If not, I will not receive
+              electricity.
             m_BoolArgument: 0
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
@@ -6415,106 +6410,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4001552268990364, guid: b4c12291f2889b347b21fcb0eec116b5,
     type: 2}
   m_PrefabInternal: {fileID: 367878683}
---- !u!1001 &1692876690
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 523485331}
-    m_Modifications:
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224044723264461998, guid: 38879f35e3249470cb6ad74086c25e7d,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 38879f35e3249470cb6ad74086c25e7d, type: 2}
-  m_IsPrefabParent: 0
 --- !u!4 &1713672828 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4001552268990364, guid: b4c12291f2889b347b21fcb0eec116b5,
@@ -7361,6 +7256,17 @@ Prefab:
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 480963676}
+    - target: {fileID: 114662382662504466, guid: f4d6bcfd829d34fc5a5daf53d8de55ab,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: It used when I want to keep information not to digitize. But I can not
+        use it well because I have ralely drawn characters.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245435579770046, guid: f4d6bcfd829d34fc5a5daf53d8de55ab,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Eat to live. I think I can hold up to three days.
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114858352270018096, guid: f4d6bcfd829d34fc5a5daf53d8de55ab, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f4d6bcfd829d34fc5a5daf53d8de55ab, type: 2}
@@ -7529,7 +7435,8 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: your money
+            m_StringArgument: I can earn money by working, and I can buy something
+              with this money.
             m_BoolArgument: 0
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
