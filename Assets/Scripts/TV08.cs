@@ -74,7 +74,6 @@ public class TV08 : MonoBehaviour {
 					float x = range(rand, -3, 4);
 					float y = range(rand, -5, 6);
 					pos.x += x; pos.y += y;
-					Color c = new Color();
 					_peoples[index].color = Color.HSVToRGB(range(rand, 0f, 1f), 1, 1);
 					_peoples[index].transform.localPosition = pos;
 					--_movePeoples;

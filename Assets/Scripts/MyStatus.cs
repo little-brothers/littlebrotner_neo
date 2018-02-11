@@ -318,7 +318,7 @@ public class MyStatus {
 
 				Debug.Assert(false, "unknown vote condition " + condition);
 				return false;
-			} catch (FormatException e) {
+			} catch (FormatException) {
 				// continue
 			}
 		}
@@ -329,7 +329,7 @@ public class MyStatus {
 			try {
 				int type = int.Parse(condition.Substring(1));
 				return instance.technologies.Contains(type);
-			} catch (FormatException e) {
+			} catch (FormatException) {
 				// continue
 			}
 		}
@@ -339,7 +339,7 @@ public class MyStatus {
 			try {
 				int id = int.Parse(condition.Substring(1));
 				return instance.inventory.HasItem(id);
-			} catch (FormatException e) {
+			} catch (FormatException) {
 				// continue
 			}
 		}
