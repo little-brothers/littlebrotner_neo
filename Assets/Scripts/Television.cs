@@ -92,6 +92,20 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		// 다음날 되면 본것들 저리
 		MyStatus.instance.AddSleepHook(ResetStatus);
 
+		// 위기상항 알림 1 - 모래폭풍
+		MyStatus.instance.homeDestroyed.OnUpdate += destoyed => {
+			if (destoyed) {
+				_disasterDay = MyStatus.instance.day + 1;
+			}
+		};
+
+		// 위기상황 알림 2 - 침공
+		MyStatus.instance.invasion.OnUpdate += invade => {
+			if (invade != 0) {
+				_disasterDay = MyStatus.instance.day + 1;
+			}
+		};
+
 		_overlay.transform.Find("Hint").GetComponent<TextMesh>().text = hint;
 		_overlay.SetActive(false);
 		watched = false;
