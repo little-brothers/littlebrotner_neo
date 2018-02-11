@@ -412,7 +412,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -933443417
+  randomSeed: 1499208016
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4003,10 +4003,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sequence:
-  - image: {fileID: 21300000, guid: 84932d60472dd4f07a2c634e3b4c0657, type: 3}
-    script: 111111111111111
-  - image: {fileID: 21300000, guid: 2ed8ce1fdfa3e45bbb689284820188dc, type: 3}
-    script: 2222222222222
+  - image: {fileID: 21300000, guid: dfded0ec00bc94d0cbd97cbde1d61358, type: 3}
+    script: 'This is the story of a thousand years after George Orwell''s <1984>. '
+  - image: {fileID: 21300000, guid: a2cb6840d1d86492e9f9193105bf7d40, type: 3}
+    script: A long time ago,  Human civilization was erected and destroyed repeatedly.
+  - image: {fileID: 21300000, guid: d1991cb6da23d4b43af6dfdc6e915f6f, type: 3}
+    script: "Despite a long history, their monopolistic\u200B structure have never
+      disappeared."
+  - image: {fileID: 21300000, guid: d1991cb6da23d4b43af6dfdc6e915f6f, type: 3}
+    script: 'As slaves and masters,  as workers and capitalists. '
+  - image: {fileID: 21300000, guid: d620ed0693e914dacac4663e136c037b, type: 3}
+    script: People who are dissatisfied with inequality rebelled,
+  - image: {fileID: 21300000, guid: 46ed851e46fa4495c9c47a6c38b27d90, type: 3}
+    script: 'a bleeding war was broke out. '
+  - image: {fileID: 21300000, guid: b2d410175d2de4bb786117ed81f127b6, type: 3}
+    script: 'The war was horrible, Some humans who want to survive  sent signals to
+      several stars. '
+  - image: {fileID: 21300000, guid: 7038a37a8b69e4a38b26d3057121bdbe, type: 3}
+    script: 'A planet, which is located very far away from Earth, accepted the request. '
+  - image: {fileID: 21300000, guid: c7f2acac47102467c94167509b4d4055, type: 3}
+    script: This planet called Utopia,
+  - image: {fileID: 21300000, guid: c7f2acac47102467c94167509b4d4055, type: 3}
+    script: 'The Utopian Union, which consists of the Pigeons, the Mantises, and the
+      minority races, decided to accept the humans. '
+  - image: {fileID: 21300000, guid: b0b445357eb4c452f9eddeccbae30b91, type: 3}
+    script: ' Humans arrived at a new star, the humans  named themselves ...'
+  - image: {fileID: 21300000, guid: b0b445357eb4c452f9eddeccbae30b91, type: 3}
+    script: Little Brothers.
   linkClick: {fileID: 0}
 --- !u!111 &1847870605
 Animation:

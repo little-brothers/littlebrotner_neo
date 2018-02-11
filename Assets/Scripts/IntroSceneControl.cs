@@ -33,6 +33,14 @@ public class IntroSceneControl : MonoBehaviour {
 	//private Button qBtn;
 
 	// Use this for initialization
+
+
+
+
+
+
+
+
 	void Start () {
 		GameMusic();
 		TriggerFadeout();
@@ -42,13 +50,22 @@ public class IntroSceneControl : MonoBehaviour {
 	{
 		if (_current >= sequence.Count)
 		{
-			SceneManager.LoadScene("TutorialScene");
+			GameObject.Find("Soundmanager").GetComponent<Soundmanager> ().MainPlay ();
+			SceneManager.LoadScene("GameScene");
 			return;
 		}
 
 		Debug.Log(_current);
 		GetComponent<SpriteRenderer>().sprite = sequence[_current].image;
 	}
+
+
+
+
+
+
+
+
 
 	public void ShowScript()
 	{
@@ -69,7 +86,19 @@ public class IntroSceneControl : MonoBehaviour {
 
 		TriggerFadeout();
 	}
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void PressSkip()
 	{
 		_current = sequence.Count-1;
