@@ -14,11 +14,16 @@ public class Tooltip : MonoBehaviour {
 
     void Update() {
         if (_showCount != 0) {
-			var pos = transform.position;
-			pos.x = Input.mousePosition.x;
-			pos.y = Input.mousePosition.y + 20;
-			transform.position = pos;
+            UpdatePosition();
         }
+    }
+
+    void UpdatePosition()
+    {
+        var pos = transform.position;
+        pos.x = Input.mousePosition.x;
+        pos.y = Input.mousePosition.y + 20;
+        transform.position = pos;
     }
 
     public void Hide()
@@ -35,5 +40,6 @@ public class Tooltip : MonoBehaviour {
         _showCount++;
         gameObject.SetActive(true);
         _text.text = text;
+        UpdatePosition();
     }
 }
