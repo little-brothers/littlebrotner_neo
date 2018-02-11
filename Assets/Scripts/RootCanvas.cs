@@ -12,7 +12,14 @@ public class RootCanvas : MonoBehaviour {
 	GameObject[] enableOnPopup;
 
 	void Update() {
-		bool on = transform.childCount == 0;
+		int childCount = transform.childCount;
+		for (int i = 0; i < childCount; ++i) {
+			// chatbox는 카운트에 넣지 않음
+			if (transform.GetChild(i).GetComponent<Chatbox>() != null)
+				childCount--;
+		}
+
+		bool on = childCount == 0;
 
 		foreach (var go in disableOnPopup)
 			go.SetActive(on);

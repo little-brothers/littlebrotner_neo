@@ -67,7 +67,9 @@ public class RoomSwitcher : MonoBehaviour {
 	void ShowPendingNotis()
 	{
 		var notis = MyStatus.instance.GetAndClearNotifications();
-		StartCoroutine(ShowPendingNotisInternal(notis));
+
+		// temp
+		// StartCoroutine(ShowPendingNotisInternal(notis));
 	}
 
 	IEnumerator ShowPendingNotisInternal(List<Notification> notis)
