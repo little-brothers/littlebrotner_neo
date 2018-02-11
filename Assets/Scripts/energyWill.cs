@@ -47,7 +47,7 @@ public class energyWill : MonoBehaviour {
 	void updateEnergyWillStatus(int ene)
 	{
 		int i = ene;
-		int j = MyStatus.instance._energyCharge;
+		int j = MyStatus.instance.energyCharge;
 		int k = i + j;
 		if (i+j > 12) {
 			k = 12;
