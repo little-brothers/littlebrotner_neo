@@ -129,7 +129,7 @@ public class MyStatus {
 			foreach (var newTech in newlyDeveloped)
 			{
 				technologies.Put(newTech.id);
-				noti.Add(Notification.Create(string.Format("New technology {0} developed", newTech.name)));
+				// noti.Add(Notification.Create(string.Format("New technology {0} developed", newTech.name)));
 			}
 		});
 	}
