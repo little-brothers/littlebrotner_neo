@@ -49,7 +49,6 @@ public class MyStatus {
 	public const int MaxHealth = 100;
 	const int MaxEnergyHard = 12;
 	const int MaxEnergyInit = 4;
-	public int _energyCharge = MaxEnergyInit; // 하룻밤마다 충전되는 에너지량
 
 	// singleton
 	static MyStatus _instance = null;
@@ -64,7 +63,7 @@ public class MyStatus {
 		// 재화 처리
 		AddSleepHook((vote, status, noti) => {
 			// 매일 밤마다 전기 충전
-			MyStatus.instance.energy.value = Mathf.Min(MyStatus.instance.energy + _energyCharge, MaxEnergyHard);
+			MyStatus.instance.energy.value = Mathf.Min(MyStatus.instance.energy + energyCharge, MaxEnergyHard);
 
 			// 세금
 			money.value -= tax;
@@ -412,6 +411,7 @@ public class MyStatus {
 	public DataUpdateNotifier<int> invasion = new DataUpdateNotifier<int>(0); // 침략 레벨
 	public DataUpdateNotifier<int> day = new DataUpdateNotifier<int>(1); // 현재 날짜
 	public DataUpdateNotifier<int> energy = new DataUpdateNotifier<int>(MaxEnergyInit); // TV를 보려면 필요한 자원
+	public DataUpdateNotifier<int> energyCharge = new DataUpdateNotifier<int>(MaxEnergyInit); // 일별 에너지 충전량
 	public DataUpdateNotifier<int> money = new DataUpdateNotifier<int>(); // 돈!
 	public DataUpdateNotifier<int> tax = new DataUpdateNotifier<int>(); // 세금 ㅠㅠ
 	public DataUpdateNotifier<int> endingIndex = new DataUpdateNotifier<int>(); // 엔딩!
