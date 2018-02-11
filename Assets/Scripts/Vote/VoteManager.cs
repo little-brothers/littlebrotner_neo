@@ -45,13 +45,17 @@ public static class VoteManager {
 		{
 			state = "기권";
 			result = voteData.abstention;
-			_abstentionCount++;
 		}
 		else if (_current.selection == VoteSelection.Decline)
 		{
 			state = "아니오";
 			result = voteData.disagree;
 		}
+
+		if (_current.selection == VoteSelection.Abstention)
+			_abstentionCount++;
+		else
+			_abstentionCount = 0;
 
 		MyStatus.instance.economy.value += result.economy;
 		MyStatus.instance.political.value += result.political;
