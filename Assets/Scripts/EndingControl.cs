@@ -36,6 +36,7 @@ public class EndingControl : MonoBehaviour {
 
 		_bgAnimator.setState(ending.id-1);
 		StartCoroutine(_bgAnimator.runAnimation());
+		GameObject.Find("Soundmanager").GetComponent<Soundmanager> ().EndingPlay ();
 	}
 	
 	public void PrintEndingText()

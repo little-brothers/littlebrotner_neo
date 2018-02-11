@@ -71,6 +71,11 @@ public class IntroSceneControl : MonoBehaviour {
 
 	}
 
+	public void GameMusic(){
+
+		GameObject.Find("Soundmanager").GetComponent<Soundmanager> ().MainPlay ();
+
+	}
 
 	IEnumerator Wait()
 	{

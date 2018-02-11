@@ -9,6 +9,7 @@ public class Soundmanager : MonoBehaviour {
 	public AudioSource IntroMusic;
 	public AudioSource MainMusic;
 	public AudioSource EndingMusic;
+	public AudioSource CreditMusic;
 
 	public static Soundmanager instance = null;
 
@@ -55,6 +56,15 @@ public class Soundmanager : MonoBehaviour {
 		MainMusic.Stop ();
 		EndingMusic.loop = true;
 		EndingMusic.Play ();
+
+	}
+
+
+	public void CreditPlay (){
+
+		EndingMusic.Stop ();
+		CreditMusic.loop = true;
+		CreditMusic.Play ();
 
 	}
 
