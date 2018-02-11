@@ -53,7 +53,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224746593232548146}
   - component: {fileID: 212847490196366694}
-  - component: {fileID: 111349264244223334}
   m_Layer: 0
   m_Name: Alarm
   m_TagString: Untagged
@@ -72,6 +71,7 @@ GameObject:
   - component: {fileID: 114353976809805828}
   - component: {fileID: 212855095919643534}
   - component: {fileID: 61267905992038300}
+  - component: {fileID: 111787845790732306}
   m_Layer: 0
   m_Name: TV
   m_TagString: Untagged
@@ -247,17 +247,18 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 3370754413
---- !u!111 &111349264244223334
+--- !u!111 &111787845790732306
 Animation:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1554153682197908}
+  m_GameObject: {fileID: 1819245097415450}
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: e7311210f1cc84614b10178ca7c349bd, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: e7311210f1cc84614b10178ca7c349bd, type: 2}
+  - {fileID: 7400000, guid: a6dc3eef451e3467ea5a6ba030415503, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -273,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e3f8a47821848389db3f184f52fad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   background_image: {fileID: 21300000, guid: 29c20bc51690e413a99d1d291d0deccb, type: 3}
   effect_image: {fileID: 21300000, guid: 5ddae3ce8a08046ce85b2dcbdfefb52e, type: 3}
   symbol_image: {fileID: 21300000, guid: 4ab853e414606426e9901e1cb39bcd7e, type: 3}

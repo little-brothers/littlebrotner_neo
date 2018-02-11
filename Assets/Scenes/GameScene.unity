@@ -9592,11 +9592,6 @@ Prefab:
       propertyPath: soundFx
       value: 
       objectReference: {fileID: 236378689}
-    - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
-        type: 2}
-      propertyPath: id
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b29de443114924ac2ba2f4a29476044d, type: 2}
   m_IsPrefabParent: 0
