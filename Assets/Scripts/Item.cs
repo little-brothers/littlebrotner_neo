@@ -41,4 +41,9 @@ public class Item : IDatabaseRow {
 
 		return true;
     }
+
+	public static Item Create(int id)
+	{
+		return new Item{id = id};
+	}
 }
