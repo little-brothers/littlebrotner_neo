@@ -150,9 +150,7 @@ public static class VoteManager {
 			MyStatus.instance.mechanic.value += _voteDatas[_currentIndex].disagree.mechanic;
 			CheckEnding(_voteDatas[_beforIndex].disagree);
 		}
-
-
-		Debug.Log("이전 투표 결과: " + state + " | BI: " + _beforIndex + " | CI: " + _currentIndex);
+		Debug.Log("이전 투표 결과: " + state + " | BefoeIndex: " + _beforIndex + " | CurrentIdex: " + _currentIndex);
 	}
 
 	public static void Vote(int agree)
