@@ -2,262 +2,81 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public struct Vote
+{
+	public Vote(int id)
+	{
+		this.id = id;
+		this.selection = VoteSelection.NotYet;
+	}
+
+	public int id;
+	public VoteSelection selection;
+}
+
 public static class VoteManager {
+	public static Vote currentVote { get { return _current; } }
 
-	private static List<VoteData> _voteDatas;
-	public static List<VoteData> voteDatas { get { return _voteDatas; } }
-	public static VoteData currentVote {get { return _voteDatas[_currentIndex]; } }
+	public static int abstentionCount { get { return _abstentionCount; } }
+	public static List<Vote> history { get { return _history; } }
 
-	private static List<string> _endingCodition;
-
-	private static int _currentIndex = 0;
-	private static int _beforIndex = 0;
+	private static Vote _current;
 	private static int _abstentionCount = 0;
+	private static List<Vote> _history = new List<Vote>();
 
-	public static bool Initialize(string fileName)
+	public static void Initialize()
 	{
-		_voteDatas = new List<VoteData>();
-		_endingCodition = new List<string>();
-		
-		TextAsset csv = Resources.Load(fileName) as TextAsset;
-		if (csv == null)
-			return false;
-
-		using (var streamReader = new StreamReader(new MemoryStream(csv.bytes)))
-		{
-			using (var reader = new Mono.Csv.CsvFileReader(streamReader))
-			{
-				var stringArray = new List<List<string>>();
-				reader.ReadAll(stringArray);
-				stringArray.RemoveAt(0);
-
-				//Index 0: 현재 투표 인덱스
-				//Index 1: 날짜
-				//Index 2: 질문
-				//Index 7: 동의시 다음 투표 인덱스
-				//Index 8: 비동의시 다음 투표 인덱스
-				//Index 9 : 기권시 다음 투표 값 (에 || 아니오)
-				//Index 10: 동의 economy
-				//Index 11: 동의 political
-				//Index 12: 동의 mechanic
-				//Index 13: 비동의 economy
-				//Index 14: 비동의 political
-				//Index 15: 비동의 mechanic
-				//Index 19: 엔딩조건
-				foreach(List<string> column in stringArray)
-				{
-					if (!column[19].Equals(""))
-						_endingCodition.Add(column[19]);
-
-					_voteDatas.Add(GenerateVoteData(column));
-				}
-			}
-		}
-		return true;
-	}
-
-	private static void SetNextVoteIndex(string str, ref VoteDetailData data)
-	{
-		string[] nextIndexes = str.Split('/');
-		data.endingIndexes = new Queue<int>();
-
-		foreach (string nextIndex in nextIndexes)
-		{
-			if (nextIndex.Contains("E"))
-			{
-				int endingIndex = Int32.Parse(nextIndex.Substring(1)) - 1;
-				data.endingIndexes.Enqueue(endingIndex);
-			}
-			else if (nextIndex.Contains("V-R"))
-			{
-				data.nextVoteIndex = Int32.Parse(nextIndex.Substring(3)) - 1;
-			}
-			else
-			{
-				data.nextVoteIndex = Int32.Parse(nextIndex.Substring(1)) - 1;
-				//Debug.Log(data.nextVoteIndex);
-			}
-		}
-	}
-
-	private static VoteData GenerateVoteData(List<string> column)
-	{
-		VoteData data = new VoteData();
-		data.id = Int32.Parse(column[0].Substring(1));
-		data.day = Int32.Parse(column[1]);
-		data.voteTopic = column[2];
-		data.isAgree = -1;
-
-		VoteDetailData agree = new VoteDetailData();
-		SetNextVoteIndex(column[7], ref agree);
-		agree.economy = column[10].Equals("") ? 0 : Int32.Parse(column[10]);
-		agree.political = column[11].Equals("") ? 0 : Int32.Parse(column[11]);
-		agree.mechanic = column[12].Equals("") ? 0 : Int32.Parse(column[12]);
-		agree.action = column[16].StartsWith("E") ? Int32.Parse(column[16].Substring(1, column[16].IndexOf(":")-1)) : 0;
-
-		VoteDetailData disagree = new VoteDetailData();
-		SetNextVoteIndex(column[8], ref disagree);
-		disagree.economy = column[13].Equals("") ? 0 : Int32.Parse(column[13]);
-		disagree.political = column[14].Equals("") ? 0 : Int32.Parse(column[14]);
-		disagree.mechanic = column[15].Equals("") ? 0 : Int32.Parse(column[15]);
-		disagree.action = column[17].StartsWith("E") ? Int32.Parse(column[17].Substring(1, column[17].IndexOf(":")-1)) : 0;
-
-		VoteDetailData abstention = disagree;
-		bool peoplesChoice = column[9].CompareTo("예").Equals(0) ? true : false;
-		if (peoplesChoice)
-			abstention = agree;
-
-		data.agree = agree;
-		data.disagree = disagree;
-		data.abstention = abstention;
-
-		return data;
+		_current = new Vote(1);
 	}
 
 	public static void NextDay()
 	{
-		_beforIndex = _currentIndex;				
+		if (_current.selection == VoteSelection.NotYet)
+			Vote(VoteSelection.Abstention); // 자동 기권
 
-		string state = "?";
-		if (_voteDatas[_currentIndex].isAgree.Equals(-1))
+		var voteData = Database<VoteData>.instance.Find(_current.id);
+		var result = voteData.agree;
+		string state = "예";
+		if (_current.selection == VoteSelection.Abstention)
 		{
 			state = "기권";
-			_currentIndex = _voteDatas[_currentIndex].abstention.nextVoteIndex;
-			MyStatus.instance.economy.value += _voteDatas[_currentIndex].abstention.economy;
-			MyStatus.instance.political.value += _voteDatas[_currentIndex].abstention.political;
-			MyStatus.instance.mechanic.value += _voteDatas[_currentIndex].abstention.mechanic;
-			++_abstentionCount;
-			CheckEnding(_voteDatas[_beforIndex].abstention);
+			result = voteData.abstention;
 		}
-		else if (_voteDatas[_currentIndex].isAgree.Equals(1))
-		{
-			state = "예";
-			_currentIndex = _voteDatas[_currentIndex].agree.nextVoteIndex;
-			MyStatus.instance.economy.value += _voteDatas[_currentIndex].agree.economy;
-			MyStatus.instance.political.value += _voteDatas[_currentIndex].agree.political;
-			MyStatus.instance.mechanic.value += _voteDatas[_currentIndex].agree.mechanic;
-			CheckEnding(_voteDatas[_beforIndex].agree);
-		}
-		else if (_voteDatas[_currentIndex].isAgree.Equals(0))
+		else if (_current.selection == VoteSelection.Decline)
 		{
 			state = "아니오";
-			_currentIndex = _voteDatas[_currentIndex].disagree.nextVoteIndex;
-			MyStatus.instance.economy.value += _voteDatas[_currentIndex].disagree.economy;
-			MyStatus.instance.political.value += _voteDatas[_currentIndex].disagree.political;
-			MyStatus.instance.mechanic.value += _voteDatas[_currentIndex].disagree.mechanic;
-			CheckEnding(_voteDatas[_beforIndex].disagree);
+			result = voteData.disagree;
 		}
+<<<<<<< HEAD
 		Debug.Log("이전 투표 결과: " + state + " | BefoeIndex: " + _beforIndex + " | CurrentIdex: " + _currentIndex);
 	}
+=======
 
-	public static void Vote(int agree)
-	{
-		VoteData temp = _voteDatas[_currentIndex];
-		temp.isAgree = agree;
-		_voteDatas[_currentIndex] = temp;
+		if (_current.selection == VoteSelection.Abstention)
+			_abstentionCount++;
+		else
+			_abstentionCount = 0;
+
+		MyStatus.instance.economy.value += result.economy;
+		MyStatus.instance.political.value += result.political;
+		MyStatus.instance.mechanic.value += result.mechanic;
+>>>>>>> 642395c0ef0a92c8fef77011e94f601c2cf6a730
+
+		// add to history
+		_history.Add(_current);
+
+		// next vote
+		_current = new Vote(result.nextVote);
+
+		Debug.Log("이전 투표 결과: " + state + " | BI: " + _history.Last().id + " | CI: " + _current.id);
 	}
 
-	private static void CheckEnding(VoteDetailData data)
+	public static void Vote(VoteSelection choice)
 	{
-		if (data.endingIndexes == null)
-		{
-			if (MyStatus.instance.health.value.Equals(0)) 
-			{
-				MyStatus.instance.endingIndex.value = 0;
-				SceneManager.LoadScene("EndingScene");
-			}
-			else if (_abstentionCount.Equals(3))
-			{
-				MyStatus.instance.endingIndex.value = 1;
-				SceneManager.LoadScene("EndingScene");
-			}
-			else if (MyStatus.instance.money.value >= 30)
-			{
-				MyStatus.instance.endingIndex.value = 19;
-				SceneManager.LoadScene("EndingScene");
-			}
-			return;
-		}
-
-		foreach (int index in data.endingIndexes)
-		{
-			string codition = _endingCodition[index];
-			if (IsEnding(codition))
-			{
-				MyStatus.instance.endingIndex.value = index;
-				SceneManager.LoadScene("EndingScene");
-			}
-		}
-	}
-
-	private static bool IsEnding(string codition)
-	{
-		string[] coditions = codition.Split('&');
-		bool returnValue = CheckCodition(coditions[0]);
-
-		if (coditions.Length.Equals(1))
-			return returnValue;
-
-		for (int i = 1; i < coditions.Length; ++i)
-		{
-			if (!returnValue)
-				break;
-			returnValue = returnValue && CheckCodition(coditions[i]);
-		}
-		return returnValue;
-	}
-
-	private static bool CheckCodition(string codition)
-	{
-		bool returnValue = false;
-		string[] value = codition.Split('-');
-		switch(value[0])
-		{
-			// case "Health": // 투표 결과에 영향을 받지 않는 엔딩은 바로 수행
-			// 	if (MyStatus.instance.health.value.Equals(Int32.Parse(value[1]))) 
-			// 	{
-			// 		MyStatus.instance.endingIndex.value = 0;
-			// 		SceneManager.LoadScene("EndingScene");
-			// 	}
-			// 	break;
-
-			// case "Abstention": // 투표 결과에 영향을 받지 않는 엔딩은 바로 수행
-			// 	if (_abstentionCount.Equals(Int32.Parse(value[1])))
-			// 	{
-			// 		MyStatus.instance.endingIndex.value = 1;
-			// 		SceneManager.LoadScene("EndingScene");
-			// 	}
-			// 	break;
-
-			// case "Money": // 투표 결과에 영향을 받지 않는 엔딩은 바로 수행
-			// 	if (MyStatus.instance.money.value.Equals(Int32.Parse(value[1])))
-			// 	{
-			// 		MyStatus.instance.endingIndex.value = 19;
-			// 		SceneManager.LoadScene("EndingScene");
-			// 	}
-			// 	break;
-
-			case "자유주의": // 나중에 자유주의, 사회주의등 가장 높은 수치 반환하는 함수 만들기
-				break;
-
-			case "사회주의":
-				break;
-
-			default:
-				int index = Int32.Parse(value[0].Substring(1)) - 1;
-				if (value[1].Equals("YES"))
-				{
-					returnValue = _voteDatas[index].agree.Equals(1) ? true : false;
-				}
-				else if (value[1].Equals("NO"))
-				{
-					returnValue = _voteDatas[index].agree.Equals(0) ? true : false;
-				}
-				break;
-		}
-		return returnValue;
+		_current.selection = choice;
 	}
 }

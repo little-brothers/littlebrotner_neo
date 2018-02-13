@@ -23,11 +23,21 @@ public class RoomSwitcher : MonoBehaviour {
 	[SerializeField]
 	Button rightButton;
 
+	[SerializeField]
+	Tooltip tooltip;
+
+
+
+
 	// Use this for initialization
 	void Start () {
+
+		//updateButtonInteractable();
+		//updateButtonInteractable();
 		GetComponent<SpriteRenderer>().sortingOrder = 1; // 항상 최상위에 표시됨
 		Debug.Assert(transform.childCount != 0);
 		setRoomIdx(startIndex);
+
 
 		// turn off all rooms
 		for (int i=0; i<transform.childCount; ++i)
@@ -35,6 +45,7 @@ public class RoomSwitcher : MonoBehaviour {
 			var room = transform.GetChild(i);
 			room.gameObject.SetActive(false);
 		}
+
 
 		leftButton.onClick.AddListener(() => {
 			setRoomIdx(_index-1);
@@ -51,6 +62,26 @@ public class RoomSwitcher : MonoBehaviour {
 	{
 		leftButton.interactable = _index > 0;
 		rightButton.interactable = _index < transform.childCount-1;
+	}
+
+	void ShowPendingNotis()
+	{
+		var notis = MyStatus.instance.GetAndClearNotifications();
+
+		// temp
+		// StartCoroutine(ShowPendingNotisInternal(notis));
+	}
+
+	IEnumerator ShowPendingNotisInternal(List<Notification> notis)
+	{
+		if (notis == null)
+			yield break;
+
+		foreach (var noti in notis)
+		{
+			var box = Chatbox.Show(noti.text);
+			while (box) yield return null;
+		}
 	}
 	
 	public void setRoomIdx(int idx, OnSceneNeedsChange OnSceneChange = null)
@@ -81,6 +112,9 @@ public class RoomSwitcher : MonoBehaviour {
 		if (_reservedChangeEvent != null) {
 			_reservedChangeEvent();
 		}
+
+		if (tooltip != null)
+			tooltip.Hide();
 	}
 
 	IEnumerator fadeInOut(float duration, int scene)

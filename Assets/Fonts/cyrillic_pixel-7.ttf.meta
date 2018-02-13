@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a17bfc19960074b099e39c26642244f1
+timeCreated: 1518101330
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cyrillic Pixel-7
+  fontNames:
+  - Cyrillic Pixel-7
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

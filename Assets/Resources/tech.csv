@@ -1,0 +1,16 @@
+,이름,name,,,정보,,(개발자용 설명),조건,기능
+T1,환경적응, Adaptation,환경,Environment ,각 종족이 유토피아에 적응하고 살 수 있도록 하는 기술 ,Technology for adapting and living each race in <The Utopia>.,,,
+T2,우주항공,Space engineering,우주,Galaxy,"우주정거장 건설, 향상된 은하 탐사 능력 ",Building a space station to explore galaxies. ,처음 과학 예산 투자,V9:YES,
+T3,식량기술,Food technology,환경,Environment,척박한 환경에서의 식량 수확량 증가,Increasing harvest from barren ground,처음 과학 예산 투자,V9:NO,체력회복이 더 높은 식량 개발됨
+T4,전기 유동화,Power exchange system,전기 ,Power,"쓰지 않은 전기는 회수하고, 부족한 전기는 보충함",Exchanging power system between dump power and under power,전기를 세금으로 걷는 기술,V17:YES,"하루 중 전기를 쓰지 않으면 회수, 모두 다쓰면 다음날 +1 증가"
+T5,방어 시스템,Defense system,환경,Environment ,외부 공격과 재난으로부터 주거지 방어율을 높임,Increase probability of residence defense against external attack and disaster,재난을 겪고나서 돈을 모아 투자,V19:YES,
+T6,생체 의료,Biomedical science,의료,Medical science,생명체의 회복능력을 향상시키는 기술,Technology to improve the recovery ability of lives,두번째 과학 예산 투자,V21:YES,침대 업그레이드 추가됨
+T7,로봇 기술,Robotics,로봇,Robot,생명체를 보조하는 기계를 만드는 공학,Engineering of developing assistence machines for lives,두번째 과학 예산 투자,V21:NO,
+T8,개별 생체 데이터,Bio-data digitalization,의료,Medical science,각 생명체의 생체 데이터를 디지털화 하는 기술,Digitalizing for the bio-data from biochip of each life.,생체기술발전,V23:YES,
+T9,민간 로봇 기술,Popularization of robotics,로봇,Robot,자유롭게 생각하고 의지를 가지는 로봇 기술,Robotics with free will and critical thinking.,로봇기술을 민간에 허용,V24:YES,로봇 개발 업무 추가
+T10,재난 복구 시스템,Disaster recovery system,환경,Environment,전기를 금화로 바꿀 수 있는 기술,Technology that can convert power into money,전염병에 대처함,V30:YES,돈이 0이 될 경우 돈 3개 제공
+T11,전염병 치료제,Developing Medicine Kit,의료,Medical science,치료제 키트 개발 기술,Developing Medicine kit for infectious diseases ,전염병에 대처함,V32:YES,백신 아이템 추가됨
+T12,우주방어 시스템,Protecting <Utopia> system,우주,Galaxy,"유토피아 외부의 소행성, 침략자 등으로부터 보호하는 기술","Technology to protect the utopia from external asteroids, invaders, etc.",남는 돈으로 방어 기관지음,V34:YES,
+T13,생체실험 ,Medical experiment,의료,Medical science,생명체의 수술과 개조를 허가하여 의료 기술을 향상시킴,Improving medical skills by permitting the operation and modification of lives,전염병에 대처함,V35:YES,
+T14,전력공급 발전소,Power Generator,전기,Power,개인에게 전기를 1개씩 공급하는 기술,Technology to supply power one by one to an individual citizen,전기를 공급하는 기술,V37:YES,전기를 매일 1개씩 제공
+T15,흡수식 대량 채굴,Absorption-mining technology,우주,Galaxy,웜홀을 통해 다른 별을 파괴-자원화시켜 가져오는 기술,Technology to steal resources from other planets through wormholes,뱀 종족이 가지고 있던 기술이다.,V43:YES,

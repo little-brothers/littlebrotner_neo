@@ -25,9 +25,14 @@ public class MainControl : MonoBehaviour {
 		}
 	}
 
+
+
+
 	public void PressStart()
 	{
-		SceneManager.LoadScene("GameScene");
+		SceneManager.LoadScene("IntroScene");
+		GameObject.Find("Soundmanager").GetComponent<Soundmanager> ().IntroPlay ();
+		Debug.Log ("START");
 	}
 
 	public void PressAlbum()

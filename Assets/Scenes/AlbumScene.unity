@@ -504,6 +504,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5b029e6011c484ea0a2900247deeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startIndex: 1
+  loop: 0
+  leftButton: {fileID: 557790295}
+  rightButton: {fileID: 392816737}
 --- !u!4 &291604166
 Transform:
   m_ObjectHideFlags: 0
@@ -912,7 +916,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0.47794116, b: 0.47794116, a: 0.39215687}
     m_HighlightedColor: {r: 0.7058823, g: 0.20761243, b: 0.20761243, a: 0.78431374}
     m_PressedColor: {r: 0.3897059, g: 0.09456099, b: 0.09456099, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -928,18 +932,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 392816735}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 291604165}
-        m_MethodName: nextRoom
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &530116165
@@ -1191,7 +1184,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0.47794116, b: 0.47794116, a: 0.39215687}
     m_HighlightedColor: {r: 0.7058823, g: 0.20761243, b: 0.20761243, a: 0.78431374}
     m_PressedColor: {r: 0.3897059, g: 0.09456099, b: 0.09456099, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1207,18 +1200,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 557790293}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 291604165}
-        m_MethodName: prevRoom
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &558584914

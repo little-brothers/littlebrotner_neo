@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,25 +22,59 @@ public class TV08 : MonoBehaviour {
 		ShowRandomPeople();
 	}
 
+	int rangeInt(System.Random rand, int min, int max) {
+		if (max < min)
+		{
+			int temp = min;
+			min = max;
+			max = temp;
+		}
+
+		int size = max - min;
+		if (size == 0)
+			return min;
+
+		return (int)(rand.NextDouble()*(double)size + (double)min);
+	}
+
+	float range(System.Random rand, float min, float max) {
+		if (max < min)
+		{
+			float temp = min;
+			min = max;
+			max = temp;
+		}
+
+		float size = max - min;
+		if (size < float.Epsilon)
+			return min;
+
+		float value = (float)rand.NextDouble();
+		return value*size + min;
+	}
+
 	private void ShowRandomPeople()
 	{
+		// use instanced random to constant result
+		// seed changes by day
+		var rand = new System.Random(MyStatus.instance.day);
 		int currentRace = 0;
-		AddRandomRaceValue();
+		AddRandomRaceValue(rand);
 		SetThoughtValue();
 		for (int i = 0; i < _raceAppearCount.Length; ++i)
 		{
 			for (int j = 0; j < _raceAppearCount[i]; ++j)
 			{
-				int index = GetRandomIndex();
+				int index = GetRandomIndex(rand);
 				_peoples[index].sprite = _sprites[currentRace];
 				_peoples[index].color = Color.red;
 				if (_movePeoples > 0)
 				{
 					Vector3 pos = _peoples[index].transform.localPosition;
-					float x = Random.Range(-3, 4);
-					float y = Random.Range(-5, 6);
+					float x = range(rand, -3, 4);
+					float y = range(rand, -5, 6);
 					pos.x += x; pos.y += y;
-					_peoples[index].color = Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f, 1f, 1f);
+					_peoples[index].color = Color.HSVToRGB(range(rand, 0f, 1f), 1, 1);
 					_peoples[index].transform.localPosition = pos;
 					--_movePeoples;
 				}
@@ -48,11 +83,11 @@ public class TV08 : MonoBehaviour {
 		}
 	}
 
-	private void AddRandomRaceValue()
+	private void AddRandomRaceValue(System.Random rand)
 	{
 		int availbleCount = 6;
-		_isRobotAppear = VoteManager.voteDatas[23].isAgree.Equals(1) ? true : false;
-		_isSnakeAppear = VoteManager.voteDatas[42].isAgree.Equals(1) ? true : false;
+		_isRobotAppear = MyStatus.Check("V24:YES");
+		_isSnakeAppear = MyStatus.Check("V43:YES");
 		_raceAppearCount = new int[] {3, 3, 3, 3, 3, 3, 0, 0};
 
 		if (_isRobotAppear)
@@ -67,7 +102,7 @@ public class TV08 : MonoBehaviour {
 
 		while (availbleCount > 0)
 		{
-			int index = Random.Range(0, _raceAppearCount.Length);
+			int index = rangeInt(rand, 0, _raceAppearCount.Length);
 			if (_raceAppearCount[index] < 5 && !_raceAppearCount[index].Equals(0))
 			{
 				--availbleCount;
@@ -76,11 +111,11 @@ public class TV08 : MonoBehaviour {
 		}
 	}
 
-	private int GetRandomIndex()
+	private int GetRandomIndex(System.Random rand)
 	{
 		while (true)
 		{
-			int index = Random.Range(0, _peoples.Length);
+			int index = rangeInt(rand, 0, _peoples.Length);
 			if (_peoples[index].sprite == null)
 				return index;
 		}

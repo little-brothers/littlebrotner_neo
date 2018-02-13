@@ -4,13 +4,29 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TV07 : MonoBehaviour {
+[AssetPath("history")]
+struct History : IDatabaseRow
+{
+	public int id;
+	public string sprites;
+	public string script;
 
-	struct History
+    int IDatabaseRow.ID
 	{
-		public string sprites;
-		public string script;
+		get { return id; }
 	}
+
+    bool IDatabaseRow.Parse(List<string> row)
+    {
+		id = int.Parse(row[0].Substring(1));
+		sprites = row[2];
+		script = row[3];
+
+		return true;
+    }
+}
+
+public class TV07 : MonoBehaviour {
 
 	[SerializeField]
 	private Transform _gridParent;
@@ -18,49 +34,14 @@ public class TV07 : MonoBehaviour {
 	[SerializeField]
 	private Text _script;
 
-	private static List<History> _historyDatas = null;
-
-	private void Awake()
-	{
-		LoadHistoryData();
-	}
-
 	private void Start()
 	{
 		SetData();
 	}
 
-	private void LoadHistoryData()
-	{
-		if (_historyDatas != null)
-			return;
-
-		_historyDatas = new List<History>();
-		TextAsset csv = Resources.Load("history") as TextAsset;
-		using (var streamReader = new StreamReader(new MemoryStream(csv.bytes)))
-		{
-			using (var reader = new Mono.Csv.CsvFileReader(streamReader))
-			{
-				var stringArray = new List<List<string>>();
-				reader.ReadAll(stringArray);
-				stringArray.RemoveAt(0);
-
-				//Index 2: 이미지
-				//Index 3: 스크립트
-				foreach(List<string> column in stringArray)
-				{
-					History data = new History();
-					data.sprites = column[2];
-					data.script = column[3];
-					_historyDatas.Add(data);
-				}
-			}
-		}
-	}
-
 	private void SetData()
 	{
-		History history = _historyDatas[VoteManager.currentVote.id - 1];
+		History history = Database<History>.instance.Find(MyStatus.instance.day);
 		string[] sprites = history.sprites.Split('/');
 		for (int i = 0; i < sprites.Length; ++i)
 		{

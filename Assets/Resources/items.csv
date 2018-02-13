@@ -9,7 +9,7 @@ I7,치료제 키트 ,Medicine Kit,병 치료,Treatment a disease,G:5,판매,치�
 I8,돈 ,Money,전기 당 돈 2로 교환,You can exchange 1 block of electricity for 2 blocks of money,E:1,판매,돈+2,V30:YES,T10,
 I9,로봇 ,Robot,로봇은 매일 일하고 돈을 벌 수 있습니다. ,Robot can work and earn money for you daily.,G:8,설치형,,V24:YES,T9,매일 돈+1
 I10,레이저 건 ,Laser gun,이것으로 사냥을 할 수 있다,You can hunt with it,G:5,설치형,,V11:YES,,사냥 업무 가능
-I11,집 수리,Repairing a house,모래 폭풍에 의해 파괴된 집을 수리한다.,Repair the house destroyed by sandstorms.,G:7,설치형,,V18,,집 상태를 회복
+I11,집 수리,Repairing a house,모래 폭풍에 의해 파괴된 집을 수리한다.,Repair the house destroyed by sandstorms.,G:7,설치형,,sandstorm,,집 상태를 회복
 I12,자가 발전기 ,Self running generator,전기를 매일 1증가 시킨다.,Increases power by 1 block per a day.,G:10,설치형,,V37:YES,,매일 전기+1
 ,,,,,,,,,,
 ,,,,,,,,,,

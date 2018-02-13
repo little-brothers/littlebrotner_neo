@@ -197,6 +197,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02b6a648d7aa4b249fe297bb2c8ebb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  workIcons:
+  - {fileID: 21300000, guid: 2c816bfa160ae4f768e111f9537add64, type: 3}
+  - {fileID: 21300000, guid: a0615018510c148bdbc428bafad49d67, type: 3}
+  - {fileID: 21300000, guid: 6dc8e8214112146e5a3c91f456db926a, type: 3}
+  - {fileID: 21300000, guid: e22cfbb183482451087b28fe1a2f2959, type: 3}
+  - {fileID: 21300000, guid: 59bb2e7c6711c4ebd961d3a85665056b, type: 3}
+  - {fileID: 21300000, guid: 5c06807f2a35146a3a89dc5722478517, type: 3}
+  - {fileID: 21300000, guid: e7dd593aa06104003bdb42774069f168, type: 3}
 --- !u!114 &114551085149123424
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,6 +10,15 @@ public class EnergyManager : MonoBehaviour {
 	[SerializeField]
 	SpriteRenderer notEnoughEnergy;
 
+	[SerializeField]
+	Sprite energyFilled; // 현재 사용 가능한 에너지 표시
+
+	[SerializeField]
+	Sprite energyWillFilled; // 다음날 충전될 에너지 표시
+
+	public AudioClip sound;
+	public AudioSource soundFx;
+
 	List<SpriteRenderer> _energys = new List<SpriteRenderer>();
 
 	// Use this for initialization
@@ -28,6 +37,7 @@ public class EnergyManager : MonoBehaviour {
 		}
 
 		MyStatus.instance.energy.OnUpdate += updateEnergyStatus;
+		MyStatus.instance.energyCharge.OnUpdate += _ => updateEnergyStatus(MyStatus.instance.energy);
 		updateEnergyStatus(MyStatus.instance.energy);
 	}
 
@@ -40,6 +50,7 @@ public class EnergyManager : MonoBehaviour {
 	{
 		if (MyStatus.instance.energy == 0) {
 			GetComponent<Animation>().Play(PlayMode.StopAll);
+			soundFx.PlayOneShot (sound);
 			return false;
 		}
 
@@ -52,7 +63,15 @@ public class EnergyManager : MonoBehaviour {
 		for (int i = 0; i < _energys.Count; ++i)
 		{
 			var child = _energys[i];
-			child.gameObject.SetActive(i < energy);
+			if (i < energy) {
+				child.sprite = energyFilled;
+				child.color = Color.white;
+			} else if (i < energy + MyStatus.instance.energyCharge) {
+				child.sprite = energyWillFilled;
+				child.color = new Color32(69, 255, 194, 120);
+			} else {
+				child.sprite = null;
+			}
 		}
 	}
 }

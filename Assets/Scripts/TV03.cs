@@ -71,11 +71,7 @@ public class TV03 : MonoBehaviour, ISubscribe {
 
 				// 일반 아이템
 				default:
-					// 설치형 아이템은 하나만 넣어줌
-					if (!item.installable || !MyStatus.instance.inventory.HasItem(item.id)) {
-						MyStatus.instance.inventory.Put(item);
-					}
-
+					MyStatus.instance.inventory.Put(item);
 					break;
 				}
 			});

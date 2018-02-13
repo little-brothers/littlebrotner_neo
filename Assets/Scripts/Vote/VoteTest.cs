@@ -15,14 +15,14 @@ public class VoteTest : MonoBehaviour {
 	private Text _index;
 
 	void Start () {
-		VoteManager.Initialize("vote");
+		VoteManager.Initialize();
 		ShowVote();
 	}
 	
 	// 투표 내용을 띄워줌
 	public void ShowVote()
 	{
-		VoteData data = VoteManager.currentVote;
+		VoteData data = Database<VoteData>.instance.Find(VoteManager.currentVote.id);
 		_day.text = data.day.ToString();
 		_topic.text = data.voteTopic;
 	}
@@ -37,12 +37,12 @@ public class VoteTest : MonoBehaviour {
 	// 투표 동의
 	public void Yes()
 	{
-		VoteManager.Vote(1);
+		VoteManager.Vote(VoteSelection.Accept);
 	}
 
 	// 투표 반대
 	public void No()
 	{
-		VoteManager.Vote(0);
+		VoteManager.Vote(VoteSelection.Decline);
 	}
 }

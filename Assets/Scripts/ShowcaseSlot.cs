@@ -18,10 +18,14 @@ public class ShowcaseSlot : MonoBehaviour, IPointerClickHandler {
 			_item = value;
 
 			SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+			BoxCollider2D collider = GetComponent<BoxCollider2D>();
 			if (item == null) {
 				renderer.sprite = null;
+				collider.enabled = false;
 				return;
 			}
+
+			collider.enabled = true;
 
 			int spriteIdx = -1;
 			switch (item.id) {
@@ -46,4 +50,18 @@ public class ShowcaseSlot : MonoBehaviour, IPointerClickHandler {
 
 		OnSlotSelected(item);
     }
+
+	public void ShowTooltip(Tooltip tooltip)
+	{
+		tooltip.Hide(); // hack
+		if (item != null)
+			tooltip.Show(item.name);
+	}
+
+	public void HideTooltip(Tooltip tooltip)
+	{
+		tooltip.Hide();
+		tooltip.Show("Cabinet"); // hack
+	}
+
 }
