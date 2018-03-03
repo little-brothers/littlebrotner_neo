@@ -17,8 +17,11 @@ public class Bed : MonoBehaviour, IPointerDownHandler {
 	}
 
 	void applyEvent9(Vote vote, MyStatus.Snapshot status, List<Notification> noti) {
-		MyStatus.instance.money.value -= 1;
-		MyStatus.instance.energy.value += 1;
+		if (MyStatus.instance.money > 0)
+		{
+			MyStatus.instance.money.value -= 1;
+			MyStatus.instance.energy.value += 1;
+		}
 	}
 
 	void Start() {
@@ -52,7 +55,7 @@ public class Bed : MonoBehaviour, IPointerDownHandler {
 				break;
 
 			case 3:
-				MyStatus.instance.money.value -= 3;
+				MyStatus.instance.money.value = Mathf.Max(0, MyStatus.instance.money - 3);
 				break;
 
 			case 4:
