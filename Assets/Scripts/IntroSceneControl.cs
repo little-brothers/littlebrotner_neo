@@ -69,11 +69,11 @@ public class IntroSceneControl : MonoBehaviour {
 
 	public void ShowScript()
 	{
-		if (_waitScriptHandle != null)
-			StopCoroutine(_waitScriptHandle);
-
 		if (_scriptBox != null)
 			GameObject.Destroy(_scriptBox.gameObject);
+
+		if (_waitScriptHandle != null)
+			StopCoroutine(_waitScriptHandle);
 
 		_waitScriptHandle = ShowScriptInternal();
 		StartCoroutine(_waitScriptHandle);
@@ -101,6 +101,10 @@ public class IntroSceneControl : MonoBehaviour {
 
 	public void PressSkip()
 	{
+		// 페이드 애니메이션 중에는 재생하지 않음
+		if (GetComponent<Animation>().isPlaying)
+			return;
+
 		_current = sequence.Count-1;
 		TriggerFadeout();
 	}
