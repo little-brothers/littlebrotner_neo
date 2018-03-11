@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -63,6 +64,9 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 	Alarm _defaultAlarm;
 
 	//GameObject _noti;
+
+	// for 03 screen
+	List<Item> productCache = new List<Item>();
 
 	bool _watched = false;
 	public bool watched {
@@ -146,6 +150,34 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 			break;
 
 		case 3:
+			SetAlarmType(AlarmNoti);
+
+			MyStatus.DataUpdateNotifier<int>.DataUpdatedEvent checkProducts = day => {
+				bool hasNew = false;
+				var prevProducts = productCache;
+				var nowProducts = TV03.availableItems.ToList();
+
+				foreach (var product in nowProducts)
+				{
+					int idx = prevProducts.FindIndex(p => p.id == product.id);
+					if (idx < 0)
+					{
+						hasNew = true;
+						break;
+					}
+				}
+
+				if (hasNew)
+				{
+					_eventDay = day;
+					UpdateAlarm(day);
+				}
+
+				productCache = nowProducts;
+			};
+
+			MyStatus.instance.day.OnUpdate += checkProducts;
+			checkProducts(MyStatus.instance.day);
 			break;
 
 		case 5:
@@ -160,7 +192,7 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 			MyStatus.instance.day.OnUpdate += checkVote;
 
 			// 기본으로 하나 표시해줌
-			checkVote(1);
+			checkVote(MyStatus.instance.day);
 			break;
 
 		case 7:
@@ -177,7 +209,7 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 			MyStatus.instance.day.OnUpdate += checkHisotry;
 
 			// 처음에도 한번 체크
-			checkHisotry(1);
+			checkHisotry(MyStatus.instance.day);
 			break;
 
 		case 8:

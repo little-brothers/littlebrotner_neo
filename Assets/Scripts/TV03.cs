@@ -11,6 +11,23 @@ public class TV03 : MonoBehaviour, ISubscribe {
 	[SerializeField]
 	VerticalLayoutGroup list;
 
+	public static IEnumerable<Item> availableItems 
+	{
+		get {
+			return Database<Item>.instance.ToList().Where(byVisibility);
+		}
+	}
+
+	static bool byVisibility(Item item)
+	{
+		foreach(var condition in item.showConditions) {
+			if (!MyStatus.Check(condition))
+				return false;
+		}
+
+		return true;
+	}
+
 	void Start () {
 		Utilities.SetUIParentFit(GameObject.FindGameObjectWithTag("RootCanvas"), gameObject);
 
@@ -19,7 +36,6 @@ public class TV03 : MonoBehaviour, ISubscribe {
 		updateMoney(MyStatus.instance.money);
 
 		var listElemTmpl = Resources.Load<GameObject>("ShopListElement");
-		var availableItems = Database<Item>.instance.ToList().Where(byVisibility);
 		foreach (var item in availableItems)
 		{
 			var elem = GameObject.Instantiate(listElemTmpl, list.transform).GetComponent<ShopListElement>();
@@ -31,16 +47,6 @@ public class TV03 : MonoBehaviour, ISubscribe {
 	void OnDestroy()
 	{
 		MyStatus.instance.money.OnUpdate -= updateMoney;
-	}
-
-	bool byVisibility(Item item)
-	{
-		foreach(var condition in item.showConditions) {
-			if (!MyStatus.Check(condition))
-				return false;
-		}
-
-		return true;
 	}
 
 	void OnItemSelected(Item item)
