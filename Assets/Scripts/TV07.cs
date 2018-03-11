@@ -42,15 +42,22 @@ public class TV07 : MonoBehaviour {
 	private void SetData()
 	{
 		History history = Database<History>.instance.Find(MyStatus.instance.day);
-		string[] sprites = history.sprites.Split('/');
-		for (int i = 0; i < sprites.Length; ++i)
+
+		// races
+		if (history.sprites.Trim().Length != 0)
 		{
-			GameObject temp = new GameObject();
-			temp.transform.parent = _gridParent;
-			temp.transform.localScale = Vector3.one;
-			Image image = temp.AddComponent<Image>();
-			image.sprite = Resources.Load<Sprite>("TV07/" + sprites[i]);
+			string[] sprites = history.sprites.Split('/');
+			for (int i = 0; i < sprites.Length; ++i)
+			{
+				GameObject temp = new GameObject();
+				temp.transform.parent = _gridParent;
+				temp.transform.localScale = Vector3.one;
+				Image image = temp.AddComponent<Image>();
+				image.sprite = Resources.Load<Sprite>("TV07/" + sprites[i]);
+			}
 		}
+
+		// script
 		_script.text = history.script;
 	}
 }
