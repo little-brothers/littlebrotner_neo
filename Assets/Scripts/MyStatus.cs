@@ -109,6 +109,10 @@ public class MyStatus {
 				recovery -= 30;
 			}
 
+			if(hunger>=3){
+				recovery -=50;
+			}
+
 			if (inventory.HasItem(5)) {
 				recovery += 2;
 			}
