@@ -120,6 +120,12 @@ public class MyStatus {
 			health.value = Mathf.Clamp(health + recovery, 0, MaxHealth);
 		});
 
+		// 배고픔은 항상 증가
+		// 음식을 먹으면 -1이 되기 때문에 이 시점에서 다음날 배고픔이 0이 된다
+		AddSleepHook((vote, status, noti) => {
+			hunger.value++;
+		});
+
 		// 기술 확인
 		AddSleepHook((vote, status, noti) => {
 			var newlyDeveloped = Database<Technology>.instance.ToList()
@@ -408,6 +414,7 @@ public class MyStatus {
 
 	// 그 이외
 	public DataUpdateNotifier<int> health = new DataUpdateNotifier<int>(MaxHealth); // 건강, 잠잘 때 0이 되면 게임오버
+	public DataUpdateNotifier<int> hunger = new DataUpdateNotifier<int>(0); // 배고픔, -1이면 그날 음식을 섭취한 것임
 	public DataUpdateNotifier<bool> sick = new DataUpdateNotifier<bool>(false); // 아픈가?
 	public DataUpdateNotifier<bool> homeDestroyed = new DataUpdateNotifier<bool>(false); // 집에 문제가 생겼는가?
 	public DataUpdateNotifier<bool> plague = new DataUpdateNotifier<bool>(false); // 전염병
