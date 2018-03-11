@@ -1618,7 +1618,7 @@ Prefab:
         type: 2}
       propertyPath: background_image
       value: 
-      objectReference: {fileID: 21300000, guid: 72e5a6b17c215423b863fd3f77c2f78b,
+      objectReference: {fileID: 21300000, guid: 765941c02d3514e169f6bb25f7b7fd62,
         type: 3}
     - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
         type: 2}
@@ -1630,7 +1630,7 @@ Prefab:
         type: 2}
       propertyPath: symbol_image
       value: 
-      objectReference: {fileID: 21300000, guid: c75868df7caf549dcab9a6b3c5fb7a52,
+      objectReference: {fileID: 21300000, guid: c7d8e89bba8f44dfeb8fa7e753489e51,
         type: 3}
     - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
         type: 2}
@@ -2090,6 +2090,24 @@ Prefab:
       propertyPath: id
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
+        type: 2}
+      propertyPath: background_image
+      value: 
+      objectReference: {fileID: 21300000, guid: 72e5a6b17c215423b863fd3f77c2f78b,
+        type: 3}
+    - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
+        type: 2}
+      propertyPath: effect_image
+      value: 
+      objectReference: {fileID: 21300000, guid: 82705d5a808fa40ffb0d5064de1f9b6b,
+        type: 3}
+    - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
+        type: 2}
+      propertyPath: symbol_image
+      value: 
+      objectReference: {fileID: 21300000, guid: c75868df7caf549dcab9a6b3c5fb7a52,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b29de443114924ac2ba2f4a29476044d, type: 2}
   m_IsPrefabParent: 0
@@ -4317,19 +4335,19 @@ Prefab:
         type: 2}
       propertyPath: background_image
       value: 
-      objectReference: {fileID: 21300000, guid: 555a3a6d8b47a48d082b24727a2792df,
+      objectReference: {fileID: 21300000, guid: 29c20bc51690e413a99d1d291d0deccb,
         type: 3}
     - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
         type: 2}
       propertyPath: effect_image
       value: 
-      objectReference: {fileID: 21300000, guid: 0b37855ea0b42400e953a4c2459e4542,
+      objectReference: {fileID: 21300000, guid: 5ddae3ce8a08046ce85b2dcbdfefb52e,
         type: 3}
     - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
         type: 2}
       propertyPath: symbol_image
       value: 
-      objectReference: {fileID: 21300000, guid: a17a8e5f175d348af936fc9a75c2635d,
+      objectReference: {fileID: 21300000, guid: 4ab853e414606426e9901e1cb39bcd7e,
         type: 3}
     - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
         type: 2}
@@ -6474,19 +6492,19 @@ Prefab:
         type: 2}
       propertyPath: background_image
       value: 
-      objectReference: {fileID: 21300000, guid: 29c20bc51690e413a99d1d291d0deccb,
+      objectReference: {fileID: 21300000, guid: 555a3a6d8b47a48d082b24727a2792df,
         type: 3}
     - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
         type: 2}
       propertyPath: effect_image
       value: 
-      objectReference: {fileID: 21300000, guid: 5ddae3ce8a08046ce85b2dcbdfefb52e,
+      objectReference: {fileID: 21300000, guid: 0b37855ea0b42400e953a4c2459e4542,
         type: 3}
     - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
         type: 2}
       propertyPath: symbol_image
       value: 
-      objectReference: {fileID: 21300000, guid: 4ab853e414606426e9901e1cb39bcd7e,
+      objectReference: {fileID: 21300000, guid: 59f803396f30046399ed4124d79e6cbf,
         type: 3}
     - target: {fileID: 114353976809805828, guid: b29de443114924ac2ba2f4a29476044d,
         type: 2}
