@@ -148,6 +148,20 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		case 3:
 			break;
 
+		case 5:
+			SetAlarmType(AlarmNoti);
+
+			// 기본으로 하나 표시해줌
+			_eventDay = 1;
+			UpdateAlarm(1);
+
+			// 매일매일 표시
+			MyStatus.instance.day.OnUpdate += day => {
+				_eventDay = day;
+				UpdateAlarm(day);
+			};
+			break;
+
 		case 8:
 			SetAlarmType(AlarmWarn);
 			MyStatus.instance.political.OnUpdate += pol => {
