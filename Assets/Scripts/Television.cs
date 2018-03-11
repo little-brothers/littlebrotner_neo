@@ -151,15 +151,33 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		case 5:
 			SetAlarmType(AlarmNoti);
 
-			// 기본으로 하나 표시해줌
-			_eventDay = 1;
-			UpdateAlarm(1);
-
 			// 매일매일 표시
-			MyStatus.instance.day.OnUpdate += day => {
+			MyStatus.DataUpdateNotifier<int>.DataUpdatedEvent checkVote = day => {
 				_eventDay = day;
 				UpdateAlarm(day);
 			};
+
+			MyStatus.instance.day.OnUpdate += checkVote;
+
+			// 기본으로 하나 표시해줌
+			checkVote(1);
+			break;
+
+		case 7:
+			SetAlarmType(AlarmNoti);
+			MyStatus.DataUpdateNotifier<int>.DataUpdatedEvent checkHisotry = day => {
+				History current = Database<History>.instance.Find(day);
+				if (current.script != "")
+				{
+					_eventDay = day;
+					UpdateAlarm(day);
+				}
+			};
+
+			MyStatus.instance.day.OnUpdate += checkHisotry;
+
+			// 처음에도 한번 체크
+			checkHisotry(1);
 			break;
 
 		case 8:
