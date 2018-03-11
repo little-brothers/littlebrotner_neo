@@ -5,24 +5,43 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TV08 : MonoBehaviour {
+	// moving entity
+	struct Person
+	{
+		public Image image;
+		public float activity; // 얼마나 활동적인가?
+		public float speed; // 움직이는 속도는?
+	}
 
-	[SerializeField]
-	private Image[] _peoples;
+	private List<Image> _people;
 
 	[SerializeField]
 	private Sprite[] _sprites;
 
 	private bool _isRobotAppear = false;
 	private bool _isSnakeAppear = false;
-	private int _movePeoples;
 	private int[] _raceAppearCount;
+	private System.Random _rand;
 
 	private void Start ()
 	{
-		ShowRandomPeople();
+		// people initialization
+		_people = new List<Image>();
+		for (int i = 0; i < transform.childCount; ++i)
+		{
+			var img = transform.GetChild(i).GetComponent<Image>();
+			if (img != null)
+				_people.Add(img);
+		}
+
+		// use instanced random to constant result
+		// seed changes by day
+		_rand = new System.Random(MyStatus.instance.day);
+		var movingPeople = ShowRandomPeople();
+		SetupAndPatrolling(movingPeople);
 	}
 
-	int rangeInt(System.Random rand, int min, int max) {
+	int rangeIntWith(System.Random rand, int min, int max) {
 		if (max < min)
 		{
 			int temp = min;
@@ -37,7 +56,13 @@ public class TV08 : MonoBehaviour {
 		return (int)(rand.NextDouble()*(double)size + (double)min);
 	}
 
-	float range(System.Random rand, float min, float max) {
+	int rangeInt(int min, int max)
+	{
+		return rangeIntWith(_rand, min, max);
+	}
+
+	float rangeWith(System.Random rand, float min, float max)
+	{
 		if (max < min)
 		{
 			float temp = min;
@@ -53,37 +78,45 @@ public class TV08 : MonoBehaviour {
 		return value*size + min;
 	}
 
-	private void ShowRandomPeople()
+	float range(float min, float max) {
+		return rangeWith(_rand, min, max);
+	}
+
+	private List<Person> ShowRandomPeople()
 	{
-		// use instanced random to constant result
-		// seed changes by day
-		var rand = new System.Random(MyStatus.instance.day);
 		int currentRace = 0;
-		AddRandomRaceValue(rand);
-		SetThoughtValue();
+		int movePeople = GetThoughtValue();
+		AddRandomRaceValue();
+
+		List<Person> shouldMove = new List<Person>();
 		for (int i = 0; i < _raceAppearCount.Length; ++i)
 		{
 			for (int j = 0; j < _raceAppearCount[i]; ++j)
 			{
-				int index = GetRandomIndex(rand);
-				_peoples[index].sprite = _sprites[currentRace];
-				_peoples[index].color = Color.red;
-				if (_movePeoples > 0)
+				// default: red fixed position
+				int index = GetRandomIndex();
+				_people[index].sprite = _sprites[currentRace];
+				_people[index].color = Color.red;
+
+				if (movePeople > 0)
 				{
-					Vector3 pos = _peoples[index].transform.localPosition;
-					float x = range(rand, -3, 4);
-					float y = range(rand, -5, 6);
-					pos.x += x; pos.y += y;
-					_peoples[index].color = Color.HSVToRGB(range(rand, 0f, 1f), 1, 1);
-					_peoples[index].transform.localPosition = pos;
-					--_movePeoples;
+					shouldMove.Add(new Person{
+						image = _people[index],
+						activity = (float)_rand.NextDouble(),
+						speed = range(0.1f, 2f),
+					});
 				}
+
+				movePeople--;
 			}
+
 			++currentRace;
 		}
+
+		return shouldMove;
 	}
 
-	private void AddRandomRaceValue(System.Random rand)
+	private void AddRandomRaceValue()
 	{
 		int availbleCount = 6;
 		_isRobotAppear = MyStatus.Check("V24:YES");
@@ -102,7 +135,7 @@ public class TV08 : MonoBehaviour {
 
 		while (availbleCount > 0)
 		{
-			int index = rangeInt(rand, 0, _raceAppearCount.Length);
+			int index = rangeInt(0, _raceAppearCount.Length);
 			if (_raceAppearCount[index] < 5 && !_raceAppearCount[index].Equals(0))
 			{
 				--availbleCount;
@@ -111,17 +144,17 @@ public class TV08 : MonoBehaviour {
 		}
 	}
 
-	private int GetRandomIndex(System.Random rand)
+	private int GetRandomIndex()
 	{
 		while (true)
 		{
-			int index = rangeInt(rand, 0, _peoples.Length);
-			if (_peoples[index].sprite == null)
+			int index = rangeInt(0, _people.Count);
+			if (_people[index].sprite == null)
 				return index;
 		}
 	}
 
-	private void SetThoughtValue()
+	private int GetThoughtValue()
 	{
 		int value = MyStatus.instance.political.value;
 		// value = -70;
@@ -132,6 +165,51 @@ public class TV08 : MonoBehaviour {
 		else
 			multiplyValue = (value / 20) + 1;
 			
-		_movePeoples = 15 - (3 * multiplyValue);
+		return 15 - (3 * multiplyValue);
+	}
+
+	private void SetupAndPatrolling(IEnumerable<Person> people)
+	{
+		foreach(var person in people)
+		{
+			// make random instance for each people
+			StartCoroutine(patrol(person, new System.Random(_rand.Next())));
+		}
+	}
+
+	IEnumerator patrol(Person person, System.Random rand)
+	{
+		const float minWait = 0.5f, maxWait = 2f;
+		var center = person.image.transform.localPosition;
+		System.Func<Vector3> nextPos = () => center + new Vector3(
+			rangeWith(rand, -3, 3)*person.activity,
+			rangeWith(rand, -5, 5)*person.activity,
+			0);
+
+		// initial position
+		person.image.transform.localPosition = nextPos();
+		person.image.color = Color.HSVToRGB(rangeWith(rand, 0f, 1f), 1, 1);
+
+		// next position to go
+		Vector3 targetPos = nextPos();
+
+		float moveStart = Time.time;
+		while (true)
+		{
+			yield return new WaitForSeconds(rangeWith(rand, minWait, maxWait));
+
+			Vector3 left = targetPos - person.image.transform.localPosition;
+			float distance = (Time.time - moveStart) * person.speed;
+			if (left.sqrMagnitude < distance*distance)
+			{
+				// update immediately
+				person.image.transform.localPosition = targetPos;
+				targetPos = nextPos();
+				continue;
+			}
+
+			// go forward
+			person.image.transform.localPosition += left.normalized * distance;
+		}
 	}
 }
