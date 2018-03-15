@@ -50,6 +50,8 @@ public class Showcase : MonoBehaviour {
 				if (MyStatus.instance.health > MyStatus.MaxHealth) {
 					MyStatus.instance.health.value = MyStatus.MaxHealth;
 				}
+
+				MyStatus.instance.hunger.value = -1;
 				break;
 
 			case 3:
@@ -57,6 +59,8 @@ public class Showcase : MonoBehaviour {
 				if (MyStatus.instance.health > MyStatus.MaxHealth) {
 					MyStatus.instance.health.value = MyStatus.MaxHealth;
 				}
+
+				MyStatus.instance.hunger.value = -1;
 				break;
 
 			case 4:
@@ -68,6 +72,8 @@ public class Showcase : MonoBehaviour {
 				if (Random.value < 0.25) {
 					MyStatus.instance.sick.value = true;
 				}
+
+				MyStatus.instance.hunger.value = -1;
 				break;
 
 			case 7:
