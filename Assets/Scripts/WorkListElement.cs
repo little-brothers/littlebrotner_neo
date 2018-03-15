@@ -45,7 +45,8 @@ public class WorkListElement : ListElementBase, IPointerClickHandler {
 			_work = value;
 
 			_name.text = _work.name;
-			_health.text = _work.health.ToString();
+			_health.text = string.Format("HP:{0}/G:{1}", _work.health, _work.payment);
+			// _health.text = _work.health.ToString();
 
 			if (workIcons.Count >= _work.id)
 				_icon.sprite = workIcons[_work.id-1];

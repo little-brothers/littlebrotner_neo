@@ -9,6 +9,9 @@ public class TV01 : MonoBehaviour {
 	Text _energyText;
 
 	[SerializeField]
+	private Text _stateText;
+
+	[SerializeField]
 	VerticalLayoutGroup list;
 
 	Text _notAvailable;
@@ -27,7 +30,8 @@ public class TV01 : MonoBehaviour {
 		updateJobAvailable(MyStatus.instance.lastWork);
 
 		_notAvailable.text = checkJobAvailable();
-		if (_notAvailable.text == "")
+		_notAvailable.gameObject.SetActive(true);
+		if (_notAvailable.text.Equals("Please select a job"))
 		{
 			var listElemTmpl = Resources.Load<GameObject>("WorkListElement");
 			var jobs = Database<Work>.instance.ToList().Where(job => MyStatus.Check(job.condition));
@@ -43,8 +47,15 @@ public class TV01 : MonoBehaviour {
 			if (jobs.Count() == 0)
 			{
 				_notAvailable.text = "No jobs are required in Utopia";
+				_stateText.text = _notAvailable.text;
+			}
+			else
+			{
+				_notAvailable.gameObject.SetActive(false);
 			}
 		}
+
+		//_stateText.text = string.Format("HP:{0}/G:{1}", MyStatus.instance.health.value, MyStatus.instance.money.value);
 	}
 
 	void OnDestroy()
@@ -74,7 +85,10 @@ public class TV01 : MonoBehaviour {
 		if (MyStatus.instance.homeDestroyed)
 			return "Home facilities are destoryed so I can't do any job";
 
-		return "";
+		if (MyStatus.instance.invasion > 0)
+			return "The invasion of outer space has begun so I can't do any job";
+
+		return "Please select a job";
 	}
 
 	void updateHealth(int value)
@@ -85,7 +99,8 @@ public class TV01 : MonoBehaviour {
 	void updateJobAvailable(int day)
 	{
 		var jobErr = checkJobAvailable();
-		_joblist.SetActive(jobErr == "");
+		_joblist.SetActive(jobErr.Equals("Please select a job"));
 		_notAvailable.text = jobErr;
+		_stateText.text = jobErr;
 	}
 }

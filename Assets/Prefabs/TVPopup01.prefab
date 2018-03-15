@@ -348,7 +348,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -372,6 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acba9137114734abf8503911fc8c57d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stateText: {fileID: 114970827764086228}
   list: {fileID: 114342111103402380}
 --- !u!114 &114046469003396638
 MonoBehaviour:
@@ -814,18 +815,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: eff55de6a604b414e9f539f3c1826b60, type: 3}
-    m_FontSize: 12
+    m_FontSize: 7
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 40
-    m_Alignment: 2
+    m_MinSize: 0
+    m_MaxSize: 75
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: No jobs are required in Utopia
 --- !u!222 &222001668650946052
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1090,7 +1091,7 @@ RectTransform:
   m_GameObject: {fileID: 1653200267818000}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224350860056496154}
   m_RootOrder: 2
@@ -1098,7 +1099,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -13, y: -10}
-  m_SizeDelta: {x: 80, y: 15}
+  m_SizeDelta: {x: 121.81, y: 15}
   m_Pivot: {x: 1, y: 1}
 --- !u!224 &224636444866476932
 RectTransform:
