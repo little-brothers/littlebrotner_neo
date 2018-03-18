@@ -51,10 +51,6 @@ public static class VoteManager {
 			state = "아니오";
 			result = voteData.disagree;
 		}
-<<<<<<< HEAD
-		Debug.Log("이전 투표 결과: " + state + " | BefoeIndex: " + _beforIndex + " | CurrentIdex: " + _currentIndex);
-	}
-=======
 
 		if (_current.selection == VoteSelection.Abstention)
 			_abstentionCount++;
@@ -64,7 +60,6 @@ public static class VoteManager {
 		MyStatus.instance.economy.value += result.economy;
 		MyStatus.instance.political.value += result.political;
 		MyStatus.instance.mechanic.value += result.mechanic;
->>>>>>> 642395c0ef0a92c8fef77011e94f601c2cf6a730
 
 		// add to history
 		_history.Add(_current);
