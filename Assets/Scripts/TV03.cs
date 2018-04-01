@@ -31,10 +31,10 @@ public class TV03 : MonoBehaviour, ISubscribe {
 	void Start () {
 		Utilities.SetUIParentFit(GameObject.FindGameObjectWithTag("RootCanvas"), gameObject);
 
-		//_money = transform.Find("Money").GetComponent<Text>();
+		_money = transform.Find("Money").GetComponent<Text>();
 		_money.text = "Select a item";
 		MyStatus.instance.money.OnUpdate += updateMoney;
-		updateMoney(MyStatus.instance.money);
+		//updateMoney(MyStatus.instance.money);
 
 		var listElemTmpl = Resources.Load<GameObject>("ShopListElement");
 		foreach (var item in availableItems)
@@ -60,6 +60,14 @@ public class TV03 : MonoBehaviour, ISubscribe {
 		}
 
 		if (buyable) {
+			var count = MyStatus.instance.inventory.slot.Count;
+			if (!item.installable && count == 8) {
+				buyable = false;
+				_money.text = "cabinet is full!";
+			}
+		}
+
+		if (buyable) {
 			ConfirmPopup.Setup(string.Format("Are you sure to buy '{0}'?", item.name), () => {
 				if (item.currency == Currency.Gold) {
 					MyStatus.instance.money.value -= item.price;
@@ -70,26 +78,37 @@ public class TV03 : MonoBehaviour, ISubscribe {
 				switch (item.id) {
 				case 1:
 					MyStatus.instance.energy.value += 1;
+					_money.text = "charged 1 energy";
 					break;
 
 				case 8:
 					MyStatus.instance.money.value += 2;
+					_money.text = "energy back in money";
 					break;
 
 				// 일반 아이템
 				default:
 					MyStatus.instance.inventory.Put(item);
+					if(item.installable){
+					_money.text = "Installation successful!";
+					}
+					else{
+					_money.text = "The item was stored in the cabinet";
+					}
+
 					break;
 				}
 			});
 		} else {
-			// 살 수 없는 효과?
+			if( MyStatus.instance.money < item.price)
+				_money.text = "not enough money";
+
 		}
 	}
 
 	void updateMoney(int value)
 	{
-		_money.text = value.ToString();
+		//_money.text = value.ToString();
 	}
 
 	void ISubscribe.OnNotifty(object[] values)
