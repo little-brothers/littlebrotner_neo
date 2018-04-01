@@ -32,7 +32,7 @@ public class TV03 : MonoBehaviour, ISubscribe {
 		Utilities.SetUIParentFit(GameObject.FindGameObjectWithTag("RootCanvas"), gameObject);
 
 		//_money = transform.Find("Money").GetComponent<Text>();
-		_money = "Select a item";
+		_money.text = "Select a item";
 		MyStatus.instance.money.OnUpdate += updateMoney;
 		updateMoney(MyStatus.instance.money);
 
