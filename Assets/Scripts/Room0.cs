@@ -46,7 +46,7 @@ public class Room0 : MonoBehaviour {
 	void UpdateAlertStatus()
 	{
 		int level = MyStatus.instance.invasion;
-		if (MyStatus.instance.homeDestroyed)
+		if (MyStatus.instance.homeDestroyed != 0)
 			level = 2;
 
 		if (MyStatus.instance.plague)
@@ -66,8 +66,8 @@ public class Room0 : MonoBehaviour {
 	{
 		if (item.id == 11)
 		{
-			bool repaired = MyStatus.instance.homeDestroyed;
-			MyStatus.instance.homeDestroyed.value = false;
+			bool repaired = MyStatus.instance.homeDestroyed != 0;
+			MyStatus.instance.homeDestroyed.value = 0;
 
 			if (repaired)
 				Chatbox.Show("My house has repaired");

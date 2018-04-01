@@ -31,8 +31,9 @@ public class TV01 : MonoBehaviour {
 
 		_notAvailable.text = checkJobAvailable();
 		_notAvailable.gameObject.SetActive(true);
-		if (_notAvailable.text.Equals("Please select a job"))
+		if (_notAvailable.text == "")
 		{
+			_notAvailable.text = "Please select a job";
 			var listElemTmpl = Resources.Load<GameObject>("WorkListElement");
 			var jobs = Database<Work>.instance.ToList().Where(job => MyStatus.Check(job.condition));
 			foreach (var job in jobs)
@@ -82,13 +83,13 @@ public class TV01 : MonoBehaviour {
 		if (MyStatus.instance.day == MyStatus.instance.lastWork)
 			return "You have already worked today";
 
-		if (MyStatus.instance.homeDestroyed)
+		if (MyStatus.instance.day.value == MyStatus.instance.homeDestroyed.value)
 			return "Home facilities are destoryed so I can't do any job";
 
 		if (MyStatus.instance.invasion > 0)
 			return "The invasion of outer space has begun so I can't do any job";
 
-		return "Please select a job";
+		return "";
 	}
 
 	void updateHealth(int value)
