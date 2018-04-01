@@ -92,7 +92,7 @@ public class MyStatus {
 			invasion.value = 0;
 
 			switch (eventName) {
-			case "sandstorm": homeDestroyed.value = true; break;
+			case "sandstorm": homeDestroyed.value = status.day + 1; break;
 			case "plague": plague.value = true; break;
 			case "invasion_warn": invasion.value = 1; break; 
 			case "invasion_alert": invasion.value = 2; break; 
@@ -107,6 +107,10 @@ public class MyStatus {
 			int recovery = 0;
 			if (sick) {
 				recovery -= 30;
+			}
+
+			if (homeDestroyed != 0) {
+				recovery -= 20;
 			}
 
 			if(hunger>=3){
@@ -250,7 +254,7 @@ public class MyStatus {
 			get { return _value; }
 			set { _value = value; OnUpdate(value); }
 		}
-	}
+    }
 
 	// hooks for sleep
 	public delegate void SleepEvent(Vote voteResult, Snapshot status, List<Notification> notifications);
@@ -279,6 +283,7 @@ public class MyStatus {
 
 		// next day!
 		day.value++;
+		Debug.Log(string.Format("day {0}", day.value));
 
 		// game should be ended?
 		int ending = CheckEnding();
@@ -357,7 +362,7 @@ public class MyStatus {
 		}
 
 		if (condition == "sandstorm")
-			return instance.homeDestroyed;
+			return instance.homeDestroyed.value == instance.day.value;
 
 		// variable evaluation
 		if (condition.StartsWith("Health"))
@@ -378,7 +383,7 @@ public class MyStatus {
 
 	static bool evalExpression(int leftArg, string exp)
 	{
-		Debug.Log(leftArg.ToString() + exp);
+		// Debug.Log(leftArg.ToString() + exp);
 		exp = exp.Trim();
 		if (exp.StartsWith("==")) 
 			return leftArg == int.Parse(exp.Substring(2));
@@ -420,7 +425,7 @@ public class MyStatus {
 	public DataUpdateNotifier<int> health = new DataUpdateNotifier<int>(MaxHealth); // 건강, 잠잘 때 0이 되면 게임오버
 	public DataUpdateNotifier<int> hunger = new DataUpdateNotifier<int>(0); // 배고픔, -1이면 그날 음식을 섭취한 것임
 	public DataUpdateNotifier<bool> sick = new DataUpdateNotifier<bool>(false); // 아픈가?
-	public DataUpdateNotifier<bool> homeDestroyed = new DataUpdateNotifier<bool>(false); // 집에 문제가 생겼는가?
+	public DataUpdateNotifier<int> homeDestroyed = new DataUpdateNotifier<int>(2); // 집에 문제가 생겼는가? 문제가 생겼으면 생긴 날짜를 적어줌
 	public DataUpdateNotifier<bool> plague = new DataUpdateNotifier<bool>(false); // 전염병
 	public DataUpdateNotifier<int> invasion = new DataUpdateNotifier<int>(0); // 침략 레벨
 	public DataUpdateNotifier<int> day = new DataUpdateNotifier<int>(1); // 현재 날짜

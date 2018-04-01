@@ -97,9 +97,9 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		MyStatus.instance.AddSleepHook(ResetStatus);
 
 		// 위기상항 알림 1 - 모래폭풍
-		MyStatus.instance.homeDestroyed.OnUpdate += destoyed => {
-			if (destoyed) {
-				_disasterDay = MyStatus.instance.day + 1;
+		MyStatus.instance.homeDestroyed.OnUpdate += destoryed => {
+			if (destoryed != 0) {
+				_disasterDay = destoryed;
 			}
 		};
 
