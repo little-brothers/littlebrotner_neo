@@ -46,8 +46,8 @@ public class TV01 : MonoBehaviour {
 
 			if (jobs.Count() == 0)
 			{
-				_notAvailable.text = "No jobs are required in Utopia";
-				_stateText.text = _notAvailable.text;
+				_notAvailable.text = "Little Brothers are not allowed to work yet.";
+				_stateText.text = "Not available";
 			}
 			else
 			{
@@ -82,11 +82,11 @@ public class TV01 : MonoBehaviour {
 		if (MyStatus.instance.day == MyStatus.instance.lastWork)
 			return "You have already worked today";
 
-		if (MyStatus.instance.homeDestroyed)
-			return "Home facilities are destoryed so I can't do any job";
+		if ( MyStatus.instance.day == 10)
+			return "All work was stopped because of the huge sand storm.";
 
 		if (MyStatus.instance.invasion > 0)
-			return "The invasion of outer space has begun so I can't do any job";
+			return "All work is prohibited to prepare for external aggression.";
 
 		return "Please select a job";
 	}
@@ -99,8 +99,13 @@ public class TV01 : MonoBehaviour {
 	void updateJobAvailable(int day)
 	{
 		var jobErr = checkJobAvailable();
-		_joblist.SetActive(jobErr.Equals("Please select a job"));
+		bool jobAvailable = jobErr.Equals ("Please select a job");
+		_joblist.SetActive(jobAvailable);
 		_notAvailable.text = jobErr;
-		_stateText.text = jobErr;
+		if(jobAvailable){
+			_stateText.text = "select today's job"; 
+		}else{
+			_stateText.text = "not available"; 
+		}
 	}
 }
