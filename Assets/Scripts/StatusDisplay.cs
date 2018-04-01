@@ -17,6 +17,9 @@ public class StatusDisplay : MonoBehaviour {
 	Color CautionColor = new Color(0.8f, 0.2f, 0.2f);
 	Color NormalColor = Color.white;
 
+	public GameObject energy;
+
+
     void Start() {
 
         switch (watch) {
@@ -65,7 +68,7 @@ public class StatusDisplay : MonoBehaviour {
 				textMesh.color = CautionColor;
 			//	uiText.color = CautionColor;
 				Debug.Log (textMesh.color);
-			//EnergyManager.updateEnergyStatus(MyStatus.instance.energy);
+			Debug.Log(energy._energys);
 
 			} else {
 			MyStatus.instance.taxCan.value = true;
