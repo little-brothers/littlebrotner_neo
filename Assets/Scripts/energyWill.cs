@@ -5,12 +5,12 @@ using UnityEngine;
 public class energyWill : MonoBehaviour {
 
 	[SerializeField]
-	float spacing = 0.02f;
+	//float spacing = 0.02f;
 
 	public AudioClip sound;
 	public AudioSource soundFx;
 
-	List<SpriteRenderer> _energys_will = new List<SpriteRenderer>();
+	//List<SpriteRenderer> _energys_will = new List<SpriteRenderer>();
 	public GameObject[] _e_w = new GameObject[12];
 
 	// Use this for initialization
@@ -65,6 +65,19 @@ public class energyWill : MonoBehaviour {
 			_e_w [a].SetActive (true);
 
 		}
+
+		/*
+		if (taxIsOkay ()) {
+
+		} else {
+			for (int a = 0; a < 12; a++) {
+				_e_w [a].SetActive (false);
+
+			}			
+
+		}
+
+*/
 
 	}
 }

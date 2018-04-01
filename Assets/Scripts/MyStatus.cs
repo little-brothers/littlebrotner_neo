@@ -73,8 +73,7 @@ public class MyStatus {
 
 			// 세금을 못냄!
 			if (money < 0)
-			{
-				energy.value = 0;
+			{	
 				money.value = 0;
 				noti.Add(Notification.Create("I did not manage to pay tax"));
 			}
@@ -433,6 +432,7 @@ public class MyStatus {
 	public DataUpdateNotifier<int> energyCharge = new DataUpdateNotifier<int>(4); // 일별 에너지 충전량
 	public DataUpdateNotifier<int> money = new DataUpdateNotifier<int>(10); // 돈!
 	public DataUpdateNotifier<int> tax = new DataUpdateNotifier<int>(1); // 세금 ㅠㅠ
+	public DataUpdateNotifier<bool> taxCan = new DataUpdateNotifier<bool>(true); // 세금 ㅠㅠ
 	public DataUpdateNotifier<int> endingIndex = new DataUpdateNotifier<int>(); // 엔딩!
 	public DataUpdateNotifier<int> lastWork = new DataUpdateNotifier<int>(-1); // 마지막으로 일한 날짜
 	public EventSet technologies = new EventSet(); // 발견한 기술들을 저장

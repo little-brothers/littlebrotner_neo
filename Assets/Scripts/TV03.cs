@@ -93,7 +93,7 @@ public class TV03 : MonoBehaviour, ISubscribe {
 					_money.text = "Installation successful!";
 					}
 					else{
-					_money.text = "The item was stored in the cabinet";
+					_money.text = "stored in the cabinet";
 					}
 
 					break;

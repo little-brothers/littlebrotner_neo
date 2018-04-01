@@ -14,6 +14,8 @@ public class StatusDisplay : MonoBehaviour {
     WatchType watch;
 
     MyStatus.DataUpdateNotifier<int> _notifier;
+	Color CautionColor = new Color(0.8f, 0.2f, 0.2f);
+	Color NormalColor = Color.white;
 
     void Start() {
 
@@ -57,5 +59,23 @@ public class StatusDisplay : MonoBehaviour {
         if (uiText != null) {
             uiText.text = value.ToString();
         }
+			
+			if (MyStatus.instance.money.value < MyStatus.instance.tax.value) {
+			MyStatus.instance.taxCan.value = false;
+				textMesh.color = CautionColor;
+			//	uiText.color = CautionColor;
+				Debug.Log (textMesh.color);
+			//EnergyManager.updateEnergyStatus(MyStatus.instance.energy);
+
+			} else {
+			MyStatus.instance.taxCan.value = true;
+				textMesh.color = NormalColor;
+			//	uiText.color = NormalColor;
+				//Debug.Log (uiText.color);
+			}
+
+
+
+
     }
 }

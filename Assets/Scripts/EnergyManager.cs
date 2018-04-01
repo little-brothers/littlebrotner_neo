@@ -58,7 +58,7 @@ public class EnergyManager : MonoBehaviour {
 		return true;
 	}
 
-	void updateEnergyStatus(int energy)
+	public void updateEnergyStatus(int energy)
 	{
 		for (int i = 0; i < _energys.Count; ++i)
 		{
