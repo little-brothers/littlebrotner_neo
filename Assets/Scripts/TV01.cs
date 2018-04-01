@@ -101,7 +101,7 @@ public class TV01 : MonoBehaviour {
 	void updateJobAvailable(int day)
 	{
 		var jobErr = checkJobAvailable();
-		bool jobAvailable = jobErr.Equals ("Please select a job");
+		bool jobAvailable = jobErr.Equals ("");
 		_joblist.SetActive(jobAvailable);
 		_notAvailable.text = jobErr;
 		if(jobAvailable){
