@@ -200,7 +200,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: eff55de6a604b414e9f539f3c1826b60, type: 3}
-    m_FontSize: 12
+    m_FontSize: 7
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -209,7 +209,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 100
 --- !u!114 &114029703823983346
@@ -297,13 +297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9433a81cf706b4393aca8332111dcff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  products:
-  - icon: {fileID: 0}
-    name: test1
-    price: 2
-  - icon: {fileID: 0}
-    name: teset2
-    price: 300
   list: {fileID: 114634118017605508}
 --- !u!114 &114229873287303536
 MonoBehaviour:

@@ -68,7 +68,7 @@ public class StatusDisplay : MonoBehaviour {
 				textMesh.color = CautionColor;
 			//	uiText.color = CautionColor;
 				Debug.Log (textMesh.color);
-			Debug.Log(energy._energys);
+			//Debug.Log(energy._energys);
 
 			} else {
 			MyStatus.instance.taxCan.value = true;
