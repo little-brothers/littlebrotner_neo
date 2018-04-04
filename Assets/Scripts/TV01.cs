@@ -80,7 +80,7 @@ public class TV01 : MonoBehaviour {
 
 	string checkJobAvailable()
 	{
-		if (MyStatus.instance.day == MyStatus.instance.lastWork)
+		if (MyStatus.instance.day.value == MyStatus.instance.lastWork.value)
 			return "You have already worked today";
 
 
