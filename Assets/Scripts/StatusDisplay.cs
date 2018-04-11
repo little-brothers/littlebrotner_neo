@@ -62,23 +62,17 @@ public class StatusDisplay : MonoBehaviour {
         if (uiText != null) {
             uiText.text = value.ToString();
         }
-			
-			if (MyStatus.instance.money.value < MyStatus.instance.tax.value) {
-			MyStatus.instance.taxCan.value = false;
-				textMesh.color = CautionColor;
-			//	uiText.color = CautionColor;
-				Debug.Log (textMesh.color);
-			//Debug.Log(energy._energys);
 
-			} else {
-			MyStatus.instance.taxCan.value = true;
-				textMesh.color = NormalColor;
-			//	uiText.color = NormalColor;
-				//Debug.Log (uiText.color);
-			}
+        if (MyStatus.instance.money.value < MyStatus.instance.tax.value) {
+            textMesh.color = CautionColor;
+        //	uiText.color = CautionColor;
+            Debug.Log (textMesh.color);
+        //Debug.Log(energy._energys);
 
-
-
-
+        } else {
+            textMesh.color = NormalColor;
+        //	uiText.color = NormalColor;
+            //Debug.Log (uiText.color);
+        }
     }
 }
