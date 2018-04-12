@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ObjectClick : MonoBehaviour, IPointerClickHandler {
+public class ObjectClick : MonoBehaviour {
 
     public delegate void OnClickedEvent();
 
     public event OnClickedEvent OnClicked = delegate{};
 
-    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+    void OnMouseUp()
     {
-        Debug.Log ("CLick");
-        GameObject.Destroy(gameObject);
+        // check mouse up occured outside of collider range
+        if (GetComponent<Collider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
+        {
+            Debug.Log("clicked?");
+            GameObject.Destroy(gameObject);
+        }
     }
 }
