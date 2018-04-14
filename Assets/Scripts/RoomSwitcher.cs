@@ -108,6 +108,7 @@ public class RoomSwitcher : MonoBehaviour {
 			_index += transform.childCount;
 
 		flipScene(false);
+		updateButtonInteractable();
 	}
 
 	void flipSceneNow() {
