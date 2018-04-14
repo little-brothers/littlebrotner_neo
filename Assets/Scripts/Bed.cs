@@ -13,7 +13,12 @@ public class Bed : MonoBehaviour, IPointerDownHandler {
 	void gotoSleep()
 	{
 		var switcher = GameObject.FindObjectOfType<RoomSwitcher>();
-		switcher.setRoomIdx(2, () => MyStatus.instance.Sleep());
+		switcher.setRoomIdx(2, () => MyStatus.instance.Sleep(), () => {
+			if (MyStatus.instance.taxPaid) {
+				Debug.Log("tax paid");
+				GameObject.Find("TV (3)").GetComponent<Television>().ShowFullscreen();
+			}
+		});
 	}
 
 	void applyEvent9(Vote vote, MyStatus.Snapshot status, List<Notification> noti) {

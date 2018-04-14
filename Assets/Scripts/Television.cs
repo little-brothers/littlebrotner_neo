@@ -295,6 +295,11 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		if (!watched && !_energyManager.UseEnergy())
 			return;
 
+		ShowFullscreen();
+    }
+
+	public void ShowFullscreen()
+	{
 		watched = true;
 
 		// reset alarm
@@ -308,7 +313,7 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 			Utilities.SetUIParentFit(GameObject.FindWithTag("RootCanvas"), view);
 			view.transform.position += new Vector3(0, 0, -5);
 		}
-    }
+	}
 
 	void UpdateBrightness()
 	{

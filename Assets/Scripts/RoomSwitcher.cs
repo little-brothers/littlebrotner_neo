@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class RoomSwitcher : MonoBehaviour {
 
-	public delegate void OnSceneNeedsChange();
+	public delegate void OnSceneChangeEvent();
 
-	protected event OnSceneNeedsChange _reservedChangeEvent;
+	protected event OnSceneChangeEvent _reservedChangeEvent;
 	protected int _index = 0;
 	protected bool _inTransition = false;
 
@@ -84,7 +84,7 @@ public class RoomSwitcher : MonoBehaviour {
 		}
 	}
 	
-	public void setRoomIdx(int idx, OnSceneNeedsChange OnSceneChange = null)
+	public void setRoomIdx(int idx, OnSceneChangeEvent OnSceneWillChange = null, OnSceneChangeEvent OnSceneChanged = null)
 	{
 		if (_inTransition)
 			return;
@@ -93,15 +93,28 @@ public class RoomSwitcher : MonoBehaviour {
 		if (!loop && (idx < 0 || idx >= transform.childCount))
 			return;
 
-		_reservedChangeEvent = OnSceneChange;
+		_reservedChangeEvent = OnSceneWillChange;
 		_index = idx % transform.childCount;
 		if (_index < 0)
 			_index += transform.childCount;
 
-		StartCoroutine(fadeInOut(1.0f, _index));
+		StartCoroutine(fadeInOut(1.0f, _index, OnSceneChanged));
 	}
 
-	void flipSceneNow()
+	public void setRoomIdxImmediate(int idx)
+	{
+		_index = idx % transform.childCount;
+		if (_index < 0)
+			_index += transform.childCount;
+
+		flipScene(false);
+	}
+
+	void flipSceneNow() {
+		flipScene(true);
+	}
+
+	void flipScene(bool fromAnimation)
 	{
 		for (int i=0; i<transform.childCount; ++i)
 		{
@@ -109,7 +122,7 @@ public class RoomSwitcher : MonoBehaviour {
 			room.gameObject.SetActive(_index == i);
 		}
 
-		if (_reservedChangeEvent != null) {
+		if (fromAnimation && _reservedChangeEvent != null) {
 			_reservedChangeEvent();
 		}
 
@@ -117,7 +130,7 @@ public class RoomSwitcher : MonoBehaviour {
 			tooltip.Hide();
 	}
 
-	IEnumerator fadeInOut(float duration, int scene)
+	IEnumerator fadeInOut(float duration, int scene, OnSceneChangeEvent finishEvent)
 	{
 		_inTransition = true;
 
@@ -128,6 +141,9 @@ public class RoomSwitcher : MonoBehaviour {
 			yield return null;
 
 		_inTransition = false;
+		if (finishEvent != null)
+			finishEvent();
+
 		yield break;
 	}
 }

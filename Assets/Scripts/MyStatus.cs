@@ -46,6 +46,7 @@ public class MyStatus {
 	}
 
 	public List<Notification> pendingNotis { get; private set; }
+	public bool taxPaid { get; private set; }
 	public const int MaxHealth = 100;
 	const int MaxEnergyHard = 12;
 	const int MaxEnergyInit = 9;
@@ -70,10 +71,16 @@ public class MyStatus {
 
 			// 세금
 			money.value -= tax;
+			taxPaid = money >= 0;
 
-			// 세금을 못냄!
-			if (money < 0)
+			if (taxPaid)
+			{
+				var switcher = GameObject.FindObjectOfType<RoomSwitcher>();
+				switcher.setRoomIdxImmediate(1);
+			}
+			else
 			{	
+				// 세금을 못냄!
 				money.value = 0;
 				noti.Add(Notification.Create("I did not manage to pay tax"));
 			}
