@@ -14,7 +14,7 @@ public class HeigthGame : MonoBehaviour {
 	//List<int> h_item = new List<int>();
 
 
-	public int require = 10;
+	public int require = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -28,25 +28,25 @@ public class HeigthGame : MonoBehaviour {
 
 	}
 
-	public bool Matching(int num){
+	public int Matching(int num){
 
 		if (num == require) {
-			require--;
-			Debug.Log (require);
-			if (require == 0) {
+			require++;
+			if (require == 11) {
 				cursor.GetComponent<CursorController> ().PointUp (15);
 				Reset ();
+				return 2;
 			}
-			return true;
+			return 1;
 		} else {
-			return false;
+			return 0;
 		}
 	}
 
 
-	void Reset(){
+	public void Reset(){
 
-		require = 10;
+		require = 1;
 		for (int i = 1; i <= 10; i++) {
 			h.Add (i);
 		}
@@ -54,11 +54,13 @@ public class HeigthGame : MonoBehaviour {
 		int index;
 		for (int i = 0; i < 10; i++) {
 			index = Random.Range (0, h.Count);
+			Debug.Log ("H COUNT"+h.Count);
 			heights [i].GetComponent<Height> ().level = h [index];
-			h.RemoveAt (index);
-			heights [i].GetComponent<Height> ().Resize ();
+			Debug.Log (i + " : " + h [index]);
 			heights [i].SetActive (true);
-			//why.......last thing doesn't show up
+			heights [i].GetComponent<Height> ().Resize ();
+			h.RemoveAt (index);
+	//why.......last thing doesn't show up
 			//h_item.Add (h [index]);
 			//Debug.Log (h_item[i]);
 		}

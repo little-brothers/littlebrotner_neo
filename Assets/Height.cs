@@ -18,7 +18,7 @@ public class Height : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler {
 	public void OnPointerDown(PointerEventData data)
 	{
 		int temp = gameObject.GetComponent<Height> ().level;
-		if (heightgame.GetComponent<HeigthGame> ().Matching (temp))
+		if (heightgame.GetComponent<HeigthGame> ().Matching (temp) == 1)
 			gameObject.SetActive (false);
 		//Debug.Log ("WHY");
 		//invertgame.GetComponent<InvertGame> ().ResultCheck ();
@@ -42,7 +42,7 @@ public class Height : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler {
 
 	public void Resize(){
 
-		float temp = 0.0002f * level;
+		float temp = 0.0003f * level;
 		transform.localScale = new Vector3 (0.2f, 0.0004f+temp, 1);
 
 	}
