@@ -6,7 +6,7 @@ public class CursorController : MonoBehaviour {
 
 //public Camera cam;
 	//private float maxWidth;
-	int _point = 0;
+	public int _point = 0;
 	float _end_time;
 
 	const int max_point = 100;
@@ -51,11 +51,27 @@ public class CursorController : MonoBehaviour {
 
 		//Debug.Log (temp);
 
+		_point_mask.transform.localScale = new Vector3(115 * _point / (float)max_point, 0.3f, 1);
+
+
 		if (Input.GetMouseButtonDown (0)) {
-			_point++;
-			Debug.Log (_point);
-			Debug.Log (_point / (float)max_point);
-			_point_mask.transform.localScale = new Vector3(115 * _point / (float)max_point, 0.3f, 1);
-		}
+			//_point++;
+	//		Debug.Log (_point);
+	//		Debug.Log (_point / (float)max_point);
+					}
 	}
+
+	public void PointUp(int value){
+		_point += value;
+	}
+
+	public void PointDown(int value){
+		_point -= value;
+	}
+
+
+	public void CardMatch(int value){
+
+	}
+
 }
