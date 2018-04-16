@@ -14,7 +14,6 @@ public class ScriptBubble : MonoBehaviour, IPointerClickHandler {
 
 	void Start()
 	{
-		// smallBubble.GetComponent<Animation>().Play();
 		largeBubble.SetActive(false);
 	}
 

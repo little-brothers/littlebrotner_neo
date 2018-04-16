@@ -1647,7 +1647,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e8c0c1163c2854db4aaf590917bee2b1, type: 3}
   - {fileID: 21300000, guid: 05ad1580e45d942d095bae9aebc0e5d0, type: 3}
   - {fileID: 21300000, guid: 268885cdc042a4db1a2f211f63872dd2, type: 3}
-  smallBubble: {fileID: 0}
+  bubble: {fileID: 114071036938048422}
 --- !u!114 &114978951067904370
 MonoBehaviour:
   m_ObjectHideFlags: 1

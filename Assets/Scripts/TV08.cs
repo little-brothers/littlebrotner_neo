@@ -8,6 +8,7 @@ public class TV08 : MonoBehaviour {
 	// moving entity
 	struct Person
 	{
+		public int index;
 		public Image image;
 		public float activity; // 얼마나 활동적인가?
 		public float speed; // 움직이는 속도는?
@@ -18,8 +19,9 @@ public class TV08 : MonoBehaviour {
 	[SerializeField]
 	private Sprite[] _sprites;
 
-	private bool _isRobotAppear = false;
-	private bool _isSnakeAppear = false;
+	[SerializeField]
+	private ScriptBubble bubble;
+
 	private int[] _raceAppearCount;
 	private System.Random _rand;
 
@@ -39,6 +41,7 @@ public class TV08 : MonoBehaviour {
 		_rand = new System.Random(MyStatus.instance.day);
 		var movingPeople = ShowRandomPeople();
 		SetupAndPatrolling(movingPeople);
+		CheckAndShowBubble();
 	}
 
 	int rangeIntWith(System.Random rand, int min, int max) {
@@ -84,7 +87,6 @@ public class TV08 : MonoBehaviour {
 
 	private List<Person> ShowRandomPeople()
 	{
-		int currentRace = 0;
 		int movePeople = GetThoughtValue();
 		AddRandomRaceValue();
 
@@ -95,12 +97,13 @@ public class TV08 : MonoBehaviour {
 			{
 				// default: red fixed position
 				int index = GetRandomIndex();
-				_people[index].sprite = _sprites[currentRace];
+				_people[index].sprite = _sprites[i];
 				_people[index].color = Color.red;
 
 				if (movePeople > 0)
 				{
 					shouldMove.Add(new Person{
+						index = index,
 						image = _people[index],
 						activity = (float)_rand.NextDouble(),
 						speed = range(0.1f, 2f),
@@ -109,8 +112,6 @@ public class TV08 : MonoBehaviour {
 
 				movePeople--;
 			}
-
-			++currentRace;
 		}
 
 		return shouldMove;
@@ -119,16 +120,16 @@ public class TV08 : MonoBehaviour {
 	private void AddRandomRaceValue()
 	{
 		int availbleCount = 6;
-		_isRobotAppear = MyStatus.Check("V24:YES");
-		_isSnakeAppear = MyStatus.Check("V43:YES");
+		bool isRobotAppear = MyStatus.Check("V24:YES");
+		bool isSnakeAppear = MyStatus.Check("V43:YES");
 		_raceAppearCount = new int[] {3, 3, 3, 3, 3, 3, 0, 0};
 
-		if (_isRobotAppear)
+		if (isRobotAppear)
 			_raceAppearCount[6] = 3;
 		else
 			availbleCount += 3;
 
-		if (_isSnakeAppear)
+		if (isSnakeAppear)
 			_raceAppearCount[7] = 3;			
 		else
 			availbleCount += 3;
@@ -136,7 +137,7 @@ public class TV08 : MonoBehaviour {
 		while (availbleCount > 0)
 		{
 			int index = rangeInt(0, _raceAppearCount.Length);
-			if (_raceAppearCount[index] < 5 && !_raceAppearCount[index].Equals(0))
+			if (0 < _raceAppearCount[index] && _raceAppearCount[index] < 5)
 			{
 				--availbleCount;
 				_raceAppearCount[index] += 1;
@@ -211,5 +212,18 @@ public class TV08 : MonoBehaviour {
 			// go forward
 			person.image.transform.localPosition += left.normalized * distance;
 		}
+	}
+
+	void CheckAndShowBubble()
+	{
+		int idx = rangeInt(0, 30);
+		Vector3 pos = bubble.transform.localPosition;
+		Debug.Log(_people[idx].transform.localPosition);
+		pos.x = _people[idx].transform.localPosition.x;
+		pos.y = _people[idx].transform.localPosition.y + 16f;
+
+		bubble.transform.localPosition = pos;
+		Debug.Log(pos);
+		bubble.gameObject.SetActive(true);
 	}
 }
