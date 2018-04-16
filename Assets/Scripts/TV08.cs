@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,27 @@ public class TV08 : MonoBehaviour {
 		public Image image;
 		public float activity; // 얼마나 활동적인가?
 		public float speed; // 움직이는 속도는?
+	}
+
+	[AssetPath("bubbles")]
+	struct Bubble : IDatabaseRow
+	{
+		public int id { get; private set; }
+		public string text { get; private set; }
+		public string condition1 { get; private set; }
+		public string condition2 { get; private set; }
+
+		int IDatabaseRow.ID { get { return this.id; } }
+
+		bool IDatabaseRow.Parse(List<string> row)
+		{
+			this.id = int.Parse(row[0]);
+			this.text = row[1];
+			this.condition1 = row[4];
+			this.condition2 = row[5];
+
+			return true;
+		}
 	}
 
 	private List<Image> _people;
@@ -216,14 +238,28 @@ public class TV08 : MonoBehaviour {
 
 	void CheckAndShowBubble()
 	{
-		int idx = rangeInt(0, 30);
-		Vector3 pos = bubble.transform.localPosition;
-		Debug.Log(_people[idx].transform.localPosition);
-		pos.x = _people[idx].transform.localPosition.x;
-		pos.y = _people[idx].transform.localPosition.y + 16f;
+		List<Bubble> bubbles = Database<Bubble>.instance.ToList()
+			.Where(b => MyStatus.Check(b.condition1) && MyStatus.Check(b.condition2))
+			.ToList();
 
-		bubble.transform.localPosition = pos;
-		Debug.Log(pos);
-		bubble.gameObject.SetActive(true);
+		if (bubbles.Count != 0)
+		{
+			int idx = rangeInt(0, 30);
+			Vector3 pos = bubble.transform.localPosition;
+			pos.x = _people[idx].transform.localPosition.x;
+			pos.y = _people[idx].transform.localPosition.y + 16f;
+
+			// update pos
+			bubble.transform.localPosition = pos;
+			bubble.gameObject.SetActive(true);
+
+			// update text
+			Bubble selectedBubble = bubbles[rangeInt(0, bubbles.Count)];
+			bubble.setText(selectedBubble.text);
+		}
+		else
+		{
+			bubble.gameObject.SetActive(false);
+		}
 	}
 }
