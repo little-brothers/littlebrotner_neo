@@ -6102,8 +6102,8 @@ Prefab:
     - target: {fileID: 114662382662504466, guid: f4d6bcfd829d34fc5a5daf53d8de55ab,
         type: 2}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: It used when I want to keep information not to digitize. But I can not
-        use it well because I have ralely drawn characters.
+      value: It used to keep information by only analog. But I can not use it well
+        because I've never used a pen.
       objectReference: {fileID: 0}
     - target: {fileID: 114245435579770046, guid: f4d6bcfd829d34fc5a5daf53d8de55ab,
         type: 2}
@@ -6173,7 +6173,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1781196062357904, guid: f4d6bcfd829d34fc5a5daf53d8de55ab, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114006297510281840, guid: f4d6bcfd829d34fc5a5daf53d8de55ab,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Digitized biometric information. It was technology that was in the past
+        in the earth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114473472675433438, guid: f4d6bcfd829d34fc5a5daf53d8de55ab,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: It is a photograph of the old earth. It is different from what I saw
+        when I came here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114006297510281840, guid: f4d6bcfd829d34fc5a5daf53d8de55ab,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Bio card
+      objectReference: {fileID: 0}
+    - target: {fileID: 114058505155267518, guid: f4d6bcfd829d34fc5a5daf53d8de55ab,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: It monitors my health condition in real time.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114805172272337924, guid: f4d6bcfd829d34fc5a5daf53d8de55ab,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: I was born into a group. Although I rarely saw them, there were some
+        who were born into the family.
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114858352270018096, guid: f4d6bcfd829d34fc5a5daf53d8de55ab, type: 2}
