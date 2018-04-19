@@ -300,7 +300,9 @@ MonoBehaviour:
   minigames:
   - name: MineGame
     game: {fileID: 1578830378}
-  game: MineGame
+  - name: CardGame
+    game: {fileID: 847788273}
+  game: CardGame
   timeGauge: {fileID: 458440793}
   scoreGauge: {fileID: 487470474}
 --- !u!1 &90690032
@@ -4904,7 +4906,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &847788274
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4948,7 +4950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306c69c0e814342a69b0dcf947042bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 291195595}
   cards:
   - {fileID: 924345158}
   - {fileID: 1122353985}
@@ -4974,7 +4975,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5c36fff2e9b0c4da6a6b368f0c9ddd1e, type: 3}
   cardBack: {fileID: 21300000, guid: b0cdb1b9db9ef45d9a9fd14f89bae7ed, type: 3}
   oneside: 0
-  step: 0
   one: {fileID: 0}
   two: {fileID: 0}
 --- !u!1 &860536866
@@ -9073,7 +9073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1578830379
 RectTransform:
   m_ObjectHideFlags: 0
