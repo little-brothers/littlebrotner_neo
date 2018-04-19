@@ -76,7 +76,11 @@ public class TV01 : MonoBehaviour {
 				MyStatus.instance.lastWork.value = MyStatus.instance.day;
 
 				// 화면 전환
-				GameObject.FindObjectOfType<RoomSwitcher>().setRoomIdx(1, () => SceneManager.LoadScene("MiningScene"));
+				GameObject.FindObjectOfType<RoomSwitcher>().setRoomIdx(1, () => {
+					MyStatus.instance.ResetAllHooks();
+					SceneManager.LoadScene("MiningScene");
+				});
+
 				GameObject.Destroy(gameObject);
 			});
 		}
