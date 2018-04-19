@@ -66,9 +66,6 @@ public class MyStatus {
 
 		// 재화 처리
 		AddSleepHook((vote, status, noti) => {
-			// 매일 밤마다 전기 충전
-			MyStatus.instance.energy.value = Mathf.Min(MyStatus.instance.energy + energyCharge, MaxEnergyHard);
-
 			// 세금
 			money.value -= tax;
 			taxPaid = money >= 0;
@@ -77,6 +74,9 @@ public class MyStatus {
 			{
 				var switcher = GameObject.FindObjectOfType<RoomSwitcher>();
 				switcher.setRoomIdxImmediate(1);
+
+				// 전기 충전
+				MyStatus.instance.energy.value = Mathf.Min(MyStatus.instance.energy + energyCharge, MaxEnergyHard);
 			}
 			else
 			{	
