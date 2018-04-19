@@ -32,3 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TutorialScene.unity
     guid: eb1d205d2e47d41598a940fd26f0ce49
+  - enabled: 1
+    path: Assets/Scenes/MiningScene.unity
+    guid: fcf2957afe6f2714297a64abee05cab9
