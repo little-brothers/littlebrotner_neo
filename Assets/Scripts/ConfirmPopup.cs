@@ -8,20 +8,29 @@ public class ConfirmPopup : MonoBehaviour {
 	public delegate void PopupEvent();
 
 	PopupEvent _okEvent;
-	PopupEvent _cancelEvent;
 
 	[SerializeField]
 	Text _text;
+	[SerializeField]
+	Button OkButton;
+	[SerializeField]
+	Button CancelButton;
 
-	public static void Setup(string text, PopupEvent ok, PopupEvent cancel = null)
+
+	public static void Setup(string text, PopupEvent ok, bool showCancel = true)
 	{
 		var popupTemplate = Resources.Load("ConfirmPopup");
 		var popup = (GameObject.Instantiate(popupTemplate) as GameObject).GetComponent<ConfirmPopup>();
 		popup._text.text = text;
 		popup._okEvent = ok;
-		popup._cancelEvent = cancel;
+		popup.CancelButton.gameObject.SetActive(showCancel);
 
 		Utilities.SetUIParentFit(GameObject.FindGameObjectWithTag("RootCanvas"), popup.gameObject);
+	}
+	
+	void Start() {
+		OkButton.onClick.AddListener(() => okButton());
+		CancelButton.onClick.AddListener(() => cancelButton());
 	}
 
 	public void okButton()
@@ -34,9 +43,6 @@ public class ConfirmPopup : MonoBehaviour {
 
 	public void cancelButton()
 	{
-		if (_cancelEvent != null)
-			_cancelEvent();
-
 		GameObject.Destroy(gameObject);
 	}
 }
