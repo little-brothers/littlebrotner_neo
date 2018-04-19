@@ -83,7 +83,7 @@ public class InvertGame : MonoBehaviour {
 
 		}
 
-		cursor.GetComponent<CursorController> ().PointUp (50);
+		// cursor.GetComponent<CursorController> ().PointUp (50);
 		password.Clear ();
 		Initialize ();
 		return true;

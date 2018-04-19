@@ -26,7 +26,7 @@ public class DataGame : MonoBehaviour {
 	public void FalseAnswer(){
 
 
-		cursor.GetComponent<CursorController> ().PointDown (1);
+		// cursor.GetComponent<CursorController> ().PointDown (1);
 
 	}
 
@@ -41,7 +41,7 @@ public class DataGame : MonoBehaviour {
 			}
 		}
 		ResetAllCards ();
-		cursor.GetComponent<CursorController> ().PointUp (9);
+		// cursor.GetComponent<CursorController> ().PointUp (9);
 		return true;
 	}
 

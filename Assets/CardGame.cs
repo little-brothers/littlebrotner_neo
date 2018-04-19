@@ -86,12 +86,12 @@ public class CardGame : MonoBehaviour {
 					c.SetActive (false);
 				}
 			}
-			cursor.GetComponent<CursorController> ().PointUp (15);
+			// cursor.GetComponent<CursorController> ().PointUp (15);
 			StepReset ();
 			return true;
 		}	
 		else
-			cursor.GetComponent<CursorController> ().PointDown(2);
+			// cursor.GetComponent<CursorController> ().PointDown(2);
 			StartCoroutine(pause());
 
 			return false;

@@ -33,7 +33,7 @@ public class HeigthGame : MonoBehaviour {
 		if (num == require) {
 			require++;
 			if (require == 11) {
-				cursor.GetComponent<CursorController> ().PointUp (15);
+				// cursor.GetComponent<CursorController> ().PointUp (15);
 				Reset ();
 				return 2;
 			}
