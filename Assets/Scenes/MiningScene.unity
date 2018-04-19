@@ -259,6 +259,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 89855037}
+  - component: {fileID: 89855038}
   m_Layer: 0
   m_Name: Minigame
   m_TagString: Untagged
@@ -285,6 +286,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &89855038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 89855036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab5cea40dd8ea440a7ad925da296d33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minigames:
+  - name: Mine
+    game: {fileID: 1578830378}
+  - name: Card
+    game: {fileID: 847788273}
+  - name: Data
+    game: {fileID: 105848072}
+  - name: Invert
+    game: {fileID: 986821238}
+  - name: Height
+    game: {fileID: 717042457}
+  game: Card
+  timeGauge: {fileID: 458440793}
+  scoreGauge: {fileID: 487470474}
 --- !u!1 &90690032
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8f33239e5b1498798227bf03db3d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 291195595}
   datas:
   - {fileID: 1229874094}
   - {fileID: 250166609}
@@ -741,18 +766,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 179866722}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 291195599}
-        m_MethodName: PointUp
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &179866722
@@ -1703,9 +1717,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b2e1531b4719448bb1657d546ee2ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _point: 0
-  _time_mask: {fileID: 1245598685}
-  _point_mask: {fileID: 1956991140}
 --- !u!1 &310342210
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,6 +2963,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 458440792}
+  - component: {fileID: 458440793}
   m_Layer: 0
   m_Name: Time
   m_TagString: Untagged
@@ -2974,6 +2986,18 @@ Transform:
   m_Father: {fileID: 89855037}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &458440793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 458440791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b10ea08a37764448681bea3e982845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask: {fileID: 1245598685}
 --- !u!1 &466228756
 GameObject:
   m_ObjectHideFlags: 0
@@ -3118,6 +3142,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 487470473}
+  - component: {fileID: 487470474}
   m_Layer: 0
   m_Name: Point
   m_TagString: Untagged
@@ -3141,6 +3166,18 @@ Transform:
   m_Father: {fileID: 89855037}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &487470474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 487470472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b10ea08a37764448681bea3e982845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask: {fileID: 1956991140}
 --- !u!1 &488601130
 GameObject:
   m_ObjectHideFlags: 0
@@ -3824,19 +3861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 096ba4be1dea84c7eabf8ecd8fe268b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 291195595}
-  heights:
-  - {fileID: 266495067}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  require: 10
 --- !u!1 &723401772
 GameObject:
   m_ObjectHideFlags: 0
@@ -4918,7 +4942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306c69c0e814342a69b0dcf947042bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 291195595}
   cards:
   - {fileID: 924345158}
   - {fileID: 1122353985}
@@ -4944,7 +4967,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5c36fff2e9b0c4da6a6b368f0c9ddd1e, type: 3}
   cardBack: {fileID: 21300000, guid: b0cdb1b9db9ef45d9a9fd14f89bae7ed, type: 3}
   oneside: 0
-  step: 0
   one: {fileID: 0}
   two: {fileID: 0}
 --- !u!1 &860536866
@@ -5848,7 +5870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99cee93fef724ec7af2d9544e388a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 291195595}
   images:
   - {fileID: 530324910}
   - {fileID: 1838417865}
@@ -9036,6 +9057,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1578830379}
+  - component: {fileID: 1578830380}
   m_Layer: 0
   m_Name: MineGame
   m_TagString: Untagged
@@ -9062,6 +9084,18 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00000074878335, y: 0.017001748}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1578830380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1578830378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d523c34f81d3d5b44b6cba737ed9a8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mine: {fileID: 179866721}
 --- !u!1 &1606131395
 GameObject:
   m_ObjectHideFlags: 0

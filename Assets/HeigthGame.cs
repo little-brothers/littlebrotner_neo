@@ -3,37 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HeigthGame : MonoBehaviour {
-
-	public GameObject cursor;
-
-	[SerializeField]
-	public GameObject[] heights;
-
+public class HeigthGame : MonoBehaviour, IMinigame {
 	List<int> h = new List<int>();
-	//List<int> h_item = new List<int>();
 
+	int _require;
 
-	public int require = 1;
+	GameObject[] heights;
+	int _score;
+	const int MaxScore = 100;
+	const float GameTime = 10f;
+
+	public float Progress
+	{
+		get { return _score / (float)MaxScore; }
+	}
+
+	public float MaxTime
+	{
+		get { return GameTime; }
+	}
 
 	// Use this for initialization
-	void Start () {
+	void Awake() {
 
+		heights = new GameObject[10];
+		heights[0] = GameObject.Find("Height"); 
 		for(int i=1; i<10; i++) {
 			heights[i] = GameObject.Find("Height (" + i.ToString()+")"); 
 		}
-
-
-		Reset ();
-
 	}
 
 	public int Matching(int num){
 
-		if (num == require) {
-			require++;
-			if (require == 11) {
-				cursor.GetComponent<CursorController> ().PointUp (15);
+		if (num == _require) {
+			_require++;
+			if (_require == 11) {
+				_score += 15;
 				Reset ();
 				return 2;
 			}
@@ -46,7 +51,7 @@ public class HeigthGame : MonoBehaviour {
 
 	public void Reset(){
 
-		require = 1;
+		_require = 1;
 		for (int i = 1; i <= 10; i++) {
 			h.Add (i);
 		}
@@ -70,5 +75,20 @@ public class HeigthGame : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void Setup()
+	{
+		Reset();
+	}
+
+	public void Finished()
+	{
+		// throw new System.NotImplementedException();
+	}
+
+	public bool Tick()
+	{
+		return false;
 	}
 }

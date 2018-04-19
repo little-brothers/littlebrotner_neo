@@ -1,5 +1,5 @@
 ,이름,name,,,정보,,(개발자용 설명),조건,기능
-T1,환경적응, Adaptation,환경,Environment ,각 종족이 유토피아에 적응하고 살 수 있도록 하는 기술 ,Technology for adapting and living each race in <The Utopia>.,,,
+T1,환경적응,Adaptation,환경,Environment ,각 종족이 유토피아에 적응하고 살 수 있도록 하는 기술 ,Technology for adapting and living each race in <The Utopia>.,,,
 T2,우주항공,Space engineering,우주,Galaxy,"우주정거장 건설, 향상된 은하 탐사 능력 ",Building a space station to explore galaxies. ,처음 과학 예산 투자,V9:YES,
 T3,식량기술,Food technology,환경,Environment,척박한 환경에서의 식량 수확량 증가,Increasing harvest from barren ground,처음 과학 예산 투자,V9:NO,체력회복이 더 높은 식량 개발됨
 T4,전기 유동화,Power exchange system,전기 ,Power,"쓰지 않은 전기는 회수하고, 부족한 전기는 보충함",Exchanging power system between dump power and under power,전기를 세금으로 걷는 기술,V17:YES,"하루 중 전기를 쓰지 않으면 회수, 모두 다쓰면 다음날 +1 증가"

@@ -65,10 +65,7 @@ public class MyStatus {
 		inventory.Put(Item.Create(2));
 
 		// 재화 처리
-		AddSleepHook((vote, status, noti) => {
-			// 매일 밤마다 전기 충전
-			MyStatus.instance.energy.value = Mathf.Min(MyStatus.instance.energy + energyCharge, MaxEnergyHard);
-
+		OnSelfSleep += (vote, status, noti) => {
 			// 세금
 			money.value -= tax;
 			taxPaid = money >= 0;
@@ -77,6 +74,9 @@ public class MyStatus {
 			{
 				var switcher = GameObject.FindObjectOfType<RoomSwitcher>();
 				switcher.setRoomIdxImmediate(1);
+
+				// 전기 충전
+				MyStatus.instance.energy.value = Mathf.Min(MyStatus.instance.energy + energyCharge, MaxEnergyHard);
 			}
 			else
 			{	
@@ -84,10 +84,10 @@ public class MyStatus {
 				money.value = 0;
 				noti.Add(Notification.Create("I did not manage to pay tax"));
 			}
-		});
+		};
 
 		// 투표 갱신
-		AddSleepHook((vote, status, noti) => {
+		OnSelfSleep += (vote, status, noti) => {
 			VoteManager.NextDay();
 
 			string eventName = Database<VoteData>.instance.Find(VoteManager.currentVote.id).eventName.Trim();
@@ -106,10 +106,10 @@ public class MyStatus {
 				Debug.AssertFormat(false, "unhandled event {0}", eventName);
 				break;
 			}
-		});
+		};
 
 		// 체력 회복
-		AddSleepHook((vote, status, noti) => {
+		OnSelfSleep += (vote, status, noti) => {
 			int recovery = 0;
 			if (sick) {
 				recovery -= 30;
@@ -132,16 +132,16 @@ public class MyStatus {
 			}
 
 			health.value = Mathf.Clamp(health + recovery, 0, MaxHealth);
-		});
+		};
 
 		// 배고픔은 항상 증가
 		// 음식을 먹으면 -1이 되기 때문에 이 시점에서 다음날 배고픔이 0이 된다
-		AddSleepHook((vote, status, noti) => {
+		OnSelfSleep += (vote, status, noti) => {
 			hunger.value++;
-		});
+		};
 
 		// 기술 확인
-		AddSleepHook((vote, status, noti) => {
+		OnSelfSleep += (vote, status, noti) => {
 			var newlyDeveloped = Database<Technology>.instance.ToList()
 				.Where(tech => !technologies.Contains(tech.id))
 				.Where(tech => Check(tech.condition));
@@ -151,7 +151,7 @@ public class MyStatus {
 				technologies.Put(newTech.id);
 				// noti.Add(Notification.Create(string.Format("New technology {0} developed", newTech.name)));
 			}
-		});
+		};
 	}
 
 	public static void Reset()
@@ -189,6 +189,11 @@ public class MyStatus {
 		public bool Contains(int type)
 		{
 			return _events.Contains(type);
+		}
+
+		public void Reset()
+		{
+			OnUpdate = delegate{};
 		}
 	}
 
@@ -238,6 +243,11 @@ public class MyStatus {
 		{
 			return _installed.Contains(id) || _slot.Contains(id);
 		}
+
+		public void Reset()
+		{
+			OnUpdate = delegate{};
+		}
 	}
 
 	public class DataUpdateNotifier<T>
@@ -254,6 +264,11 @@ public class MyStatus {
 			_value = initial;
 		}
 
+		public void Reset()
+		{
+			OnUpdate = delegate{};
+		}
+
 		T _value;
 
 		public T value {
@@ -265,6 +280,7 @@ public class MyStatus {
 	// hooks for sleep
 	public delegate void SleepEvent(Vote voteResult, Snapshot status, List<Notification> notifications);
 	event SleepEvent OnSleep = delegate{};
+	event SleepEvent OnSelfSleep = delegate{}; // MyStatus가 등록하는 훅, 절대 해제되지 않는다
 
 	public void AddSleepHook(SleepEvent evt)
 	{
@@ -275,6 +291,16 @@ public class MyStatus {
 	public void ResetAllHooks()
 	{
 		OnSleep = null;
+
+		foreach (var field in typeof(MyStatus).GetFields())
+		{
+			var fieldValue = field.GetValue(this);
+			var resetFunc = fieldValue.GetType().GetMethod("Reset");
+			if (fieldValue != null && resetFunc != null) {
+				Debug.Log("call reset func " + fieldValue.GetType().ToString());
+				resetFunc.Invoke(fieldValue, null);
+			}
+		}
 	}
 
 	public void Sleep()
@@ -282,7 +308,9 @@ public class MyStatus {
 		var notifications = new List<Notification>();
 
 		// execute all sleep hooks
-		OnSleep(VoteManager.currentVote, new Snapshot(this), notifications);
+		var snapshot = new Snapshot(this);
+		OnSelfSleep(VoteManager.currentVote, snapshot, notifications);
+		OnSleep(VoteManager.currentVote, snapshot, notifications);
 
 		// set notifications
 		pendingNotis = notifications;
@@ -295,6 +323,8 @@ public class MyStatus {
 		int ending = CheckEnding();
 		if (ending != 0) {
 			endingIndex.value = ending-1;
+
+			ResetAllHooks();
 			SceneManager.LoadScene("EndingScene");
 		}
 	}
@@ -444,4 +474,5 @@ public class MyStatus {
 	public EventSet technologies = new EventSet(); // 발견한 기술들을 저장
 	public Inventory inventory = new Inventory(); // 아이템 목록
 	//public DataUpdateNotifier<bool> isRobotAppear = new DataUpdateNotifier<bool>(); // 로봇 종족이 나타났는가
+	public int lastWorkId = -1; // 마지막 일자리의 id
 }

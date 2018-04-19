@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InvertGame : MonoBehaviour {
-
-
-	public GameObject cursor;
-
+public class InvertGame : MonoBehaviour, IMinigame {
 
 	[SerializeField]
 	public GameObject[] images;
@@ -16,20 +12,28 @@ public class InvertGame : MonoBehaviour {
 
 
 	List<bool> password = new List<bool>();
-	//List<bool> answer = new List<bool>();
+	int _score;
+	const int MaxScore = 100;
+	const float GameTime = 10f;
 
+	float IMinigame.Progress
+	{
+		get { return _score / (float)MaxScore; }
+	}
+
+	float IMinigame.MaxTime
+	{
+		get { return GameTime; }
+	}
 
 	// Use this for initialization
-	void Start () {
-
+	void Awake() {
 		SettingChild ();
-		Initialize ();
 	}
 
 
 	void Initialize(){
 		SettingPassword ();
-
 
 		for(int i=0; i<16; i++) {
 			images[i].SetActive (password [i]);
@@ -83,16 +87,26 @@ public class InvertGame : MonoBehaviour {
 
 		}
 
-		cursor.GetComponent<CursorController> ().PointUp (50);
+		_score += 50;
+
 		password.Clear ();
 		Initialize ();
 		return true;
 	}
 
 
-	// Update is called once per frame
-	void Update () {
-		
-	
+	void IMinigame.Setup()
+	{
+		Initialize();
+	}
+
+	void IMinigame.Finished()
+	{
+		// throw new System.NotImplementedException();
+	}
+
+	bool IMinigame.Tick()
+	{
+		return false;
 	}
 }

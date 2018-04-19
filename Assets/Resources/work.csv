@@ -1,8 +1,8 @@
-,이름,name,돈,체력,해제 조건,설명,
-W1,광물 채굴,Mining,1,2,V3:YES,오염된 광물을 기계로 캐내는 업무,Mining polluted minerals
-W2,데이터 정리,Data Cleanup,2,1,V3:YES,데이터 정리 업무,Organize data
-W3,사냥,Hunt,3,8,I10,사냥 업무,Hunting
-W4,은하 탐사,Exploration,2,5,V12:YES,은하 탐사 사업,Exploring outer space
-W5,로봇 개발,Robotics,3,4,V24:YES,로봇 개발 업무,Developing robots
-W6,역사 기록,Archaeology,4,2,V33:YES,인간의 역사 문화를 복원하고 데이터하는 업무,Recover and digitalize human history and culture
-W7,생체 실험,Experiments on lives,5,3,V35:YES,생체 실험 연구,Bionic subject experiments and study
+,이름,name,돈,체력,해제 조건,설명,,,,,,,
+W1,광물 채굴,Mining,"0,1,2,3",2,V3:YES,오염된 광물을 기계로 캐내는 업무,Mining polluted minerals,단순노동 (클릭),단순클릭,Mine,0,1,2
+W2,데이터 정리,Data Cleanup,"0,2,3,9",1,V3:YES,데이터 정리 업무,Organize data,명도 순서 클릭,크기큰것부터 고르기,Height,,,
+W3,사냥,Hunt,3,8,I10,사냥 업무,Hunting,타이밍 맞춰서 하는거,타이밍 맞추기,Hunt----,리듬게임처럼 과녁이 나와서 지나가고 정확도에 따라 점수 다름,,
+W4,은하 탐사,Exploration,2,5,V12:YES,은하 탐사 사업,Exploring outer space,미로,,------,3칸 운석 : 피하기 게임 ,,
+W5,로봇 개발,Robotics,3,4,V24:YES,로봇 개발 업무,Developing robots,네모네모 인버스해서 칸맞추기,,Invert,,,
+W6,역사 기록,Archaeology,4,2,V33:YES,인간의 역사 문화를 복원하고 데이터하는 업무,Recover and digitalize human history and culture,종족카드 맞추기,인간->비둘기 게임,Data,,,
+W7,생체 실험,Experiments on lives,5,3,V35:YES,생체 실험 연구,Bionic subject experiments and study,슬롯머신,카드맞추기,Card,,,

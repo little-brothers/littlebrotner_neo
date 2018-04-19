@@ -13,7 +13,6 @@ public class CreditSceneController : MonoBehaviour, IPointerDownHandler, IPointe
 
     public void ToMainMenu()
     {
-        MyStatus.Reset();
         SceneManager.LoadScene("MainScene");
     }
 

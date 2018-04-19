@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TV01 : MonoBehaviour {
@@ -71,8 +72,15 @@ public class TV01 : MonoBehaviour {
 		{
 			ConfirmPopup.Setup(string.Format("Are you sure do work '{0}'?", job.name), () => {
 				MyStatus.instance.health.value -= job.health;
-				MyStatus.instance.money.value += job.payment;
+				MyStatus.instance.lastWorkId = job.id;
 				MyStatus.instance.lastWork.value = MyStatus.instance.day;
+
+				// 화면 전환
+				GameObject.FindObjectOfType<RoomSwitcher>().setRoomIdx(1, () => {
+					MyStatus.instance.ResetAllHooks();
+					SceneManager.LoadScene("MiningScene");
+				});
+
 				GameObject.Destroy(gameObject);
 			});
 		}

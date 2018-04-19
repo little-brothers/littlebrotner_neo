@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardGame : MonoBehaviour {
-
-	public GameObject cursor;
+public class CardGame : MonoBehaviour, IMinigame {
 
 	[SerializeField]
 	public GameObject[] cards;
@@ -15,19 +13,34 @@ public class CardGame : MonoBehaviour {
 	public Sprite cardBack;
 
 	public int oneside; // store card number
-	public int step = 0; // 0: wait, 1: one card, 2: two card
+	public int step { get { return _step; } }
+	int _step = 0; // 0: wait, 1: one card, 2: two card
 
 	public GameObject one;
 	public GameObject two;
 
+	int _score;
+	const int MaxScore = 100;
+	const float GameTime = 10f;
+
 
 	List<int> numbers = new List<int>();
 
+	float IMinigame.Progress
+	{
+		get { return _score / (float)MaxScore; }
+	}
 
-	// Use this for initialization
-	void Start () {
+	float IMinigame.MaxTime
+	{
+		get { return GameTime; }
+	}
 
-		step = 1;
+
+	void IMinigame.Setup()
+	{
+		_score = 0;
+		_step = 1;
 
 		Initialize ();
 
@@ -41,6 +54,15 @@ public class CardGame : MonoBehaviour {
 
 	}
 
+	void IMinigame.Finished()
+	{
+		_DO_NOT(false);
+	}
+
+	bool IMinigame.Tick()
+	{
+		return false;
+	}
 
 	void Initialize(){
 
@@ -61,7 +83,7 @@ public class CardGame : MonoBehaviour {
 			cards [i].GetComponent<Card> ()._cardvalue = numbers[index];
 			cards [i].GetComponent<Card> ().ImageLoad(cardImage[numbers[index]]);
 			numbers.RemoveAt (index);
-			}
+		}
 	}
 
 
@@ -86,16 +108,18 @@ public class CardGame : MonoBehaviour {
 					c.SetActive (false);
 				}
 			}
-			cursor.GetComponent<CursorController> ().PointUp (15);
+
+			_score += 15;
 			StepReset ();
 			return true;
-		}	
-		else
-			cursor.GetComponent<CursorController> ().PointDown(2);
+
+		} else {
+			_score -= 2;
 			StartCoroutine(pause());
 
 			return false;
 		}
+	}
 
 	IEnumerator pause(){
 
@@ -135,12 +159,12 @@ public class CardGame : MonoBehaviour {
 	}
 
 	public void StepUp(){
-		step++;
+		_step++;
 	}
 
 	public void StepReset(){
 		oneside = -1;
-		step = 1;
+		_step = 1;
 		one = null;
 		two = null;
 	}
@@ -158,7 +182,7 @@ public class CardGame : MonoBehaviour {
 	public void LinkToCard(GameObject temp){
 
 
-		switch (step) {
+		switch (_step) {
 
 		case 1:
 			one = temp;
@@ -174,8 +198,4 @@ public class CardGame : MonoBehaviour {
 
 		}
 	}
-
-
-
-
 }
