@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MinigameController : MonoBehaviour {
 
@@ -15,7 +16,7 @@ public class MinigameController : MonoBehaviour {
 	List<MinigameDesc> minigames;
 
 	[SerializeField]
-	string game;
+	string game; // 게임씬에서 넘어오지 않은 경우에만(디버그) 사용
 
 	[SerializeField]
 	MinigameGauge timeGauge;
@@ -28,12 +29,17 @@ public class MinigameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		MinigameDesc gameToPlay = minigames.Find(desc => desc.name == game);
+		string gameName = game;
+		Work work = Database<Work>.instance.Find(MyStatus.instance.lastWorkId);
+		if (work.id != 0)
+			gameName = work.minigame;
+
+		MinigameDesc gameToPlay = minigames.Find(desc => desc.name == gameName);
 		if (gameToPlay.game != null) {
 			Debug.Log("found game " + gameToPlay.name);
 			_currentGame = gameToPlay.game.GetComponent<IMinigame>();
 			if (_currentGame == null) {
-				throw new System.Exception(string.Format("minigame {0} is not implementing IMinigame", game));
+				throw new System.Exception(string.Format("minigame {0} is not implementing IMinigame", gameName));
 			}
 
 			// enable/disable games
@@ -66,6 +72,12 @@ public class MinigameController : MonoBehaviour {
 		if (finished) {
 			Debug.Log("game finished");
 			_currentGame.Finished();
+
+			// 임금 지급
+			MyStatus.instance.money.value += Database<Work>.instance.Find(MyStatus.instance.lastWorkId).payment[0];
+
+			// 돌아가자
+			SceneManager.LoadScene("GameScene");
 		}
 
 		UpdateGauges();

@@ -444,4 +444,5 @@ public class MyStatus {
 	public EventSet technologies = new EventSet(); // 발견한 기술들을 저장
 	public Inventory inventory = new Inventory(); // 아이템 목록
 	//public DataUpdateNotifier<bool> isRobotAppear = new DataUpdateNotifier<bool>(); // 로봇 종족이 나타났는가
+	public int lastWorkId = -1; // 마지막 일자리의 id
 }

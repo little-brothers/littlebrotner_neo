@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,8 +12,9 @@ public struct Work : IDatabaseRow {
 	public string name;
 	public string condition;
 	public string description;
-	public int payment;
+	public int[] payment;
 	public int health;
+	public string minigame;
 
     int IDatabaseRow.ID { get { return id; } }
 
@@ -20,10 +22,11 @@ public struct Work : IDatabaseRow {
     {
 		id = int.Parse(row[0].Substring(1));
 		name = row[2];
-		payment = int.Parse(row[3]);
+		payment = row[3].Split(',').Select(str => int.Parse(str)).ToArray();
 		health = int.Parse(row[4]);
 		condition = row[5];
 		description = row[7];
+		minigame = row[10];
 
 		return true;
     }
@@ -45,7 +48,7 @@ public class WorkListElement : ListElementBase, IPointerClickHandler {
 			_work = value;
 
 			_name.text = _work.name;
-			_health.text = string.Format("HP:{0}/G:{1}", _work.health, _work.payment);
+			_health.text = string.Format("HP:{0}/G:{1}", _work.health, _work.payment[0]);
 			// _health.text = _work.health.ToString();
 
 			if (workIcons.Count >= _work.id)
