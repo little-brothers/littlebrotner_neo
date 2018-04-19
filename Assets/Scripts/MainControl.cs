@@ -23,6 +23,9 @@ public class MainControl : MonoBehaviour {
 				EncryptedPlayerPrefs.SaveEncryption("Ending" + i, "int", "littlebrother");
 			}
 		}
+
+		// reset all ingame status
+		MyStatus.Reset();
 	}
 
 
