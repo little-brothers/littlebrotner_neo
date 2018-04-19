@@ -2,46 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataGame : MonoBehaviour {
-
-
-	public GameObject cursor;
+public class DataGame : MonoBehaviour, IMinigame {
 
 	[SerializeField]
 	public GameObject[] datas;
+
 	private int temp = 0;
-		
-	// Use this for initialization
-	void Start () {
+	int _score = 0;
+	const int MaxScore = 100;
+	const float GameTime = 10f;
 
-		ResetAllCards ();
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	float IMinigame.Progress
+	{
+		get { return _score / (float)MaxScore; }
 	}
 
-	public void FalseAnswer(){
-
-
-		// cursor.GetComponent<CursorController> ().PointDown (1);
-
+	float IMinigame.MaxTime
+	{
+		get { return GameTime; }
 	}
 
+	public void FalseAnswer() {
+		// 감점
+		_score = Mathf.Max(0, _score - 1);
+	}
 
-
-	public bool CheckAllTrue(){
-
-
+	public bool CheckAllTrue() {
 		for(var i = 0; i<datas.Length; i++){
-			if (datas[i].GetComponent<Data> ()._truedata != true) {
+			if (!datas[i].GetComponent<Data>()._truedata) {
 				return false;
 			}
 		}
+
+		_score += 9;
 		ResetAllCards ();
-		// cursor.GetComponent<CursorController> ().PointUp (9);
 		return true;
 	}
 
@@ -51,22 +45,29 @@ public class DataGame : MonoBehaviour {
 			datas [i].GetComponent<Data> ().toTrue ();
 		}
 
-		Initialize ();
+		// initialize
+		temp = Random.Range(0, datas.Length);
+		datas [temp].GetComponent<Data> ().toFalse ();
+
+		temp = Random.Range(0, datas.Length);
+		datas [temp].GetComponent<Data> ().toFalse ();
+
+		temp = Random.Range(0, datas.Length);
+		datas [temp].GetComponent<Data> ().toFalse ();
 	}
 
-
-	public void Initialize(){
-
-		temp = Random.Range(0, datas.Length);
-		datas [temp].GetComponent<Data> ().toFalse ();
-
-		temp = Random.Range(0, datas.Length);
-		datas [temp].GetComponent<Data> ().toFalse ();
-
-		temp = Random.Range(0, datas.Length);
-		datas [temp].GetComponent<Data> ().toFalse ();
-
-
+	void IMinigame.Setup()
+	{
+		ResetAllCards();
 	}
 
+	void IMinigame.Finished()
+	{
+		// throw new System.NotImplementedException();
+	}
+
+	bool IMinigame.Tick()
+	{
+		return false;
+	}
 }

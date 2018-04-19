@@ -302,7 +302,9 @@ MonoBehaviour:
     game: {fileID: 1578830378}
   - name: CardGame
     game: {fileID: 847788273}
-  game: CardGame
+  - name: DataGame
+    game: {fileID: 105848072}
+  game: DataGame
   timeGauge: {fileID: 458440793}
   scoreGauge: {fileID: 487470474}
 --- !u!1 &90690032
@@ -388,7 +390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &105848073
 RectTransform:
   m_ObjectHideFlags: 0
@@ -426,7 +428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8f33239e5b1498798227bf03db3d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 291195595}
   datas:
   - {fileID: 1229874094}
   - {fileID: 250166609}
@@ -4906,7 +4907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &847788274
 RectTransform:
   m_ObjectHideFlags: 0
