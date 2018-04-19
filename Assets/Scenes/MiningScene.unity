@@ -306,7 +306,9 @@ MonoBehaviour:
     game: {fileID: 105848072}
   - name: Invert
     game: {fileID: 986821238}
-  game: Invert
+  - name: Height
+    game: {fileID: 717042457}
+  game: Height
   timeGauge: {fileID: 458440793}
   scoreGauge: {fileID: 487470474}
 --- !u!1 &90690032
@@ -3819,7 +3821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &717042458
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5819,7 +5821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &986821239
 RectTransform:
   m_ObjectHideFlags: 0
