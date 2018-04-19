@@ -36,6 +36,11 @@ public class MinigameController : MonoBehaviour {
 				throw new System.Exception(string.Format("minigame {0} is not implementing IMinigame", game));
 			}
 
+			// enable/disable games
+			foreach (var desc in minigames) {
+				desc.game.SetActive(desc.game == gameToPlay.game);
+			}
+
 			_currentGame.Setup();
 			_endTime = Time.time + _currentGame.MaxTime;
 

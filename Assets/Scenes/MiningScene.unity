@@ -308,7 +308,7 @@ MonoBehaviour:
     game: {fileID: 986821238}
   - name: Height
     game: {fileID: 717042457}
-  game: Height
+  game: Card
   timeGauge: {fileID: 458440793}
   scoreGauge: {fileID: 487470474}
 --- !u!1 &90690032
@@ -3861,19 +3861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 096ba4be1dea84c7eabf8ecd8fe268b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 291195595}
-  heights:
-  - {fileID: 266495067}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  require: 10
 --- !u!1 &723401772
 GameObject:
   m_ObjectHideFlags: 0
