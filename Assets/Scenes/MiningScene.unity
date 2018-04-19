@@ -298,13 +298,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minigames:
-  - name: MineGame
+  - name: Mine
     game: {fileID: 1578830378}
-  - name: CardGame
+  - name: Card
     game: {fileID: 847788273}
-  - name: DataGame
+  - name: Data
     game: {fileID: 105848072}
-  game: DataGame
+  - name: Invert
+    game: {fileID: 986821238}
+  game: Invert
   timeGauge: {fileID: 458440793}
   scoreGauge: {fileID: 487470474}
 --- !u!1 &90690032
@@ -390,7 +392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &105848073
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5817,7 +5819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &986821239
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5879,7 +5881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99cee93fef724ec7af2d9544e388a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 291195595}
   images:
   - {fileID: 530324910}
   - {fileID: 1838417865}
