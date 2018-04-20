@@ -27,6 +27,20 @@ public class MinigameController : MonoBehaviour {
 	IMinigame _currentGame = null; // 현재 진행중인 미니게임
 	float _endTime;
 
+	int rewardLevel
+	{
+		get {
+			if (_currentGame == null)
+				return 0;
+
+			float progress = _currentGame.Progress;
+			if (progress < 0.33) return 0;
+			if (progress < 0.66) return 1;
+			if (progress < 0.99) return 2;
+			return 3;
+		}
+	}
+
 	// Use this for initialization
 	void Start () {
 		string gameName = game;
@@ -74,7 +88,8 @@ public class MinigameController : MonoBehaviour {
 			_currentGame.Finished();
 
 			// 임금 지급
-			MyStatus.instance.money.value += Database<Work>.instance.Find(MyStatus.instance.lastWorkId).payment[0];
+			Work work = Database<Work>.instance.Find(MyStatus.instance.lastWorkId);
+			MyStatus.instance.money.value += work.payment[rewardLevel];
 
 			// 돌아가자
 			SceneManager.LoadScene("GameScene");
