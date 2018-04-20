@@ -68,13 +68,8 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 	// for 03 screen
 	List<Item> productCache = new List<Item>();
 
-	bool _watched = false;
 	public bool watched {
-		get { return _watched; }
-		private set {
-			_watched = value;
-			UpdateBrightness();
-		}
+		get { return (MyStatus.instance.tvCheck & (1 << (id-1))) != 0; }
 	}
 
 	void Awake()
@@ -96,6 +91,10 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		// 다음날 되면 본것들 저리
 		MyStatus.instance.AddSleepHook(ResetStatus);
 
+		// 본 것 처리
+		MyStatus.instance.tvCheck.OnUpdate += value => UpdateBrightness();
+		UpdateBrightness();
+
 		// 위기상항 알림 1 - 모래폭풍
 		MyStatus.instance.homeDestroyed.OnUpdate += destoryed => {
 			if (destoryed != 0) {
@@ -112,7 +111,6 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
 		_overlay.transform.Find("Hint").GetComponent<TextMesh>().text = hint;
 		_overlay.SetActive(false);
-		watched = false;
 
 		SetupListenersForEachTV();
 	}
@@ -300,7 +298,7 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
 	public void ShowFullscreen()
 	{
-		watched = true;
+		MyStatus.instance.tvCheck.value |= (1 << (id-1)); // mark as watched
 
 		// reset alarm
 		_eventDay = -1;
@@ -328,7 +326,6 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
 	public void ResetStatus(Vote vote, MyStatus.Snapshot status, List<Notification> noti)
 	{
-		watched = false;
 		UpdateAlarm(status.day+1);
 	}
 
