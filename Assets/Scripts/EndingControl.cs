@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -25,7 +26,6 @@ public class EndingControl : MonoBehaviour {
 			return Database<EndingData>.instance.Find(MyStatus.instance.endingIndex + 1); 
 		}
 	}
-	private StringBuilder _stringBuilder = new StringBuilder();
 	private bool _isClick = false;	
 
 	private void Start()
@@ -41,61 +41,22 @@ public class EndingControl : MonoBehaviour {
 	
 	public void PrintEndingText()
 	{
-		StartCoroutine(Print(currentEnding.endingDescription + "\n\n" + "Hint: " + currentEnding.endingHint));
+		StartCoroutine(EndingSequence());
 	}
 
-	private IEnumerator Print(string sentence)
+	IEnumerator EndingSequence()
 	{
-		_stringBuilder.Remove(0, _stringBuilder.Length);
-		StartCoroutine("PrintEncryptText", sentence);
-		yield return new WaitForSeconds(_printingSpeed);
-		StartCoroutine("ReplaceDecriptText", sentence);		
-	}
-
-	private IEnumerator PrintEncryptText(string sentence)
-	{
-		char[] temp = sentence.ToCharArray(); 
-
-		for (int i = 0; i < temp.Length; ++i)
-		{
-			_stringBuilder.Append(System.Convert.ToChar(temp[i] + 3));
-			_endingText.text = _stringBuilder.ToString();
-			yield return new WaitForSeconds(_printingSpeed);
-		}
-	}
-
-	private IEnumerator ReplaceDecriptText(string sentence)
-	{
-		char[] temp = sentence.ToCharArray(); 
-
-		for (int i = 0; i < temp.Length; ++i)
-		{
-			_stringBuilder.Replace(_stringBuilder[i], temp[i], i, 1);
-			_endingText.text = _stringBuilder.ToString();
-			yield return new WaitForSeconds(_printingSpeed);
-		}
-	}
-
-	public void ShowEndingTitle()
-	{
-		//StopAllCoroutines();
-		StopCoroutine("Print");
-		StopCoroutine("PrintEncryptText");
-		StopCoroutine("ReplaceDecriptText");
-		StopCoroutine("EndingTitleAnimation");
-
-		if (_isClick)
-		{
-			SceneManager.LoadScene("CreditScene_Game");
-			return;
+		// print ending description
+		var descPrint = Print(currentEnding.endingDescription + "\n\n" + "Hint: " + currentEnding.endingHint);
+		while (descPrint.MoveNext()) {
+			yield return descPrint.Current;
 		}
 
-		_isClick = true;
-		StartCoroutine("EndingTitleAnimation");
-	}
+		// wait for click
+		_isClick = false;
+		yield return new WaitUntil(() => consumeClick());
 
-	private IEnumerator EndingTitleAnimation()
-	{
+		// fade out
 		float timer = 0f;
 		while (timer <= 1f)
 		{
@@ -106,6 +67,55 @@ public class EndingControl : MonoBehaviour {
 		_endingText.text = "";
 		_endingText.color = new Color(231/225f, 52/225f, 57/225f);
 		_endingText.alignment = TextAnchor.UpperLeft;
-		StartCoroutine(Print(currentEnding.id +"_ "+ currentEnding.endingTitle));
+
+		//
+		IEnumerator namePrint = Print(currentEnding.id +"_ "+ currentEnding.endingTitle);
+		while (namePrint.MoveNext()) {
+			yield return namePrint.Current;
+		}
+
+		// wait for click
+		_isClick = false;
+		yield return new WaitUntil(() => consumeClick());
+
+		// next scene
+		SceneManager.LoadScene("CreditScene_Game");
 	}
+
+	private IEnumerator Print(string sentence)
+	{
+		StringBuilder progress = new StringBuilder();
+		char[] characters = sentence.ToCharArray();
+
+		for (int i = 0; i < characters.Length; ++i)
+		{
+			// last character encrypted
+			progress.Append(Convert.ToChar(characters[i] + 3));
+
+			// decrypt last character
+			if (i > 0) {
+				progress[i-1] = characters[i-1];
+				_endingText.text = progress.ToString();
+			}
+
+			yield return new WaitForSeconds(_printingSpeed);
+		}
+
+		// full text
+		_endingText.text = sentence;
+	}
+
+	public void ShowEndingTitle()
+	{
+		_isClick = true;
+	}
+
+	bool consumeClick()
+	{
+		// 클릭 여부를 반환
+		bool ret = _isClick;
+		_isClick = false;
+		return ret;
+	}
+
 }

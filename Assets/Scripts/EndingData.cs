@@ -16,10 +16,10 @@ public struct EndingData : IDatabaseRow
     bool IDatabaseRow.Parse(List<string> row)
     {
         id = int.Parse(row[0].Substring(1));
-        endingQuestion = row[2];
+        endingQuestion = row[3];
         endingHint = row[12];
-        endingDescription = row[9];
-        endingTitle = row[4];
+        endingDescription = row[10];
+        endingTitle = row[5];
         conditions = new string[]{row[6], row[7]};
 
         return true;
