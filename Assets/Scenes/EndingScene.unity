@@ -995,6 +995,7 @@ MonoBehaviour:
   _questionText: {fileID: 812023845}
   _endingText: {fileID: 1041314808}
   _printingSpeed: 0.1
+  _blinkSpeed: 1
 --- !u!1 &1399506406
 GameObject:
   m_ObjectHideFlags: 0

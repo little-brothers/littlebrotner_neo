@@ -20,6 +20,8 @@ public class EndingControl : MonoBehaviour {
 
 	[SerializeField]
 	private float _printingSpeed;
+	[SerializeField]
+	private float _blinkSpeed;
 
 	private EndingData currentEnding {
 		get {
@@ -53,8 +55,10 @@ public class EndingControl : MonoBehaviour {
 		}
 
 		// wait for click
-		_isClick = false;
-		yield return new WaitUntil(() => consumeClick());
+		var waitForClick = WaitForClick();
+		while (waitForClick.MoveNext()) {
+			yield return waitForClick.Current;
+		}
 
 		// fade out
 		float timer = 0f;
@@ -75,8 +79,10 @@ public class EndingControl : MonoBehaviour {
 		}
 
 		// wait for click
-		_isClick = false;
-		yield return new WaitUntil(() => consumeClick());
+		waitForClick = WaitForClick();
+		while (waitForClick.MoveNext()) {
+			yield return waitForClick.Current;
+		}
 
 		// next scene
 		SceneManager.LoadScene("CreditScene_Game");
@@ -105,17 +111,25 @@ public class EndingControl : MonoBehaviour {
 		_endingText.text = sentence;
 	}
 
+	IEnumerator WaitForClick() {
+		_isClick = false;
+		string text = _endingText.text;
+		while (!_isClick) {
+			yield return new WaitForSeconds(_blinkSpeed);
+			_endingText.text = text + "_";
+
+			// fast escape
+			if (_isClick) break;
+
+			yield return new WaitForSeconds(_blinkSpeed);
+			_endingText.text = text;
+		}
+
+		_endingText.text = text;
+	}
+
 	public void ShowEndingTitle()
 	{
 		_isClick = true;
 	}
-
-	bool consumeClick()
-	{
-		// 클릭 여부를 반환
-		bool ret = _isClick;
-		_isClick = false;
-		return ret;
-	}
-
 }
