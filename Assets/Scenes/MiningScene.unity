@@ -2998,7 +2998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mask: {fileID: 1245598685}
-  discrete: 0
+  discrete: 1
 --- !u!1 &466228756
 GameObject:
   m_ObjectHideFlags: 0
@@ -3179,7 +3179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mask: {fileID: 1956991140}
-  discrete: 1
+  discrete: 0
 --- !u!1 &488601130
 GameObject:
   m_ObjectHideFlags: 0
