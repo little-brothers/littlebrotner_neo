@@ -29,8 +29,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IntroScene.unity
     guid: 55b8fea958cee42089eeb700bf4d0332
-  - enabled: 1
-    path: Assets/Scenes/TutorialScene.unity
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/eb1d205d2e47d41598a940fd26f0ce49
     guid: eb1d205d2e47d41598a940fd26f0ce49
   - enabled: 1
     path: Assets/Scenes/MiningScene.unity

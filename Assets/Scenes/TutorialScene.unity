@@ -208,8 +208,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 474, y: -86}
-  m_SizeDelta: {x: 6950, y: 3819}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -27.599998, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &424667145
 MonoBehaviour:
@@ -4006,11 +4006,9 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: be3315e39ebce4dfa8d1b9159280912e, type: 3}
     script: There are three rooms.
   - image: {fileID: 21300000, guid: e2d2428d7adac4d2eb3ca6c6eabade6e, type: 3}
-    script: "\uC88C\uC6B0\uC5D0 \uC788\uB294 < > \uBC84\uD2BC\uC73C\uB85C \uBC29\uC744
-      \uC774\uB3D9\uD569\uB2C8\uB2E4."
+    script: You can move rooms using '<' and '>' buttons on side.
   - image: {fileID: 21300000, guid: 43593b19b77404edbb81cc02300e46b9, type: 3}
-    script: "\uC911\uC559\uBC29\uC5D0\uC11C\uB294 \uBCF4\uC720\uD55C \uB3C8\uACFC
-      \uB9E4\uC77C \uB0B4\uB294 \uC138\uAE08\uC774 \uD45C\uC2DC\uB418\uC5B4 \uC788\uC2B5\uB2C8\uB2E4."
+    script: At center room, you can see money you have and tax you have to pay.
   - image: {fileID: 21300000, guid: 43008b9872eca4b78b9da8d71084ba9e, type: 3}
     script: "\uC911\uC559\uBC29\uC5D0\uB294 9\uAC1C\uC758 \uC2A4\uD06C\uB9B0\uC774
       \uC788\uB294 \uD154\uB808\uC2A4\uD06C\uB9B0\uC774 \uC788\uC2B5\uB2C8\uB2E4."
@@ -4185,8 +4183,8 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 2560, y: 1633}
-  m_ScreenMatchMode: 2
+  m_ReferenceResolution: {x: 200, y: 128}
+  m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -4200,7 +4198,7 @@ Canvas:
   m_GameObject: {fileID: 2098945617}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1534542517}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
