@@ -34,26 +34,24 @@ public class TV01 : MonoBehaviour {
 		_notAvailable.gameObject.SetActive(true);
 		if (_notAvailable.text == "")
 		{
-			_notAvailable.text = "Please select a job";
-			var listElemTmpl = Resources.Load<GameObject>("WorkListElement");
-			var jobs = Database<Work>.instance.ToList().Where(job => MyStatus.Check(job.condition));
-			foreach (var job in jobs)
-			{
-				// var elem = GameObject.Instantiate(listElemTmpl, list.transform).GetComponent<WorkListElement>();
-				var elem = GameObject.Instantiate(listElemTmpl, list.transform).GetComponent<WorkListElement>();
-				elem.transform.localScale = Vector3.one;
-				elem.work = job;
-				elem.OnJobSelected += OnJobSelected;
-			}
-
-			if (jobs.Count() == 0)
-			{
+			var jobs = Database<Work>.instance.ToList(); //.Where(job => MyStatus.Check(job.condition));
+			var jobAvailable = jobs.Any(job => MyStatus.Check(job.condition));
+			if (!jobAvailable) {
 				_notAvailable.text = "Little Brothers are not allowed to work yet.";
 				_stateText.text = "Not available";
-			}
-			else
-			{
-				_notAvailable.gameObject.SetActive(false);
+
+			} else {
+				var listElemTmpl = Resources.Load<GameObject>("WorkListElement");
+				foreach (var job in jobs)
+				{
+					// var elem = GameObject.Instantiate(listElemTmpl, list.transform).GetComponent<WorkListElement>();
+					var elem = GameObject.Instantiate(listElemTmpl, list.transform).GetComponent<WorkListElement>();
+					elem.transform.localScale = Vector3.one;
+					elem.work = job;
+					elem.OnJobSelected += OnJobSelected;
+
+					jobAvailable |= MyStatus.Check(job.condition);
+				}
 			}
 		}
 
