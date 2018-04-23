@@ -8,6 +8,29 @@ public class MineGame : MonoBehaviour, IMinigame {
 	const float GameTime = 10f;
 	int _score;
 
+
+	[SerializeField]
+	AudioSource soundFx;
+
+	[SerializeField]
+	AudioClip click;
+
+	[SerializeField]
+	AudioClip hover;
+
+
+	public void HoverSound(){
+		soundFx.PlayOneShot (hover);
+	}
+
+	public void ClickSound(){
+		soundFx.PlayOneShot (click);
+	}
+		
+
+
+
+
 	[SerializeField]
 	Button mine;
 

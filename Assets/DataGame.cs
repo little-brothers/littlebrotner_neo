@@ -5,6 +5,32 @@ using UnityEngine;
 public class DataGame : MonoBehaviour, IMinigame {
 
 	[SerializeField]
+	AudioSource soundFx;
+
+	[SerializeField]
+	AudioClip click;
+
+	[SerializeField]
+	AudioClip hover;
+
+	[SerializeField]
+	AudioClip wrong;
+
+	public void HoverSound(){
+		soundFx.PlayOneShot (hover);
+	}
+
+	public void ClickSound(){
+		soundFx.PlayOneShot (click);
+	}
+
+	public void WrongSound(){
+		soundFx.PlayOneShot (wrong);
+	}
+
+
+
+	[SerializeField]
 	public GameObject[] datas;
 
 	private int temp = 0;
@@ -24,10 +50,12 @@ public class DataGame : MonoBehaviour, IMinigame {
 
 	public void FalseAnswer() {
 		// 감점
+		WrongSound();
 		_score = Mathf.Max(0, _score - 1);
 	}
 
 	public bool CheckAllTrue() {
+		ClickSound ();
 		for(var i = 0; i<datas.Length; i++){
 			if (!datas[i].GetComponent<Data>()._truedata) {
 				return false;

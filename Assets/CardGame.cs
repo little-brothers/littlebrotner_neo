@@ -4,6 +4,35 @@ using UnityEngine;
 
 public class CardGame : MonoBehaviour, IMinigame {
 
+
+
+	[SerializeField]
+	AudioSource soundFx;
+
+	[SerializeField]
+	AudioClip click;
+
+	[SerializeField]
+	AudioClip hover;
+
+	[SerializeField]
+	AudioClip wrong;
+
+	public void HoverSound(){
+		soundFx.PlayOneShot (hover);
+	}
+
+	public void ClickSound(){
+		soundFx.PlayOneShot (click);
+	}
+
+	public void WrongSound(){
+		soundFx.PlayOneShot (wrong);
+	}
+
+
+
+
 	[SerializeField]
 	public GameObject[] cards;
 
@@ -93,6 +122,7 @@ public class CardGame : MonoBehaviour, IMinigame {
 		Debug.Log ("PUSH");
 		oneside = cardvalue;
 		StepUp ();
+		HoverSound ();
 	}
 
 
@@ -108,13 +138,14 @@ public class CardGame : MonoBehaviour, IMinigame {
 					c.SetActive (false);
 				}
 			}
-
+			ClickSound ();
 			_score += 15;
 			StepReset ();
 			return true;
 
 		} else {
 			_score -= 2;
+			WrongSound ();
 			StartCoroutine(pause());
 
 			return false;
@@ -167,6 +198,7 @@ public class CardGame : MonoBehaviour, IMinigame {
 		_step = 1;
 		one = null;
 		two = null;
+
 	}
 
 	public void _DO_NOT(bool toggle){

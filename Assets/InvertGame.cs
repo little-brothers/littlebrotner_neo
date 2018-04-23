@@ -5,10 +5,36 @@ using UnityEngine;
 public class InvertGame : MonoBehaviour, IMinigame {
 
 	[SerializeField]
+	AudioSource soundFx;
+
+	[SerializeField]
+	AudioClip click;
+
+	[SerializeField]
+	AudioClip hover;
+
+	[SerializeField]
+	AudioClip wrong;
+
+
+
+	public void HoverSound(){
+		soundFx.PlayOneShot (hover);
+	}
+
+	public void ClickSound(){
+		soundFx.PlayOneShot (click);
+	}
+
+
+
+	[SerializeField]
 	public GameObject[] images;
 
 	[SerializeField]
 	public GameObject[] buttons;
+
+
 
 
 	List<bool> password = new List<bool>();
@@ -54,6 +80,7 @@ public class InvertGame : MonoBehaviour, IMinigame {
 	}
 
 
+
 	void SettingChild(){
 		for(int i=1; i<16; i++) {
 			images[i] = GameObject.Find("Image (" + i.ToString()+")"); 
@@ -80,6 +107,10 @@ public class InvertGame : MonoBehaviour, IMinigame {
 
 
 	public bool ResultCheck(){
+
+		ClickSound ();
+
+
 		for (int i = 0; i < 16; i++) {
 			if (password [i] != buttons [i].GetComponent<Invert> ().status_view) {
 				return false;
