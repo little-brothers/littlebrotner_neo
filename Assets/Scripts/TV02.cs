@@ -11,6 +11,11 @@ public class TV02 : MonoBehaviour, IPointerDownHandler, ISubscribe {
 	Transform _arm;
 	float _angle = 0;
 
+	[SerializeField]
+	GameObject _coin;
+	[SerializeField]
+	GameObject _food;
+
 	// Use this for initialization
 	void Start () {
 		NotifyManager.Subscribe(this);
@@ -19,6 +24,19 @@ public class TV02 : MonoBehaviour, IPointerDownHandler, ISubscribe {
 		UpdateBalance(MyStatus.instance.economy);
 		MyStatus.instance.economy.OnUpdate += UpdateBalance;
 		Utilities.SetUIParentFit(GameObject.FindGameObjectWithTag("RootCanvas"), gameObject);
+
+		if (MyStatus.instance.lastGift == 0 ||  MyStatus.instance.day >= MyStatus.instance.lastGift.value + 5) {
+			if (MyStatus.instance.economy <= 0) {
+				_coin.SetActive(false);
+				_food.SetActive(true);
+			} else {
+				_coin.SetActive(true);
+				_food.SetActive(false);
+			}
+		} else {
+			_coin.SetActive(false);
+			_food.SetActive(false);
+		}
 	}
 
 	void UpdateBalance(int value)
@@ -80,4 +98,18 @@ public class TV02 : MonoBehaviour, IPointerDownHandler, ISubscribe {
 				break;
 		}
     }
+
+	public void selection(string type)
+	{
+		if (type == "money") {
+			MyStatus.instance.money.value += 1;
+		} else {
+			var food = Database<Item>.instance.Find(2);
+			MyStatus.instance.inventory.Put(food);
+		}
+
+		_coin.SetActive(false);
+		_food.SetActive(false);
+		MyStatus.instance.lastGift.value = MyStatus.instance.day;
+	}
 }
