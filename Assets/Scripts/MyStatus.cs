@@ -477,6 +477,7 @@ public class MyStatus {
 	public DataUpdateNotifier<int> endingIndex = new DataUpdateNotifier<int>(); // 엔딩!
 	public DataUpdateNotifier<int> lastWork = new DataUpdateNotifier<int>(-1); // 마지막으로 일한 날짜
 	public DataUpdateNotifier<int> tvCheck = new DataUpdateNotifier<int>(); // tv 봤는지 여부를 비트마스크로 체크
+	public DataUpdateNotifier<int> lastGift = new DataUpdateNotifier<int>(); // 마지막으로 선물받은 날짜
 	public EventSet technologies = new EventSet(); // 발견한 기술들을 저장
 	public Inventory inventory = new Inventory(); // 아이템 목록
 	//public DataUpdateNotifier<bool> isRobotAppear = new DataUpdateNotifier<bool>(); // 로봇 종족이 나타났는가
