@@ -41,7 +41,7 @@ public class TV07 : MonoBehaviour {
 
 	private void SetData()
 	{
-		History history = Database<History>.instance.Find(MyStatus.instance.day);
+		History history = Database<History>.instance.Find(VoteManager.currentVote.id);
 
 		// races
 		if (history.sprites.Trim().Length != 0)
