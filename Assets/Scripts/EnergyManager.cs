@@ -36,6 +36,8 @@ public class EnergyManager : MonoBehaviour {
 			child.transform.localPosition = Vector3.down * (spacing + child.size.y) * (_energys.Count-1);
 		}
 
+		MyStatus.instance.tax.OnUpdate += tax => updateEnergyStatus(MyStatus.instance.energy);
+		MyStatus.instance.money.OnUpdate += tax => updateEnergyStatus(MyStatus.instance.energy);
 		MyStatus.instance.energy.OnUpdate += updateEnergyStatus;
 		MyStatus.instance.energyCharge.OnUpdate += _ => updateEnergyStatus(MyStatus.instance.energy);
 		updateEnergyStatus(MyStatus.instance.energy);
@@ -60,13 +62,14 @@ public class EnergyManager : MonoBehaviour {
 
 	public void updateEnergyStatus(int energy)
 	{
+		bool taxAbailable = MyStatus.instance.money.value >= MyStatus.instance.tax.value;
 		for (int i = 0; i < _energys.Count; ++i)
 		{
 			var child = _energys[i];
 			if (i < energy) {
 				child.sprite = energyFilled;
 				child.color = Color.white;
-			} else if (i < energy + MyStatus.instance.energyCharge) {
+			} else if (taxAbailable && i < energy + MyStatus.instance.energyCharge) {
 				child.sprite = energyWillFilled;
 				child.color = new Color32(69, 255, 194, 120);
 			} else {
