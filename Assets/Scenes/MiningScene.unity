@@ -308,7 +308,7 @@ MonoBehaviour:
     game: {fileID: 986821238}
   - name: Height
     game: {fileID: 717042457}
-  game: Card
+  game: Height
   timeGauge: {fileID: 458440793}
   scoreGauge: {fileID: 487470474}
 --- !u!1 &90690032
@@ -3386,6 +3386,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 530324910}
+--- !u!1001 &550434944
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4110251218331206, guid: 2abdd5efa43f14738a1e05ba248020f3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110251218331206, guid: 2abdd5efa43f14738a1e05ba248020f3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.549
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110251218331206, guid: 2abdd5efa43f14738a1e05ba248020f3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110251218331206, guid: 2abdd5efa43f14738a1e05ba248020f3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110251218331206, guid: 2abdd5efa43f14738a1e05ba248020f3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110251218331206, guid: 2abdd5efa43f14738a1e05ba248020f3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110251218331206, guid: 2abdd5efa43f14738a1e05ba248020f3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110251218331206, guid: 2abdd5efa43f14738a1e05ba248020f3, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2abdd5efa43f14738a1e05ba248020f3, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &570086677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3462,6 +3504,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 570086677}
+--- !u!82 &580034154 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82278588144230548, guid: 2abdd5efa43f14738a1e05ba248020f3,
+    type: 2}
+  m_PrefabInternal: {fileID: 550434944}
 --- !u!1 &611331310
 GameObject:
   m_ObjectHideFlags: 0
@@ -3863,6 +3910,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 096ba4be1dea84c7eabf8ecd8fe268b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundFx: {fileID: 580034154}
+  click: {fileID: 8300000, guid: 8d164a89dd3b947eb82542e1921780fe, type: 3}
+  hover: {fileID: 8300000, guid: 496a6b27ce71846b794a9e9b90580c67, type: 3}
+  wrong: {fileID: 8300000, guid: 6ab35f92596de455396848b5d7220cf5, type: 3}
 --- !u!1 &723401772
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,30 @@ public class HeigthGame : MonoBehaviour, IMinigame {
 
 	int _require;
 
+	[SerializeField]
+	AudioSource soundFx;
+
+	[SerializeField]
+	AudioClip click;
+
+	[SerializeField]
+	AudioClip hover;
+
+	[SerializeField]
+	AudioClip wrong;
+
+	public void HoverSound(){
+		soundFx.PlayOneShot (hover);
+	}
+
+	public void ClickSound(){
+		soundFx.PlayOneShot (click);
+	}
+
+	public void WrongSound(){
+		soundFx.PlayOneShot (wrong);
+	}
+
 	GameObject[] heights;
 	int _score;
 	const int MaxScore = 100;
@@ -36,6 +60,7 @@ public class HeigthGame : MonoBehaviour, IMinigame {
 	public int Matching(int num){
 
 		if (num == _require) {
+			ClickSound ();
 			_require++;
 			if (_require == 11) {
 				_score += 15;
@@ -44,6 +69,7 @@ public class HeigthGame : MonoBehaviour, IMinigame {
 			}
 			return 1;
 		} else {
+			WrongSound ();
 			return 0;
 		}
 	}

@@ -19,9 +19,9 @@ public class AudFx : MonoBehaviour {
 
 	}
 
-	public void ClickSound(){
+	public void ClickSound(AudioClip sound){
 
-		myFx.PlayOneShot (clickFx);
+		myFx.PlayOneShot (sound);
 
 	}
 	// Use this for initialization
