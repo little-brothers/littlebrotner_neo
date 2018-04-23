@@ -305,6 +305,7 @@ public class MyStatus {
 
 	public void Sleep()
 	{
+		inSleeping = true;
 		var notifications = new List<Notification>();
 
 		// execute all sleep hooks
@@ -314,6 +315,7 @@ public class MyStatus {
 
 		// set notifications
 		pendingNotis = notifications;
+		inSleeping = false;
 
 		// next day!
 		day.value++;
@@ -479,4 +481,5 @@ public class MyStatus {
 	public Inventory inventory = new Inventory(); // 아이템 목록
 	//public DataUpdateNotifier<bool> isRobotAppear = new DataUpdateNotifier<bool>(); // 로봇 종족이 나타났는가
 	public int lastWorkId = -1; // 마지막 일자리의 id
+	public bool inSleeping = false;
 }

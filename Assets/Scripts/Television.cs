@@ -109,6 +109,10 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 			}
 		};
 
+		MyStatus.instance.day.OnUpdate += day => {
+			UpdateAlarm(day);
+		};
+
 		_overlay.transform.Find("Hint").GetComponent<TextMesh>().text = hint;
 		_overlay.SetActive(false);
 
@@ -243,7 +247,11 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 		// deactivate되면 코루틴이 꺼지게 되므로 OnEnable에서 처리한다
 		StartCoroutine(UpdateHue());
 
-		if (_disasterDay == MyStatus.instance.day)
+		int today = MyStatus.instance.day;
+		if (MyStatus.instance.inSleeping)
+			today++;
+
+		if (_disasterDay == today)
 		{
 			_alarm.gameObject.SetActive(true); // always show
 			SetAlarmType(AlarmAlert, false);
