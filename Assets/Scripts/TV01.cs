@@ -42,6 +42,15 @@ public class TV01 : MonoBehaviour {
 
 			} else {
 				var listElemTmpl = Resources.Load<GameObject>("WorkListElement");
+				jobs.Sort((l, r) => {
+					var lActivate = MyStatus.Check(l.condition);
+					var rActivate = MyStatus.Check(r.condition);
+					if (lActivate != rActivate) 
+						return lActivate ? -1 : 1;
+
+					return l.id < r.id ? -1 : 1;
+				});
+
 				foreach (var job in jobs)
 				{
 					// var elem = GameObject.Instantiate(listElemTmpl, list.transform).GetComponent<WorkListElement>();
