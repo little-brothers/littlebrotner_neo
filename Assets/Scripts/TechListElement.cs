@@ -37,7 +37,7 @@ public class TechListElement : ListElementBase, IPointerClickHandler {
 		set {
 			_tech = value;
 			_name.text = value.name;
-			_progress.text = value.category;
+			_progress.text = value.category + " >";
 
 			if (icons.Count >= value.id) {
 				_icon.sprite = icons[value.id-1];

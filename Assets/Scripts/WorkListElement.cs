@@ -15,6 +15,7 @@ public struct Work : IDatabaseRow {
 	public int[] payment;
 	public int health;
 	public string minigame;
+	public string cost;
 
 	int IDatabaseRow.ID { get { return id; } }
 
@@ -27,6 +28,7 @@ public struct Work : IDatabaseRow {
 		condition = row[5];
 		description = row[7];
 		minigame = row[10];
+		cost = row [11];
 
 		return true;
 	}
@@ -49,7 +51,7 @@ public class WorkListElement : ListElementBase, IPointerClickHandler {
 			_available = MyStatus.Check(_work.condition);
 
 			_name.text = _work.name;
-			_health.text = string.Format("HP:{0}/G:{1}", _work.health, _work.payment[0]);
+			_health.text = string.Format("HP:{0} / G:{1}", _work.health, _work.cost);
 			// _health.text = _work.health.ToString();
 
 			if (workIcons.Count >= _work.id)
