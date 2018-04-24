@@ -35,7 +35,7 @@ public class HeigthGame : MonoBehaviour, IMinigame {
 	GameObject[] heights;
 	int _score;
 	const int MaxScore = 100;
-	const float GameTime = 10f;
+	const float GameTime = 15f;
 
 	public float Progress
 	{
@@ -74,6 +74,9 @@ public class HeigthGame : MonoBehaviour, IMinigame {
 		}
 	}
 
+	public void PointUp(){
+		_score += 4;
+	}
 
 	public void Reset(){
 

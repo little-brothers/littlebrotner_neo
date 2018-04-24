@@ -18,8 +18,10 @@ public class Height : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler {
 	public void OnPointerDown(PointerEventData data)
 	{
 		int temp = gameObject.GetComponent<Height> ().level;
-		if (heightgame.GetComponent<HeigthGame> ().Matching (temp) == 1)
+		if (heightgame.GetComponent<HeigthGame> ().Matching (temp) == 1) {
 			gameObject.SetActive (false);
+			heightgame.GetComponent<HeigthGame> ().PointUp ();
+		}
 		//Debug.Log ("WHY");
 		//invertgame.GetComponent<InvertGame> ().ResultCheck ();
 	}

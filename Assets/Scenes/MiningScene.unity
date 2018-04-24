@@ -308,7 +308,7 @@ MonoBehaviour:
     game: {fileID: 986821238}
   - name: Height
     game: {fileID: 717042457}
-  game: Invert
+  game: Height
   timeGauge: {fileID: 458440793}
   scoreGauge: {fileID: 487470474}
 --- !u!1 &90690032
