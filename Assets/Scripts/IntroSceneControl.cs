@@ -25,6 +25,8 @@ public class IntroSceneControl : MonoBehaviour {
 
 	[SerializeField]
 	public GameObject linkClick;
+	[SerializeField]
+	string nextScene = "GameScene";
 
 	IEnumerator _waitScriptHandle = null;
 	Chatbox _scriptBox = null;
@@ -51,7 +53,7 @@ public class IntroSceneControl : MonoBehaviour {
 		if (_current >= sequence.Count)
 		{
 			GameObject.Find("Soundmanager").GetComponent<Soundmanager> ().MainPlay ();
-			SceneManager.LoadScene("GameScene");
+			SceneManager.LoadScene(nextScene);
 			return;
 		}
 

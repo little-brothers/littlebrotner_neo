@@ -13,7 +13,7 @@ public class CreditSceneController : MonoBehaviour, IPointerDownHandler, IPointe
 
     public void ToMainMenu()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("LogoScene");
     }
 
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)

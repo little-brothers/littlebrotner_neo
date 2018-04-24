@@ -4031,6 +4031,7 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: b0b445357eb4c452f9eddeccbae30b91, type: 3}
     script: Little Brothers.
   linkClick: {fileID: 0}
+  nextScene: TutorialScene
 --- !u!111 &1847870605
 Animation:
   m_ObjectHideFlags: 0
