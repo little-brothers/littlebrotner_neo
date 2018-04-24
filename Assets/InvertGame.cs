@@ -40,7 +40,7 @@ public class InvertGame : MonoBehaviour, IMinigame {
 	List<bool> password = new List<bool>();
 	int _score;
 	const int MaxScore = 100;
-	const float GameTime = 10f;
+	const float GameTime = 20f;
 
 	float IMinigame.Progress
 	{
@@ -118,7 +118,7 @@ public class InvertGame : MonoBehaviour, IMinigame {
 
 		}
 
-		_score += 50;
+		_score += 25;
 
 		password.Clear ();
 		Initialize ();

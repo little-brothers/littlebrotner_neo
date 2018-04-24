@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MineGame : MonoBehaviour, IMinigame {
-	const int MaxScore = 100;
+	const int MaxScore = 50;
 	const float GameTime = 10f;
 	int _score;
 

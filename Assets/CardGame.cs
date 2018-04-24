@@ -50,7 +50,7 @@ public class CardGame : MonoBehaviour, IMinigame {
 
 	int _score;
 	const int MaxScore = 100;
-	const float GameTime = 10f;
+	const float GameTime = 20f;
 
 
 	List<int> numbers = new List<int>();

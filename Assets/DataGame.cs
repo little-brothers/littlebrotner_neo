@@ -62,7 +62,7 @@ public class DataGame : MonoBehaviour, IMinigame {
 			}
 		}
 
-		_score += 9;
+		_score += 20;
 		ResetAllCards ();
 		return true;
 	}
