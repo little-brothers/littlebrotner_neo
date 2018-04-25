@@ -13,16 +13,19 @@ public class CreditSceneController : MonoBehaviour, IPointerDownHandler, IPointe
 
     public void ToMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("LogoScene");
     }
 
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
-        GetComponent<Animation>()["crdit"].speed = 1f;
+        Time.timeScale = 1f;
+        // GetComponent<Animation>()["crdit"].speed = 1f;
     }
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
-        GetComponent<Animation>()["credit"].speed = 10f;
+        Time.timeScale = 10f;
+        // GetComponent<Animation>()["credit"].speed = 10f;
     }
 }

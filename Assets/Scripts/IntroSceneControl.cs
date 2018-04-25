@@ -68,7 +68,6 @@ public class IntroSceneControl : MonoBehaviour {
 
 
 
-
 	public void ShowScript()
 	{
 		if (_scriptBox != null)
@@ -103,9 +102,13 @@ public class IntroSceneControl : MonoBehaviour {
 
 	public void PressSkip()
 	{
+		Debug.Log("skipppp");
 		// 페이드 애니메이션 중에는 재생하지 않음
 		if (GetComponent<Animation>().isPlaying)
+		{
+			Debug.Log("asldkfjdlksafj");
 			return;
+		}
 
 		_current = sequence.Count-1;
 		TriggerFadeout();
