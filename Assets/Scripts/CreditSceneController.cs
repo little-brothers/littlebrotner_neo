@@ -13,6 +13,7 @@ public class CreditSceneController : MonoBehaviour, IPointerDownHandler, IPointe
 
     public void ToMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("LogoScene");
     }
 
