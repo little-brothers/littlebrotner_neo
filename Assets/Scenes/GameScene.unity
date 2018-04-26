@@ -5783,7 +5783,6 @@ GameObject:
   - component: {fileID: 1838501856}
   - component: {fileID: 1838501859}
   - component: {fileID: 1838501858}
-  - component: {fileID: 1838501857}
   m_Layer: 1
   m_Name: FullScreenCamera
   m_TagString: Untagged
@@ -5804,13 +5803,6 @@ Transform:
   m_Father: {fileID: 534886000}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1838501857
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1838501855}
-  m_Enabled: 1
 --- !u!124 &1838501858
 Behaviour:
   m_ObjectHideFlags: 0
