@@ -211,7 +211,7 @@ public class TV08 : MonoBehaviour {
 
 		// initial position
 		person.image.transform.localPosition = nextPos();
-		person.image.color = Color.HSVToRGB(rangeWith(rand, 0f, 1f), 1, 1);
+		person.image.color = Color.HSVToRGB(rangeWith(rand, 0.1f, 0.9f), 0.5f, 1.0f);
 
 		// next position to go
 		Vector3 targetPos = nextPos();

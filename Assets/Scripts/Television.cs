@@ -197,6 +197,23 @@ public class Television : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 			checkVote(MyStatus.instance.day);
 			break;
 
+
+		case 6:
+			SetAlarmType(AlarmNoti);
+
+			// 매일매일 표시
+			MyStatus.DataUpdateNotifier<int>.DataUpdatedEvent twitVote = day => {
+				_eventDay = day;
+				UpdateAlarm(day);
+			};
+
+			MyStatus.instance.day.OnUpdate += twitVote;
+
+			// 기본으로 하나 표시해줌
+			twitVote(MyStatus.instance.day);
+			break;
+
+
 		case 7:
 			SetAlarmType(AlarmNoti);
 			MyStatus.DataUpdateNotifier<int>.DataUpdatedEvent checkHisotry = day => {
