@@ -1,87 +1,126 @@
 ID,(개발자용),이미지,little brothers,내용
-C1,little brothers,r1,"Hi, This is Noë. This is a screen where you can share information between Little Brothers. I'll send you some new information about <the Utopia>.",지구에서 온 little brothers는 계속되는 전쟁과 오염을 피해 희망찬 유토피아를 찾아왔습니다.
+C1,little brothers,r1,"Hi, This is Noë. This is a screen where you can share information between Little Brothers. I'll send you some new information about <the Utopia>.","Hi, This is Noë. This is a screen where you can share information between Little Brothers. I'll send you some new information about <the Utopia>."
 C2,utopia,u/icon_media/icon_v,"Report 01 : Utopia
-Utopia uses nine screens called telescreen to engage in individual political participation and economic activities. Voting is really important! We decide our future.","유토피아라는 사회는 미디어월이라는 장비를 통해 개인의 정치참여, 경제활동이 이루어집니다."
-C3,mantis,char_n/char_o/char_null/char_m/char_s/char_g,,사마귀족은 강인한 생명력과 번식력으로 은하 곳곳에 살고 있었습니다. 그들은 효율성이 높은 방사능 연료를 캐내는 것이 가능합니다.
+Utopia uses nine screens called telescreen to engage in individual political participation and economic activities. Voting is really important! We decide our future.","Report 01 : Utopia
+Utopia uses nine screens called telescreen to engage in individual political participation and economic activities. Voting is really important! We decide our future."
+C3,mantis,char_n/char_o/char_null/char_m/char_s/char_g,,
 C4,cat,r1,"It has been a few days but I am very tired, especially because the daytime is five times longer than the old earth. are you okay?
 Keep in touch, 
-Noë.",고양이족은 옆 은하에서 건너온 바이킹 종족입니다. 
+Noë.","It has been a few days but I am very tired, especially because the daytime is five times longer than the old earth. are you okay?
+Keep in touch, 
+Noë."
 C5,elephant,r2/r3/r4/r5/r6,"Other races have their own culture. The stronger the control of the Union, the weaker the power of the race will be. What do you want to be? 
 Thinking of you,
-Noë.",코끼리족은 오랜 시간부터 유토피아를 수호해온 종족으로 자연 환경을 지키는데 애쓰고 있습니다.
+Noë.","Other races have their own culture. The stronger the control of the Union, the weaker the power of the race will be. What do you want to be? 
+Thinking of you,
+Noë."
 C6,pigeon,r1,"How's your health? I remember when it was terrible that nobody protected us. It was a terrible war on the Earth before we came to Utopia.
 Take care, 
-Noë.",비둘기족은 고대에 유토피아의 사회 정책을 자리잡게 하였습니다. 그들은 종족 간의 평화를 유지하는데 기여했습니다.
+Noë.","How's your health? I remember when it was terrible that nobody protected us. It was a terrible war on the Earth before we came to Utopia.
+Take care, 
+Noë."
 C7,frog,r3,"Report 02 : [Mantises]
-[Mantises] have a strong vitality and fertility, and they mine dangerous radioactive fuels as job.","개구리족은 똑똑한 머리를 가지고 있으며, 기술의 진보가 완벽한 평화를 만들 것이라고 생각합니다."
-C8,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,유토피아의 문화예술은 각 종족 별로 지켜온 문화의 종합체입니다. 종족 별 다른 역사와 문화를 가지고 있습니다.
+[Mantises] have a strong vitality and fertility, and they mine dangerous radioactive fuels as job.","Report 02 : [Mantises]
+[Mantises] have a strong vitality and fertility, and they mine dangerous radioactive fuels as job."
+C8,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,
 C9,utopia,r1/icon_t/r7,"Utopia's science and technology is lower than the old earth. utopia want our knowledge. Unfortunately, much of it was lost in coming here. 
 All my best, 
-Noë.",유토피아의 과학기술은 지구에 비해 낮은 수준이며 자연 재해에 의해 지속적으로 파괴되어 왔습니다.
-C10,pigeon/mantis,char_n/char_o/char_null/char_m/char_s/char_g,,비둘기족은 높은 산에서 살아갑니다. 사마귀족은 값비싸지만 오염된 광물 옆에서 살아갑니다.
-C11,elephant/frog,char_n/char_o/char_null/char_m/char_s/char_g,,코끼리족은 숲에서 살아갑니다. 개구리족은 공장지대에서 살아가며 연구소를 운영합니다.
+Noë.","Utopia's science and technology is lower than the old earth. utopia want our knowledge. Unfortunately, much of it was lost in coming here. 
+All my best, 
+Noë."
+C10,pigeon/mantis,char_n/char_o/char_null/char_m/char_s/char_g,,
+C11,elephant/frog,char_n/char_o/char_null/char_m/char_s/char_g,,
 C12,galaxy,g/u/g,"How are you? Today I also did research on space exploration. It was a horrible memory, but sometimes I miss the old earth.
 Warmly,
-Noë.",우주에는 수많은 은하와 별들이 있으며 아직 발견되지 않은 별들과 이미 버려진 별들이 있습니다.
+Noë.","How are you? Today I also did research on space exploration. It was a horrible memory, but sometimes I miss the old earth.
+Warmly,
+Noë."
 C13,icon,r3/icon_w/r4,"Repor 03 : Work
-Hunting and mining minerals are very dangerous tasks. It can consume a lot of stamina and harm your body. [Mantises] and [Cats] are doing these.",사냥을 하는 것과 광물을 채굴하는 것은 매우 위험한 업무입니다.
+Hunting and mining minerals are very dangerous tasks. It can consume a lot of stamina and harm your body. [Mantises] and [Cats] are doing these.","Repor 03 : Work
+Hunting and mining minerals are very dangerous tasks. It can consume a lot of stamina and harm your body. [Mantises] and [Cats] are doing these."
 C14,utopia,r1/love/r3,"It's a terrible thing ... I think I'll puke. I have heard that the union between different races has never been in utopia until now. If you fall in love with another race, you will not be contacted anymore.
-Noë.",다른 종족 간의 결합은 지금까지는 없었던 일입니다.
+Noë.","It's a terrible thing ... I think I'll puke. I have heard that the union between different races has never been in utopia until now. If you fall in love with another race, you will not be contacted anymore.
+Noë."
 C15,icon,char_n/char_o/char_null/char_m/char_s/char_g,,
 C16,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,
 C17,utopia,icon_t/icon_media/icon_t,"I'm using a lot of electricity to study it, so I might not be able to send you a message for a while. It is a scary system that you can not get food if electricity is cut off.
 Cheers, 
-Noë.",9개의 스크린이 달린 미디어월은 유토피아 연합의 정책입니다. 누구나 이 미디어월에 접근가능해야하고 누구에게나 배분됩니다.
+Noë.","I'm using a lot of electricity to study it, so I might not be able to send you a message for a while. It is a scary system that you can not get food if electricity is cut off.
+Cheers, 
+Noë."
 C18,little brothers,u/g/r1,"As you know, we are intellectuals who escaped from the war in the old earth. I think what we have to do is to restore our knowledge.
 Best,
-Noë.",지구사회의 회의감을 겪으며 지구를 떠난 리틀브러다는 각 분야의 지식인층과 전쟁의 피해를 입은 난민층으로 구성되어 있다.
-C19,pigeon,char_n/char_o/char_null/char_m/char_s/char_g,,비둘기족은 유토피아의 직접 민주주의 형태를 자리잡게 하였습니다. 그들도 유토피아 이전에 다른 별에서 살았다는 소문이 있지만 워낙 오래전일이라 정확한 기록은 없다.
-C20,mantis,char_n/char_o/char_null/char_m/char_s/char_g,,사마귀족은 오래 정착하지 못하고 떠돌아다니며 살아온 탓인지 생명력이 강하고 자원과 번식에 대한 집착이 강하다. 초기에 소수의 이민 종족이었지만 엄청난 번식능력으로 인구의 다수를 차지하게 되었다.
+Noë.","As you know, we are intellectuals who escaped from the war in the old earth. I think what we have to do is to restore our knowledge.
+Best,
+Noë."
+C19,pigeon,char_n/char_o/char_null/char_m/char_s/char_g,,
+C20,mantis,char_n/char_o/char_null/char_m/char_s/char_g,,
 C21,utopia,r7/bio,"Are you worried about voting? Little brothers will play a major role in the development of robotics, while biomedical technology will help restore the impoverished Little Brothers.
-Noë.",과학 기술을 발전시키기 위한 자원은 한정되어 있습니다. 유토피아는 항상 합의를 통해 기술발전의 방향을 정했습니다.
-C22,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,"유토피아는 모두의 의견을 듣기 위해 미디어월을 설치해왔으며 미디어월의 범위는 정치, 노동, 식량까지 확장되어 왔습니다."
+Noë.","Are you worried about voting? Little brothers will play a major role in the development of robotics, while biomedical technology will help restore the impoverished Little Brothers.
+Noë."
+C22,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,
 C23,frog,r6,"Report 04 : [Frogs]
-Genetic manipulation is a powerful way to develop vitality. The frog races have always claimed genetic manipulation, and there is rumor that they are experimenting secretly","유전자 조작은 생명력을 개발시키는 강력한 방법입니다. 개구리 종족은 언제나 유전자 조작을 주장해왔고, 그들이 비밀리에 실험을 하고 있다는 소문이 돌고 있습니다."
+Genetic manipulation is a powerful way to develop vitality. The frog races have always claimed genetic manipulation, and there is rumor that they are experimenting secretly","Report 04 : [Frogs]
+Genetic manipulation is a powerful way to develop vitality. The frog races have always claimed genetic manipulation, and there is rumor that they are experimenting secretly"
 C24,utopia,r7/r7/r7/r7/r7,"Once this policy is approved, let's do the robot business with our technology! What are you going to do if you have a lot of money?
 All my best, 
-Noë.",미디어월의 출현은 많은 생활모습을 바꾸었습니다. 대부분의 개체들이 기지 밖으로 나가지 않게 되었습니다.
-C25,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,"미디어월을 통해 대부분의 활동을 수행하면서, 노동의 개념이 미디어월을 통한 노동과 미디어월을 사용하지 않는 노동으로 나누어졌습니다."
+Noë.","Once this policy is approved, let's do the robot business with our technology! What are you going to do if you have a lot of money?
+All my best, 
+Noë."
+C25,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,
 C26,utopia,r1,"I'm so hungry I can not stand it ... I'm preparing for the end.
-Noë.",유토피아는 사실 안전한 별은 아닙니다. 수많은 자연재해와 위험에 노출되어 있지만 많은 종족이 힘을 합쳐 삶의 터전을 구축했습니다.
+Noë.","I'm so hungry I can not stand it ... I'm preparing for the end.
+Noë."
 C27,little brothers,u,"Report 05 : [History of old earth]
 
-Freedom and equality sparked a desire to be liberated from labor. The slogan of ""convenience, speed, and complete liberation"" emerged around robotic companies. Robotics have been booming, and robotics has evolved more and more. Development has shown that the earth's resources are bottoming and pollutants cover the earth.","자유와 평등은 노동으로부터 해방되고자 하는 갈망을 싹틔웠다.  “편리함, 빠름 그리고 완전한 해방”이라는 슬로건 아래 로봇기업들의 개발로 지구의 자원이 바닥을 보이고 오염물질이 지구 절반을 가리고 있었지만 로봇기술은 점점 더 발전했다."
-C28,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,유토피아는 지하자원을 채굴하여 에너지로 만들고 그 에너지를 은하 내의 다른 별에 파는 것으로 수익을 얻습니다.
-C29,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,미디어월을 작동시키기 위해서는 전기가 필수적입니다. 세금을 걷는데에도 미디어월이 사용됩니다.
-C30,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,재난은 난민을 만들어냅니다. 특히 미디어월이 없는 개체는 유토피아에서 도태되어 버립니다.
-C31,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,각 종족 별로 다른 언어를 사용했지만 유토피아는 비둘기족이 사용하는 언어를 공용어로 택했습니다.
+Freedom and equality sparked a desire to be liberated from labor. The slogan of ""convenience, speed, and complete liberation"" emerged around robotic companies. Robotics have been booming, and robotics has evolved more and more. Development has shown that the earth's resources are bottoming and pollutants cover the earth.","Report 05 : [History of old earth]
+
+Freedom and equality sparked a desire to be liberated from labor. The slogan of ""convenience, speed, and complete liberation"" emerged around robotic companies. Robotics have been booming, and robotics has evolved more and more. Development has shown that the earth's resources are bottoming and pollutants cover the earth."
+C28,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,
+C29,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,
+C30,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,
+C31,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,
 C32,utopia,r1,"I do not know the meaning of life. After surviving hard, there will be more pain.
-Noë.",유토피아는 주인이 없는 별을 찾아 그 광물을 채집해 오는 것으로 주된 자금을 확보합니다.
+Noë.","I do not know the meaning of life. After surviving hard, there will be more pain.
+Noë."
 C33,pigeon/mantis,icon_media,"Report 06 : [Tele-screen]
-With the advent of the telescreen, most objects no longer go out of the house. The concept of labor was divided into labor through telescreen and labor without telescreen. Electricity is essential to operate the telescreen. Telescreen is also used to collect taxes. With the refusal to do so, there are also citizens who are destroying the telescreen.",비둘기족의 언어는 바람이 새는 소리와 목이 울리는 소리를 이용합니다. 사마귀족은 유토피아 공용어인 [비둘기족의 언어]에 소리를 내기 힘든 신체 구조를 가지고 있습니다.
-C34,galaxy,char_n/char_o/char_null/char_m/char_s/char_g,,"우주는 고요해보이지만 소행성 충돌, 감마선 폭발, 타 종족의 습격 등 위험이 도사리고 있습니다."
+With the advent of the telescreen, most objects no longer go out of the house. The concept of labor was divided into labor through telescreen and labor without telescreen. Electricity is essential to operate the telescreen. Telescreen is also used to collect taxes. With the refusal to do so, there are also citizens who are destroying the telescreen.","Report 06 : [Tele-screen]
+With the advent of the telescreen, most objects no longer go out of the house. The concept of labor was divided into labor through telescreen and labor without telescreen. Electricity is essential to operate the telescreen. Telescreen is also used to collect taxes. With the refusal to do so, there are also citizens who are destroying the telescreen."
+C34,galaxy,char_n/char_o/char_null/char_m/char_s/char_g,,
 C35,utopia,r3,"Report 07 : [Mantis]
-[Mantis] have mouths that are difficult to make sounds in Utopian language [language of pigeon]. - [Mantis] are healthy, but their life span is short. - It has a short life to learn about society and policy. """,유토피아의 각 종족들은 각기 다른 특성을 가지고 있지만 모두 대등하게 보호받고 존중받습니다.
+[Mantis] have mouths that are difficult to make sounds in Utopian language [language of pigeon]. - [Mantis] are healthy, but their life span is short. - It has a short life to learn about society and policy. ""","Report 07 : [Mantis]
+[Mantis] have mouths that are difficult to make sounds in Utopian language [language of pigeon]. - [Mantis] are healthy, but their life span is short. - It has a short life to learn about society and policy. """
 C36,mantis,r3/r2,"Report 08 : [A Tragedy of Mantis]
-Long ago, some [Mantis] were intellectuals. However, they were detected and removed. Languages that were difficult for them were adopted as official languages. Someone put them in a corner. Those who tried to use them are the [Pigeons], a symbol of peace.","사마귀족은 생명력이 강하지만 수명은 짧습니다. 사회, 정책에 대해 학습하기에는 짧은 수명을 가지고 있습니다. "
+Long ago, some [Mantis] were intellectuals. However, they were detected and removed. Languages that were difficult for them were adopted as official languages. Someone put them in a corner. Those who tried to use them are the [Pigeons], a symbol of peace.","Report 08 : [A Tragedy of Mantis]
+Long ago, some [Mantis] were intellectuals. However, they were detected and removed. Languages that were difficult for them were adopted as official languages. Someone put them in a corner. Those who tried to use them are the [Pigeons], a symbol of peace."
 C37,cat,char_n/char_o/char_null/char_m/char_s/char_g,,
 C38,utopia,r1,"Actually, I think I have a problem with my body. My eyes were bloodshot and my body turned red.
 
 Painful,
-Noë.",그 중 [오리너구리]족이 전방에 나서서 싸웠으며 그 때의 습격으로 재생력을 잃어 멸종되었다.
+Noë.","Actually, I think I have a problem with my body. My eyes were bloodshot and my body turned red.
+
+Painful,
+Noë."
 C39,mantis,char_n/char_o/char_null/char_m/char_s/char_g,,
 C40,elephant,r5,"Report 09 : [Elephants]
-[Elephants] are physically affected by electricity. So they had to live off machines and factories and use natural energy. But technology has progressed, nature has been destroyed and they have lost their homes. Telescreen is a shackle that paints the elephants who were natives of Utopia.",
+[Elephants] are physically affected by electricity. So they had to live off machines and factories and use natural energy. But technology has progressed, nature has been destroyed and they have lost their homes. Telescreen is a shackle that paints the elephants who were natives of Utopia.","Report 09 : [Elephants]
+[Elephants] are physically affected by electricity. So they had to live off machines and factories and use natural energy. But technology has progressed, nature has been destroyed and they have lost their homes. Telescreen is a shackle that paints the elephants who were natives of Utopia."
 C41,utopia,r4,"Report 10 : [Cats]
-Long ago [Cats] were hungry for a long time on a star far away. They approached long ago to attack the utopia. The war ended with [Cats] joining the Utopia.",
+Long ago [Cats] were hungry for a long time on a star far away. They approached long ago to attack the utopia. The war ended with [Cats] joining the Utopia.","Report 10 : [Cats]
+Long ago [Cats] were hungry for a long time on a star far away. They approached long ago to attack the utopia. The war ended with [Cats] joining the Utopia."
 C42,utopia,r2/r3/r5/r6/g/g/r4,"Report 11 : [A History of the Utopia]
-Long ago, each race of <Utopia> maintained a comparable population. At that time, because the resources were abundant, they did not care about each other without fighting or communicating with each other. One day suddenly there was an attack by another creature and the races of utopia had to plan countermeasure together. After successful defense, <the utopian union> formed. The utopia union grew in size from defense to diplomacy and politics.",
-C43,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,"전쟁은 많은 파괴를 낳지만, 그 이면에 전쟁을 통해 이득을 보는 사람들이 존재합니다. 여러번의 외부침략을 겪으며 유토피아는 단합되어 왔습니다."
+Long ago, each race of <Utopia> maintained a comparable population. At that time, because the resources were abundant, they did not care about each other without fighting or communicating with each other. One day suddenly there was an attack by another creature and the races of utopia had to plan countermeasure together. After successful defense, <the utopian union> formed. The utopia union grew in size from defense to diplomacy and politics.","Report 11 : [A History of the Utopia]
+Long ago, each race of <Utopia> maintained a comparable population. At that time, because the resources were abundant, they did not care about each other without fighting or communicating with each other. One day suddenly there was an attack by another creature and the races of utopia had to plan countermeasure together. After successful defense, <the utopian union> formed. The utopia union grew in size from defense to diplomacy and politics."
+C43,utopia,char_n/char_o/char_null/char_m/char_s/char_g,,
 C44,little brothers,r8,"Report 12 : [Snakes]
-Absorption-mining technology of the snake races is a technique that uses other wormholes to destroy the other stars. Because of this, they were also called demon-cleaning man.","이념적 뿌리인 자유와 평등은 노동의 구속으로부터 해방되고자 하는 인간들의 갈망을 싹틔웠고 이는 노동을 짊어질 로봇에 대한 기대와 함께 커져갔다. “편리함, 빠름 그리고 완전한 해방”이라는 슬로건 아래 로봇기업들의 개발로 지구의 자원이 바닥을 보이고 오염물질이 지구 절반을 가리고 있었지만 지배자들에 대한 로비와 피지배자들이 보내는 지지로 로봇기술은 점점 더 발전했다."
+Absorption-mining technology of the snake races is a technique that uses other wormholes to destroy the other stars. Because of this, they were also called demon-cleaning man.","Report 12 : [Snakes]
+Absorption-mining technology of the snake races is a technique that uses other wormholes to destroy the other stars. Because of this, they were also called demon-cleaning man."
 C45,pigeon,r2,"Report 13 : [Pigeons]
-The [Pigeons] attempted to increase population by fast breeding after direct voting. Through 'joint breeding', the population increased, and the Pigeons led favorable policies toward their race. Eventually they became a ""majority"" of utopias.",
+The [Pigeons] attempted to increase population by fast breeding after direct voting. Through 'joint breeding', the population increased, and the Pigeons led favorable policies toward their race. Eventually they became a ""majority"" of utopias.","Report 13 : [Pigeons]
+The [Pigeons] attempted to increase population by fast breeding after direct voting. Through 'joint breeding', the population increased, and the Pigeons led favorable policies toward their race. Eventually they became a ""majority"" of utopias."
 C46,little brothers,r1,"Report 14 : [A History of Little brothers]
-Robot Revolution, the robots were performing human jobs instead, and many jobs disappeared. Individuals who lost their place in the dominance of robots and capital were only able to escape from the devastated earth. And they are us. It's [Little brothers].",
+Robot Revolution, the robots were performing human jobs instead, and many jobs disappeared. Individuals who lost their place in the dominance of robots and capital were only able to escape from the devastated earth. And they are us. It's [Little brothers].","Report 14 : [A History of Little brothers]
+Robot Revolution, the robots were performing human jobs instead, and many jobs disappeared. Individuals who lost their place in the dominance of robots and capital were only able to escape from the devastated earth. And they are us. It's [Little brothers]."
 C47,utopia,icon_w/r2/icon_media/,"<question>
-Despite steady productivity, utopia's resources have repeatedly been lacking, and citizens have starved. However, in spite of utopian crisis, some ethnic groups continue peace.",꾸준한 생산력에도 불구하고 유토피아의 자원은 계속 반복적으로 고갈되고 고난의 시기를 겪는다. 하지만 어떤 종족만큼은 유토피아 전체의 경제 타격에도 불구하고 평화로운 수준을 이어나간다.
+Despite steady productivity, utopia's resources have repeatedly been lacking, and citizens have starved. However, in spite of utopian crisis, some ethnic groups continue peace.","<question>
+Despite steady productivity, utopia's resources have repeatedly been lacking, and citizens have starved. However, in spite of utopian crisis, some ethnic groups continue peace."

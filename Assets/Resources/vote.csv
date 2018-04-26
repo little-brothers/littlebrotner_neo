@@ -1,7 +1,7 @@
 ,DAY,질문,Q,예,아니오,기권 시 결과,예 : economy,예 : political,예 : mechanic,아니오 : economy,아니오 : political,아니오 : mechanic,예 : 이벤트,아니오 : 이벤트,투표 활성화시 이벤트,
 V1,1,지구라는 별에서 온 little brother는 좋은 존재입니까?,Here is vote screen. You may vote for Utopia’s policy once a day. Select anything.,V2,V2,예,,,,,,,,,,
 V2,2,모든 개체는 존중받아야 합니까?,Are all races equal?,V3,V3,예,,-10,,,15,,,,,
-V3,3,유토피아를 위해 노동과 납세의 의무를 가집니까?,Do workers are obligated to do labor and pay taxes?,V4,V4,예,,,,,,,,,,
+V3,3,유토피아를 위해 노동과 납세의 의무를 가집니까?,Will Little Brothers have a job?,V4,V4,예,,,,,,,,,,
 V4,4,리틀브라더는 유토피아 연합의 임시 보호를 받습니까?,Does Utopia protect 'Little Brothers' temporarily?,V5,V6,아니오,,10,,,,,,,,
 V5,5,종족 내 규칙도 유토피아 연합이 통제합니까?,Does Utopia deserve to control each racial rule?,V7,V7,아니오,,15,,,0,,,,,
 V6,5,리틀브라더는 [비둘기족]의 임시보호를 받습니까?,Do 'Pigeons' protect 'Little Brothers' temporarily?,V7,V7,아니오,25,,,,-50,,,,,

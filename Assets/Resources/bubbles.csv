@@ -1,7 +1,7 @@
 ID,Text,Item,Peoples,Cond1,Cond2
 1,"Hi, Little brother!",,30,Political>-20,Political<20
-2,You got a gift.,,30,Political>-20,Political<20
-3,I love cooking.,,30,Political>-20,Political<20
+2,Liberalism? Totalitarianism?,,30,Political>-20,Political<20
+3,"Check political tendency, here.",,30,Political>-20,Political<20
 4,I am under surveillance.,,30,Political<=-60,Political>-80
 5,Fair distribution for citizens!,,30,Political<=-60,Political>-80
 6,Salute! Utopia Union!,,30,Political<=-80,

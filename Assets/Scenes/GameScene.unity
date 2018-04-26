@@ -6319,6 +6319,11 @@ Prefab:
       value: I was born into a group. Although I rarely saw them, there were some
         who were born into the family.
       objectReference: {fileID: 0}
+    - target: {fileID: 61641489658336444, guid: f4d6bcfd829d34fc5a5daf53d8de55ab,
+        type: 2}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114858352270018096, guid: f4d6bcfd829d34fc5a5daf53d8de55ab, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f4d6bcfd829d34fc5a5daf53d8de55ab, type: 2}
