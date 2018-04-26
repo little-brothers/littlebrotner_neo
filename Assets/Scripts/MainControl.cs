@@ -29,6 +29,11 @@ public class MainControl : MonoBehaviour {
 	}
 
 
+	public void PressStory()
+	{
+		GameObject.Find("Soundmanager").GetComponent<Soundmanager> ().StoryPlay ();
+		SceneManager.LoadScene("TrailerScene");
+	}
 
 
 	public void PressStart()
