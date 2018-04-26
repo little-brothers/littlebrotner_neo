@@ -1027,7 +1027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933f5fc4885bc42a1a5a8e30a27d40cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myFx: {fileID: 0}
+  myFx: {fileID: 1180826066}
   hoverFx: {fileID: 8300000, guid: 932235156b5aa4e94bd161a365f81f65, type: 3}
   clickFx: {fileID: 8300000, guid: 95a05f0741e554987bf587deb490c7af, type: 3}
 --- !u!82 &343086648
