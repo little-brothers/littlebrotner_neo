@@ -412,7 +412,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2020803318
+  randomSeed: -1859368505
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4041,20 +4041,19 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: be3315e39ebce4dfa8d1b9159280912e, type: 3}
     script: In the game, There are three rooms.
   - image: {fileID: 21300000, guid: e2d2428d7adac4d2eb3ca6c6eabade6e, type: 3}
-    script: You can move rooms using '<' and '>' buttons on side.
+    script: You can move rooms by click arrow on side.
   - image: {fileID: 21300000, guid: 43008b9872eca4b78b9da8d71084ba9e, type: 3}
-    script: At center room, you can see money you have and taxes for everyday.
+    script: At center room, you can see money and taxes(for everyday).
   - image: {fileID: 21300000, guid: 43593b19b77404edbb81cc02300e46b9, type: 3}
     script: There is a telescreen with 9 screens. With this, you can work, buy food,
       monitor the society, and vote.
   - image: {fileID: 21300000, guid: c9e5419c5895348efb456c075301fcdd, type: 3}
-    script: One electricity is required to turn on one screen, and the electricity
-      is charged every day as indicated on the bottom. You can have up to 12.
+    script: One electricity is required to turn on one screen.
   - image: {fileID: 21300000, guid: 74b8e64292aef43878df73d4f21ed905, type: 3}
     script: If you do not have the money to pay the tax, the electricity will not
       be charged the next day.
   - image: {fileID: 21300000, guid: b607d51c9eecd48ec82b0b9438429a8f, type: 3}
-    script: In the left room, there is a cabinet for storing food. You can eat here.
+    script: In the left room, there is a cabinet for food. Eat here.
   - image: {fileID: 21300000, guid: 2406318751f554644b6556b860b5f0b0, type: 3}
     script: There is a door, but now it is a game exit function. (It will be updated
       to event scene later)
@@ -4063,10 +4062,11 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: 8c81320ba7569418baf23785d53b0108, type: 3}
     script: You can sleep in bed. The day goes by to sleep.
   - image: {fileID: 21300000, guid: 28a5c9ee7437c4cd59cd249cff932af3, type: 3}
-    script: The top of the hunger is displayed and you may not eat until 3 days.
+    script: Hunger is displayed and should eat food within three days.
   - image: {fileID: 21300000, guid: e4daec1fb60d84b3a9acd449e765ea43, type: 3}
-    script: At the bottom you can see your health recovered by food. If you get sick,
-      it will be red.
+    script: At the bottom you can see your health recovered by food.
+  - image: {fileID: 0}
+    script: Now, you are one of the little brothers. Make your own utopia.
   linkClick: {fileID: 0}
   nextScene: GameScene
 --- !u!111 &1847870605
