@@ -36,7 +36,9 @@ public class Soundmanager : MonoBehaviour {
 
 		MenuMusic.Stop ();
 		MenuMusic.loop = false;
-
+		IntroMusic.Stop ();
+		MainMusic.Stop ();
+		EndingMusic.Stop ();
 		Debug.Log ("Story");
 
 	}
