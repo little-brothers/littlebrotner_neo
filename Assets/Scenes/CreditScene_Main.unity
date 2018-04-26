@@ -645,7 +645,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -824247172
+  randomSeed: 426068199
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4766,7 +4766,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -7.5999756, y: -25.7}
-  m_SizeDelta: {x: 179.5, y: 0.2}
+  m_SizeDelta: {x: 197.62, y: 0.2}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1299517293
 MonoBehaviour:
@@ -5293,7 +5293,7 @@ Transform:
   m_GameObject: {fileID: 1847870602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1534542518}
   - {fileID: 2098945618}
