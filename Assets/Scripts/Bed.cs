@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class Bed : MonoBehaviour, IPointerDownHandler {
     public void OnPointerDown(PointerEventData eventData)
     {
-		ConfirmPopup.Setup("So sleepy... go to bed?", gotoSleep);
+		ConfirmPopup.Setup("So sleepy... go to bed? (Next day)", gotoSleep);
     }
 
 	void gotoSleep()
