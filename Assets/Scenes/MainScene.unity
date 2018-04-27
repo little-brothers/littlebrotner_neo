@@ -558,7 +558,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Remind memory
+  m_Text: Recall memory
 --- !u!222 &304475962
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -829,7 +829,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Founders of the utopia
+  m_Text: Founders of the UTOPIA
 --- !u!222 &339072620
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -992,7 +992,7 @@ GameObject:
   - component: {fileID: 343086648}
   - component: {fileID: 343086647}
   m_Layer: 5
-  m_Name: Story
+  m_Name: GameStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1197,7 +1197,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 568361962}
-        m_MethodName: PressStory
+        m_MethodName: PressStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1241,7 +1241,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Story
+  m_Text: Go to the UTOPIA [Play]
 --- !u!222 &343086652
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5304,7 +5304,7 @@ GameObject:
   - component: {fileID: 1180826066}
   - component: {fileID: 1180826065}
   m_Layer: 5
-  m_Name: GameStart
+  m_Name: Story
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5368,7 +5368,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 568361962}
-        m_MethodName: PressStart
+        m_MethodName: PressStory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5412,7 +5412,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Go to the utopia
+  m_Text: Story of UTOPIA
 --- !u!222 &1180826064
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6352,7 +6352,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Back to earth
+  m_Text: Back to earth [Exit]
 --- !u!222 &1816899579
 CanvasRenderer:
   m_ObjectHideFlags: 0
