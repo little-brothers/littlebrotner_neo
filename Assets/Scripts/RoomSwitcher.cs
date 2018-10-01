@@ -18,12 +18,6 @@ public class RoomSwitcher : MonoBehaviour {
 	bool loop = true;
 
 	[SerializeField]
-	Button leftButton;
-
-	[SerializeField]
-	Button rightButton;
-
-	[SerializeField]
 	Tooltip tooltip;
 
 
@@ -32,8 +26,6 @@ public class RoomSwitcher : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		//updateButtonInteractable();
-		//updateButtonInteractable();
 		GetComponent<SpriteRenderer>().sortingOrder = 1; // 항상 최상위에 표시됨
 		Debug.Assert(transform.childCount != 0);
 		setRoomIdx(startIndex);
@@ -43,25 +35,8 @@ public class RoomSwitcher : MonoBehaviour {
 		for (int i=0; i<transform.childCount; ++i)
 		{
 			var room = transform.GetChild(i);
-			room.gameObject.SetActive(false);
+			// room.gameObject.SetActive(false);
 		}
-
-
-		leftButton.onClick.AddListener(() => {
-			setRoomIdx(_index-1);
-			updateButtonInteractable();
-		});
-
-		rightButton.onClick.AddListener(() => {
-			setRoomIdx(_index+1);
-			updateButtonInteractable();
-		});
-	}
-
-	void updateButtonInteractable()
-	{
-		leftButton.interactable = _index > 0;
-		rightButton.interactable = _index < transform.childCount-1;
 	}
 
 	void ShowPendingNotis()
@@ -108,7 +83,6 @@ public class RoomSwitcher : MonoBehaviour {
 			_index += transform.childCount;
 
 		flipScene(false);
-		updateButtonInteractable();
 	}
 
 	void flipSceneNow() {
@@ -120,7 +94,7 @@ public class RoomSwitcher : MonoBehaviour {
 		for (int i=0; i<transform.childCount; ++i)
 		{
 			var room = transform.GetChild(i);
-			room.gameObject.SetActive(_index == i);
+			// room.gameObject.SetActive(_index == i);
 		}
 
 		if (fromAnimation && _reservedChangeEvent != null) {
