@@ -18,7 +18,7 @@ public class Chatbox : MonoBehaviour, IPointerClickHandler {
 			prefab,
 			Vector3.zero,
 			Quaternion.identity,
-			GameObject.FindWithTag("RootCanvas").transform.parent
+			GameObject.FindWithTag("PopupCanvas").transform
 		).GetComponent<Chatbox>();
 
 		instance.textbox.text = content;

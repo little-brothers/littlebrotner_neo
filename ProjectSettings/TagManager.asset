@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RootCanvas
   - Tooltip
+  - PopupCanvas
   layers:
   - Default
   - TransparentFX

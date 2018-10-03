@@ -19,13 +19,17 @@ public class ConfirmPopup : MonoBehaviour {
 
 	public static void Setup(string text, PopupEvent ok, bool showCancel = true)
 	{
-		var popupTemplate = Resources.Load("ConfirmPopup");
-		var popup = (GameObject.Instantiate(popupTemplate) as GameObject).GetComponent<ConfirmPopup>();
+		var popupTemplate = Resources.Load<GameObject>("ConfirmPopup");
+		var popup = GameObject.Instantiate(
+			popupTemplate,
+			Vector3.zero,
+			Quaternion.identity,
+			GameObject.FindGameObjectWithTag("PopupCanvas").transform
+		).GetComponent<ConfirmPopup>();
+
 		popup._text.text = text;
 		popup._okEvent = ok;
 		popup.CancelButton.gameObject.SetActive(showCancel);
-
-		Utilities.SetUIParentFit(GameObject.FindGameObjectWithTag("RootCanvas"), popup.gameObject);
 	}
 	
 	void Start() {
