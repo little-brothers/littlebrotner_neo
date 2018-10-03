@@ -14,9 +14,14 @@ public class Chatbox : MonoBehaviour, IPointerClickHandler {
 	public static Chatbox Show(string content)
 	{
 		var prefab = Resources.Load<GameObject>("ChatBox");
-		var instance = GameObject.Instantiate(prefab).GetComponent<Chatbox>();
+		var instance = GameObject.Instantiate(
+			prefab,
+			Vector3.zero,
+			Quaternion.identity,
+			GameObject.FindWithTag("RootCanvas").transform.parent
+		).GetComponent<Chatbox>();
+
 		instance.textbox.text = content;
-		Utilities.SetUIParentFit(GameObject.FindWithTag("RootCanvas"), instance.gameObject);
 
 		return instance;
 	}
