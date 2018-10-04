@@ -52,7 +52,12 @@ public class IntroSceneControl : MonoBehaviour {
 	{
 		if (_current >= sequence.Count)
 		{
-			GameObject.Find("Soundmanager").GetComponent<Soundmanager> ().MainPlay ();
+			var sound = GameObject.Find("Soundmanager");
+			if (sound != null)
+			{
+				sound.GetComponent<Soundmanager>().MainPlay();
+			}
+
 			SceneManager.LoadScene(nextScene);
 			return;
 		}
