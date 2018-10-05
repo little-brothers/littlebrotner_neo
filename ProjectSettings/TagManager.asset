@@ -7,6 +7,7 @@ TagManager:
   - RootCanvas
   - Tooltip
   - PopupCanvas
+  - TouchBlocker
   layers:
   - Default
   - TransparentFX
