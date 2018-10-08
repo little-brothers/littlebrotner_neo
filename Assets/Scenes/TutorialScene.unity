@@ -485,7 +485,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1867387020
+  randomSeed: -723810599
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4148,8 +4148,6 @@ MonoBehaviour:
   sequence:
   - image: {fileID: 21300000, guid: be3315e39ebce4dfa8d1b9159280912e, type: 3}
     script: In the game, There are three rooms.
-  - image: {fileID: 21300000, guid: e2d2428d7adac4d2eb3ca6c6eabade6e, type: 3}
-    script: You can move rooms by click arrow on side.
   - image: {fileID: 21300000, guid: 43008b9872eca4b78b9da8d71084ba9e, type: 3}
     script: At center room, you can see money and taxes(for everyday).
   - image: {fileID: 21300000, guid: 43593b19b77404edbb81cc02300e46b9, type: 3}
